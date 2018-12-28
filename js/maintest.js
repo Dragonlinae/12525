@@ -8,6 +8,7 @@ var loading_screen = pleaseWait({
   loadingHtml: "<div class='spinner'><div class='double-bounce1'></div><div class='double-bounce2'></div></div>"
 });
 var currslide = 0;
+var navOpen = false;
 $(window).on("load", function() {
 
   // removes loading screen
@@ -60,45 +61,51 @@ function hideArrows() {
   $('.up').hide();
 }
 function addNav() {
-  $('.navcover').addClass('open');
-  $('.front').addClass('darken');
-  $('.menu-open').hide();
-  $('.menu-close').show();
-  $('.back, .forward, .up').hide();
-  $('html, body').css({
-      overflow: 'hidden',
-      height: '100%'
-  });
+  if (!navOpen) {
+    $('.navcover').addClass('open');
+    $('.front').addClass('darken');
+    $('.menu-open').hide();
+    $('.menu-close').show();
+    $('.back, .forward, .up').hide();
+    $('html, body').css({
+        overflow: 'hidden',
+        height: '100%'
+    });
+    navOpen = true;
+  }
 }
 function removeNav() {
-  $('.navcover').removeClass('open');
-  $('.front').removeClass('darken');
-  $('.menu-close').hide();
-  $('.menu-open').show();
-  $('.ncleft').removeClass('animated fadeInLeft');
-  $('.ncright').removeClass('animated fadeInRight');
-  $('html, body').css({
-      overflow: 'hidden',
-      height: 'auto'
-  });
-  switch (currslide) {
-    case 1:
-      $('.back').show();
-      $('.forward').hide();
-      $('.up').hide();
-      break;
-    case 2:
-      $('.forward').show();
-      $('.back').hide();
-      $('.up').hide();
-      break;
-    case 3:
-      $('.up').show();
-      $('.forward').hide();
-      $('.back').hide();
-      break;
-    default:
-      break;
+  if (navOpen) {
+    $('.navcover').removeClass('open');
+    $('.front').removeClass('darken');
+    $('.menu-close').hide();
+    $('.menu-open').show();
+    $('.ncleft').removeClass('animated fadeInLeft');
+    $('.ncright').removeClass('animated fadeInRight');
+    $('html, body').css({
+        overflow: 'hidden',
+        height: 'auto'
+    });
+    switch (currslide) {
+      case 1:
+        $('.back').show();
+        $('.forward').hide();
+        $('.up').hide();
+        break;
+      case 2:
+        $('.forward').show();
+        $('.back').hide();
+        $('.up').hide();
+        break;
+      case 3:
+        $('.up').show();
+        $('.forward').hide();
+        $('.back').hide();
+        break;
+      default:
+        break;
+    }
+    navOpen = false;
   }
 }
 
@@ -123,6 +130,7 @@ function hideOurTeam() {
   $('.E').hide();
   $('.viz').removeClass('animated slideOutRight');
   $('.viz').addClass('animated slideInRight');
+  $('.viz').show();
   $('.back').hide();
   currslide = 0;
 }
@@ -164,6 +172,7 @@ function hideOurRobot() {
   $('.E').hide();
   $('.viz').removeClass('animated slideOutLeft');
   $('.viz').addClass('animated slideInLeft');
+  $('.viz').show();
   $('.forward').hide();
   currslide = 0;
 }
@@ -285,21 +294,30 @@ $('.title-m').click(() => {
 });
 
 //nav event handlers
+let keyboardShortucts = true;
+$("input, textarea").focus(function() {
+  keyboardShortucts = false;
+});
+$("input, textarea").focusout(function() {
+  keyboardShortucts = true;
+});
+
 $('.menu-open').click(() => {
   addNav();
-  $(document).keyup(function(e) {
-    if (e.keyCode === 27) {
-      removeNav();
-    }
-  });
 });
+$(document).keyup(function(e) {
+  if ((e.keyCode === 77 || e.keyCode === 78 || e.keyCode === 79) && keyboardShortucts) {
+    addNav();
+  }
+});
+
 $('.menu-close').click(() => {
   removeNav();
-  $(document).keyup(function(e) {
-    if (e.keyCode === 77 || e.keyCode === 78 || e.keyCode === 79) {
-      addNav();
-    }
-  });
+});
+$(document).keyup(function(e) {
+  if (e.keyCode === 27) {
+    removeNav();
+  }
 });
 
 //our team event handlers
@@ -417,6 +435,7 @@ $('.t1').click(() => {
   pageshown = true;
 });
 $('.up').click(() => {
+  $('.viz').show();
   hideAwards();
   pageshown = false;
 });
@@ -445,8 +464,8 @@ $('.title-4').click(() => {
 $('.talk').click(() => {
   hideTalk();
   $('.viz').show();
-})
-//
+});
+//for sponsors
 $('.title-5').click(() => {
   currslide = 0;
   clearA();

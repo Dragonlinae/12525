@@ -3,6 +3,8 @@ $(window).on("load", function() {
   $('.closeSec').hide();
   $('.infotext').hide();
   $('.dropsel').hide();
+  $('.sent').hide();
+  $('.moreawards').hide();
   //declaring instances
   const panelMaker = new panelAndDefaults();
   const secEditor = new sectionMan();
@@ -203,6 +205,34 @@ $(window).on("load", function() {
       $('.D').removeAttr('particles-js');
       $('.C').removeAttr('particles-js');
     }
+  });
+
+  //Contact page validation/tabbing
+  function handleFirstTab(e) {
+    if (e.keyCode === 9) {
+      $('body').addClass('user-is-tabbing');
+      window.removeEventListener('keydown', handleFirstTab);
+    }
+  };
+
+  $('.D form').mousemove(function() {
+    $('body').removeClass('user-is-tabbing');
+    window.addEventListener('keydown', handleFirstTab);
+  });
+
+  $(':input[type=number]').on('mousewheel', function(e){
+    e.preventDefault();
+  });
+
+  window.addEventListener('keydown', handleFirstTab);
+
+  // awards page
+
+  $('.seemore').click(function() {
+    $('.moreawards').removeClass('fadeInUpBig');
+    $('.seemore').removeClass('fadeIn');
+    $('.moreawards').addClass('fadeOutUp');
+    $('.seemore').addClass('fadeOut');
   });
 });
 
