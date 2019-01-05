@@ -9,6 +9,7 @@ var loading_screen = pleaseWait({
 });
 var currslide = 0;
 var navOpen = false;
+
 $(window).on("load", function() {
 
   // removes loading screen
@@ -19,6 +20,7 @@ $(window).on("load", function() {
     console.log($('.viz').attr('class'));
   });
 });
+
 
 // f(x) for simplfication
 
@@ -327,8 +329,8 @@ $('.title-1').click(() => {
   panelScrollUpAuto('.A', 'slideOutUp', 'slideInDown');
   panelScrollUpAuto('.A1', 'slideOutRight', 'slideInRight');
   panelScrollUpAuto('.A2', 'slideOutLeft', 'slideInLeft');
-  panelScrollUpAuto('.A3', 'zoomOut', 'zoomIn');
-  panelScrollUpAuto('.A4', 'fadeOut', 'fadeIn');
+  panelScrollUpAuto('.A3', 'slideOutRight', 'slideInRight');
+  panelScrollUpAuto('.A4', 'slideOutLeft', 'slideInLeft');
 });
 $('.f1').click(() => {
   showOurTeam();
@@ -341,56 +343,48 @@ $('.ncleft .sub-1').click(() => {
   panelScrollDownAuto('.A', 'slideInDown', 'slideOutUp');
   panelScrollUpAuto('.A1', 'slideOutRight', 'slideInRight');
   panelScrollUpAuto('.A2', 'slideOutLeft', 'slideInLeft');
-  panelScrollUpAuto('.A3', 'zoomOut', 'zoomIn');
-  panelScrollUpAuto('.A4', 'fadeOut', 'fadeIn');
+  panelScrollUpAuto('.A3', 'slideOutRight', 'slideInRight');
+  panelScrollUpAuto('.A4', 'slideOutLeft', 'slideInLeft');
 });
 $('.ncleft .sub-2').click(() => {
   ourTeamDefault();
   panelScrollDownAuto('.A', 'slideInDown', 'slideOutUp');
   panelScrollDownAuto('.A1', 'slideInRight', 'slideOutRight');
   panelScrollUpAuto('.A2', 'slideOutLeft', 'slideInLeft');
-  panelScrollUpAuto('.A3', 'zoomOut', 'zoomIn');
-  panelScrollUpAuto('.A4', 'fadeOut', 'fadeIn');
+  panelScrollUpAuto('.A3', 'slideOutRight', 'slideInRight');
+  panelScrollUpAuto('.A4', 'slideOutLeft', 'slideInLeft');
 });
 $('.ncleft .sub-3').click(() => {
   ourTeamDefault();
   panelScrollDownAuto('.A', 'slideInDown', 'slideOutUp');
   panelScrollDownAuto('.A1', 'slideInRight', 'slideOutRight');
   panelScrollDownAuto('.A2', 'slideInLeft', 'slideOutLeft');
-  panelScrollUpAuto('.A3', 'zoomOut', 'zoomIn');
-  panelScrollUpAuto('.A4', 'fadeOut', 'fadeIn');
+  panelScrollUpAuto('.A3', 'slideOutRight', 'slideInRight');
+  panelScrollUpAuto('.A4', 'slideOutLeft', 'slideInLeft');
 });
 $('.ncleft .sub-4').click(() => {
   ourTeamDefault();
   panelScrollDownAuto('.A', 'slideInDown', 'slideOutUp');
   panelScrollDownAuto('.A1', 'slideInRight', 'slideOutRight');
   panelScrollDownAuto('.A2', 'slideInLeft', 'slideOutLeft');
-  panelScrollDownAuto('.A3', 'zoomIn', 'zoomOut');
-  panelScrollUpAuto('.A4', 'fadeOut', 'fadeIn');
+  panelScrollDownAuto('.A3', 'slideInRight', 'slideOutRight');
+  panelScrollUpAuto('.A4', 'slideOutLeft', 'slideInLeft');
 });
 $('.ncleft .sub-5').click(() => {
   ourTeamDefault();
   panelScrollDownAuto('.A', 'slideInDown', 'slideOutUp');
   panelScrollDownAuto('.A1', 'slideInRight', 'slideOutRight');
   panelScrollDownAuto('.A2', 'slideInLeft', 'slideOutLeft');
-  panelScrollDownAuto('.A3', 'zoomIn', 'zoomOut');
-  panelScrollDownAuto('.A4', 'fadeIn', 'fadeOut');
+  panelScrollDownAuto('.A3', 'slideInRight', 'slideOutRight');
+  panelScrollDownAuto('.A4', 'slideInLeft', 'slideOutLeft');
 });
 
 //our robot event handlers
 $('.title-2').click(() => {
-  clearA();
-  clearC();
-  clearD();
-  clearE();
-  currslide = 2;
-  autoScrollFromLanding();
-  removeNav();
-  showOurRobot();
   ourRobotDefault();
   panelScrollUpAuto('.B', 'slideOutUp', 'slideInDown');
-  panelScrollUpAuto('.B1', 'slideOutRight', 'slideInRight');
-  panelScrollUpAuto('.B2', 'slideOutLeft', 'slideInLeft');
+  panelScrollUpAuto('.B1', 'zoomOutRight', 'zoomInRight');
+  panelScrollUpAuto('.B2', 'zoomOutLeft', 'zoomInLeft');
 });
 $('.s1').click(() => {
   showOurRobot();
@@ -401,20 +395,20 @@ $('.forward').click(() => {
 $('.ncright .sub-1').click(() => {
   ourRobotDefault();
   panelScrollDownAuto('.B', 'slideInDown', 'slideOutUp');
-  panelScrollUpAuto('.B1', 'slideOutRight', 'slideInRight');
-  panelScrollUpAuto('.B2', 'slideOutLeft', 'slideInLeft');
+  panelScrollUpAuto('.B1', 'zoomOutRight', 'zoomInRight');
+  panelScrollUpAuto('.B2', 'zoomOutLeft', 'zoomInLeft');
 });
 $('.ncright .sub-2').click(() => {
   ourRobotDefault();
   panelScrollDownAuto('.B', 'slideInDown', 'slideOutUp');
-  panelScrollDownAuto('.B1', 'slideInRight', 'slideOutRight');
-  panelScrollUpAuto('.B2', 'slideOutLeft', 'slideInLeft');
+  panelScrollDownAuto('.B1', 'zoomInRight', 'zoomOutRight');
+  panelScrollUpAuto('.B2', 'zoomOutLeft', 'zoomInLeft');
 });
 $('.ncright .sub-3').click(() => {
   ourRobotDefault();
   panelScrollDownAuto('.B', 'slideInDown', 'slideOutUp');
-  panelScrollDownAuto('.B1', 'slideInRight', 'slideOutRight');
-  panelScrollDownAuto('.B2', 'slideInLeft', 'slideOutLeft');
+  panelScrollDownAuto('.B1', 'zoomInRight', 'zoomOutRight');
+  panelScrollDownAuto('.B2', 'zoomInLeft', 'zoomOutLeft');
 });
 
 //our awards event handlers
@@ -479,17 +473,13 @@ $('.title-5').click(() => {
   }, 1200);
   showSponsors();
 });
-$('.sponsor').click(() => {
-  $('.viz').show();
-  hideSponsors();
-});
 
 var map = {66: false, 67: false, 84: false};
 $(document).keydown(function(e) {
     if (e.keyCode in map) {
         map[e.keyCode] = true;
         if (map[66] && map[67] && map[84]) {
-            alert("Hello");
+            alert("BITCOIN");
             window.location.href = "http://wolf-corp.github.io/Revolution";
         }
     }
@@ -498,3 +488,5 @@ $(document).keydown(function(e) {
         map[e.keyCode] = false;
     }
 });
+
+export { hideSponsors };

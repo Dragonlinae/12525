@@ -2,10 +2,6 @@
   font-family: 'Hansief';
   src: url('../fonts/Hansief.otf');
 }
-@font-face {
-  font-family: 'Clear Sans Light';
-  src: url('../fonts/ClearSans-Light.ttf');
-}
 @mixin layer($gradient1, $gradient2, $level, $direction: to right) {
   background-image: linear-gradient($direction, $gradient1, $gradient2);
   z-index: $level;

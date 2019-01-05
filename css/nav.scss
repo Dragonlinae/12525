@@ -71,13 +71,13 @@ a {
   filter: brightness(70%);
 }
 .nav {
-  margin: 0vh 3vw 5vh 5vw;
+  margin: 0vh 4vw 5vh 4vw;
   display: flex;
   position: fixed;
   justify-content: flex-end;
   top: 3vw;
   right: 0;
-  width: 100%;
+  width: 92vw;
   height: 5vh;
   z-index: 100;
   .menu {
@@ -94,19 +94,24 @@ a {
     }
   }
   .up {
+    position: absolute;
     display: none;
-    position: relative;
-    left: -44%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
   }
   .forward {
     display: none;
-    position: relative;
-    left: -90%;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
   .back {
     display: none;
-    position: relative;
-    left: -90%;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
   .menu-close {
     display: none;
@@ -186,6 +191,17 @@ a {
       width: 0px;
       position: fixed;
       left: 49.5%;
+    }
+  }
+  footer {
+    position: absolute;
+    bottom: 2vh;
+    right: 0;
+    width: 7vw;
+
+    img {
+      width: 2vw;
+      height: 2vw;
     }
   }
 }

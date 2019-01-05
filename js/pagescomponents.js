@@ -1,93 +1,94 @@
-$(window).on("load", function() {
+import { hideSponsors } from './maintest.js';
 
+$(window).on("load", function() {
   $('.closeSec').hide();
   $('.infotext').hide();
   $('.dropsel').hide();
   $('.sent').hide();
   $('.moreawards').hide();
+  $('.awoverlay').hide();
+  $('.moresponsors').hide();
   //declaring instances
-  const panelMaker = new panelAndDefaults();
+  const a2Maker = new panelAndDefaults();
+  const a3Maker = new panelAndDefaults();
+  const a4Maker = new panelAndDefaults();
+  const a5Maker = new panelAndDefaults();
   const secEditor = new sectionMan();
   const dropdownManipulator = new dropdownMan('.B3', ['.B3 .middle .title', '.B3 .middle .infofromsides']);
-  panelMaker.newPanel("p r o g r a m m i n g", "Programming serves as a key part of the FTC competition, making our robot move based on the controller and also sensors. Our four programmers help develop Java code for Autonomous and TeleOp, bringing us up on top. We practice together, discussing issues and testing prototypes of our programs. In the end, we aim to build a great program to perform our best.", ".A2", ".leftside");
+  a2Maker.newPanel("p r o g r a m m i n g", "Programming serves as a key part of the FTC competition, making our robot move based on the controller and also sensors. Our four programmers help develop Java code for Autonomous and TeleOp, bringing us up on top. We practice together, discussing issues and testing prototypes of our programs. In the end, we aim to build a great program to perform our best.", ".A2", ".leftside");
 
   //all the configs
   $('.A2 .rightside .images .imgtopleft').click(function() {
-    panelMaker.textTyped.destroy();
-    panelMaker.newPanel("j o s h u a", "", ".A2", ".leftside");
+    a2Maker.newPanel("j o s h u a", "", ".A2", ".leftside");
   });
   $('.A2 .rightside .images .imgtopright').click(function() {
-    panelMaker.textTyped.destroy();
-    panelMaker.newPanel("c h a n d r a r k", "", ".A2", ".leftside");
+    a2Maker.newPanel("c h a n d r a r k", "", ".A2", ".leftside");
   });
   $('.A2 .rightside .images .imgbottomleft').click(function() {
-    panelMaker.textTyped.destroy();
-    panelMaker.newPanel("e r i c", "", ".A2", ".leftside");
+    a2Maker.newPanel("e r i c", "", ".A2", ".leftside");
   });
   $('.A2 .rightside .images .imgbottomright').click(function() {
-    panelMaker.textTyped.destroy();
-    panelMaker.newPanel("d a n i e l", "As Captain of Multimedia, Daniel programs our website in addition to the robot. He created the current website, and also created time-based autonomous programs for the competition. He enjoys learning new programming languages, playing basketball, and listening in on bitcoin.", ".A2", ".leftside");
+    a2Maker.newPanel("d a n i e l", "As Captain of Multimedia, Daniel programs our website in addition to the robot. He created the current website, and also the time-based autonomous programs for the competition. He enjoys learning new programming languages, playing basketball, and HODLING.", ".A2", ".leftside");
   });
   $('.A2 .rightside .images .imgbottommiddle').click(function() {
-    panelMaker.textTyped.destroy();
-    panelMaker.newPanel("p r o g r a m m i n g", "Programming serves as a key part of the FTC competition, making our robot move based on the controller and also sensors. Our four programmers help develop Java code for Autonomous and TeleOp, bringing us up on top. We practice together, discussing issues and testing prototypes of our programs. In the end, we aim to build a great program to perform our best.", ".A2", ".leftside");
+    a2Maker.newPanel("p r o g r a m m i n g", "Programming serves as a key part of the FTC competition, making our robot move based on the controller and also sensors. Our four programmers help develop Java code for Autonomous and TeleOp, bringing us up on top. We practice together, discussing issues and testing prototypes of our programs. In the end, we aim to build a great program to perform our best.", ".A2", ".leftside");
   });
 
   $('.A3 .leftside .images .imgbottomright').click(function() {
-    panelMaker.newPanel("K E V I N", "", ".A3", ".rightside");
+    a3Maker.newPanel("K E V I N", "", ".A3", ".rightside");
   });
   $('.A3 .leftside .images .imgbottomleft').click(function() {
-    panelMaker.newPanel("K A W I N", "", ".A3", ".rightside");
+    a3Maker.newPanel("K A W I N", "", ".A3", ".rightside");
   });
   $('.A3 .leftside .images .imgbottommiddle').click(function() {
-    panelMaker.newPanel("B U I L D I N G", "", ".A3", ".rightside");
+    a3Maker.newPanel("B U I L D I N G", "", ".A3", ".rightside");
   });
   $('.A3 .leftside .images .imgtopleft').click(function() {
-    panelMaker.newPanel("G L O R Y", "", ".A3", ".rightside");
+    a3Maker.newPanel("G L O R Y", "", ".A3", ".rightside");
   });
   $('.A3 .leftside .images .imgtopright').click(function() {
-    panelMaker.newPanel("I A N", "", ".A3", ".rightside");
+    a3Maker.newPanel("I A N", "", ".A3", ".rightside");
   });
   $('.A3 .leftside .images .imgtopmiddle').click(function() {
-    panelMaker.newPanel("G O R D O N", "", ".A3", ".rightside");
+    a3Maker.newPanel("G O R D O N", "", ".A3", ".rightside");
   });
 
   $('.A4 .rightside .images .imgbottomright').click(function() {
-    panelMaker.newPanel("e v a n", "Evan is the head of Financing for our team, serving as the UCTA for Wolf Corp. He manages our balances and regularly inputs spendings and raised money. Evan also contributes to building the robot to give an extra hand. He works with Google Sheets and lots of numbers. Evan enjoys gaming, playing basketball, and practicing piano.", ".A4", ".leftside");
+    a4Maker.newPanel("e v a n", "Evan is the head of Financing for our team, serving as the UCTA for Wolf Corp. He manages our balances and regularly inputs spendings and raised money. Evan also contributes to building the robot to give an extra hand. He works with Google Sheets and lots of numbers. Evan enjoys gaming, playing basketball, and practicing piano.", ".A4", ".leftside");
   });
   $('.A4 .rightside .images .imgbottomleft').click(function() {
-    panelMaker.newPanel("s a r a h", "Sarah controls the Engineering Notebook, an important part of the . It keeps all the documents of our team, even what we have as snacks for each practice. Sarah also meets with businesses in person, asking for a funding to keep our team going. Sarah loves to listen to music, watch the newest movies, and hang out with friends.", ".A4", ".leftside");
+    a4Maker.newPanel("s a r a h", "Sarah controls the Engineering Notebook, an important part of the . It keeps all the documents of our team, even what we have as snacks for each practice. Sarah also meets with businesses in person, asking for a funding to keep our team going. Sarah loves to listen to music, watch the newest movies, and hang out with friends.", ".A4", ".leftside");
   });
   $('.A4 .rightside .images .imgbottommiddle').click(function() {
-    panelMaker.newPanel("b u s i n e s s", "", ".A4", ".leftside");
+    a4Maker.newPanel("b u s i n e s s", "", ".A4", ".leftside");
   });
   $('.A4 .rightside .images .imgtopleft').click(function() {
-    panelMaker.newPanel("j a s o n", "Jason works on the Engineering Section for our team, drives the robot during the competition, and helps build and maintain the robot. In the Engineering Section, Jason includes the robot’s mechanisms and functionalities. When he’s not doing robotics, he plays games, dragonboats, and practices the handbell.", ".A4", ".leftside");
+    a4Maker.newPanel("j a s o n", "Jason works on the Engineering Section for our team, drives the robot during the competition, and helps build and maintain the robot. In the Engineering Section, Jason includes the robot’s mechanisms and functionalities. When he’s not doing robotics, he plays games, dragonboats, and practices the handbell.", ".A4", ".leftside");
   });
   $('.A4 .rightside .images .imgtopright').click(function() {
-    panelMaker.newPanel("c o n o r", "Conor oversees Documentation for our team. He ensures that anything from fundraising to Autonomous runs is recorded down, either on paper or online. Conor also keeps check on the robot, making sure it’s not broken or fixing it when it is. In his free time, Conor reads, sleeps, and plays with his dog Tara.", ".A4", ".leftside");
+    a4Maker.newPanel("c o n o r", "Conor oversees Documentation for our team. He ensures that anything from fundraising to Autonomous runs is recorded down, either on paper or online. Conor also keeps check on the robot, making sure it’s not broken or fixing it when it is. In his free time, Conor reads, sleeps, and plays with his dog Tara.", ".A4", ".leftside");
   });
   $('.A4 .rightside .images .imgtopmiddle').click(function() {
-    panelMaker.newPanel("n a t h a n", "Nathan is the Business leader for Wolf Corp and supervises all main operations in the category. He reaches out to businesses as a part of that, looking for some to support our team. Besides that, he is also a builder, scouter, and outreach documenter. Nathan likes to play PC games, swim, listen to music, and practice the piano.", ".A4", ".leftside");
+    a4Maker.newPanel("n a t h a n", "Nathan is the Business leader for Wolf Corp and supervises all main operations in the category. He reaches out to businesses as a part of that, looking for some to support our team. Besides that, he is also a builder, scouter, and outreach documenter. Nathan likes to play PC games, swim, listen to music, and practice the piano.", ".A4", ".leftside");
   });
 
   $('.A5 .botside .images .imgfarleft').click(function() {
-    panelMaker.newPanel("g i v i n g \xa0\xa0b a c k", "", ".A5", ".topside");
+    a5Maker.newPanel("g i v i n g \xa0\xa0b a c k", "", ".A5", ".topside");
   });
   $('.A5 .botside .images .imgkindaleft').click(function() {
-    panelMaker.newPanel("f i r s t \xa0\xa0e v e n t", "", ".A5", ".topside");
+    a5Maker.newPanel("f i r s t \xa0\xa0e v e n t", "", ".A5", ".topside");
   });
   $('.A5 .botside .images .imgmidleft').click(function() {
-    panelMaker.newPanel("s e c o n d \xa0\xa0e v e n t", "", ".A5", ".topside");
+    a5Maker.newPanel("s e c o n d \xa0\xa0e v e n t", "", ".A5", ".topside");
   });
   $('.A5 .botside .images .imgmidright').click(function() {
-    panelMaker.newPanel("t h i r d \xa0\xa0e v e n t", "", ".A5", ".topside");
+    a5Maker.newPanel("t h i r d \xa0\xa0e v e n t", "", ".A5", ".topside");
   });
   $('.A5 .botside .images .imgkindaright').click(function() {
-    panelMaker.newPanel("f o u r t h \xa0\xa0e v e n t", "", ".A5", ".topside");
+    a5Maker.newPanel("f o u r t h \xa0\xa0e v e n t", "", ".A5", ".topside");
   });
   $('.A5 .botside .images .imgfarright').click(function() {
-    panelMaker.newPanel("f i f t h \xa0\xa0e v e n t", "", ".A5", ".topside");
+    a5Maker.newPanel("f i f t h \xa0\xa0e v e n t", "", ".A5", ".topside");
   });
 
   $('.B1 .sections .topleft button').click(function() {
@@ -167,7 +168,7 @@ $(window).on("load", function() {
   });
   dropdownManipulator.handleChoice(1, '.left', 'Chassis', 'a');
   dropdownManipulator.handleChoice(2, '.left', 'Protectors', 'b');
-  dropdownManipulator.handleChoice(3, '.left', 'Sensors & Encoders', 'c');
+  dropdownManipulator.handleChoice(3, '.left', 'Sensors and Encoders', 'c');
   dropdownManipulator.handleChoice(4, '.left', 'Channels, Gears, and More', 'd');
   dropdownManipulator.handleChoice(1, '.right', 'Wheels', 'e');
   dropdownManipulator.handleChoice(2, '.right', 'Intake System', 'f');
@@ -227,19 +228,64 @@ $(window).on("load", function() {
   window.addEventListener('keydown', handleFirstTab);
 
   // awards page
-
   $('.seemore').click(function() {
-    $('.moreawards').removeClass('fadeInUpBig');
+    $('.moreawards').removeClass('fadeOutDown');
     $('.seemore').removeClass('fadeIn');
-    $('.moreawards').addClass('fadeOutUp');
+    $('.moreawards').addClass('fadeInUpBig');
     $('.seemore').addClass('fadeOut');
+    $('.moreawards').show();
+    $('.up').hide();
   });
+
+  $('.doneseeing').click(function() {
+    $('.moreawards').removeClass('fadeInUpBig');
+    $('.seemore').removeClass('fadeOut');
+    $('.moreawards').addClass('fadeOutDown');
+    $('.seemore').addClass('fadeIn');
+    $('.seemore').show();
+    $('.up').show();
+  });
+
+  $('.moreawardslist').children('.exaward').each(function () {
+    $(this).hover(function(event) {
+      $(this).children('.awoverlay').removeClass('fadeOutDownBigSlow');
+      $(this).children('.awoverlay').addClass('fadeInUp');
+      $(this).children('.awoverlay').show();
+    }, function(event) {
+      $(this).children('.awoverlay').removeClass('fadeInUp');
+      $(this).children('.awoverlay').addClass('fadeOutDownBigSlow');
+    });
+  });
+
+  // sponsors page
+  let moreSponOpen = false;
+
+  $('.seemores').click(function() {
+    $('.moresponsors').removeClass('fadeOutDown');
+    $('.seemores').removeClass('fadeIn');
+    $('.moresponsors').addClass('fadeInUpBig');
+    $('.seemores').addClass('fadeOut');
+    $('.moresponsors').show();
+    moreSponOpen = true;
+  });
+
+  $('.sponsor').click(() => {
+    if (moreSponOpen) {
+      $('.moresponsors').removeClass('fadeInUpBig');
+      $('.seemores').removeClass('fadeOut');
+      $('.moresponsors').addClass('fadeOutDown');
+      $('.seemores').addClass('fadeIn');
+      $('.seemores').show();
+      moreSponOpen = false;
+    } else {
+      $('.viz').show();
+      hideSponsors();
+    }
+  });
+
 });
 
-let dropdownleftopen = false;
-let dropdownrightopen = false;
-//classes for dream makers, life taker
-
+//classes for a
 class panelAndDefaults {
   constructor() {
     this.textString = '';
@@ -249,6 +295,9 @@ class panelAndDefaults {
       typeSpeed: 5,
       backSpeed: 0.1,
       showCursor: false,
+      onComplete: (self) => {
+        this.picChose1 = false;
+      }
     };
     this.titleOptions = {
       strings: [" ", this.titleString],
@@ -262,25 +311,26 @@ class panelAndDefaults {
     this.titleTyped;
     this.textTyped;
     this.picChose = false;
+    this.picChose1 = false;
   }
 
   newPanel(titleString, textString, panel, side) {
-    titleString = titleString.toUpperCase();
-    this.titleOptions.strings[1] = titleString;
-    this.textOptions.strings[1] = textString;
-    $('.line').hide();
-    setTimeout(() => {$('.line').show()}, 1000);
-    if (!this.picChose) {
+    if (!this.picChose && !this.picChose1) {
+      titleString = titleString.toUpperCase();
+      this.titleOptions.strings[1] = titleString;
+      this.textOptions.strings[1] = textString;
+      $('.line').hide();
+      setTimeout(() => {$('.line').show()}, 1000);
       this.titleTyped = new Typed(`${panel} ${side} .title`, this.titleOptions);
       this.textTyped = new Typed(`${panel} ${side} .maintext`, this.textOptions);
       this.textTyped.start();
       this.picChose = true;
+      this.picChose1 = true;
     }
   }
 }
 
 // class for b1 b2 sections
-
 class sectionMan {
   constructor() {
     this.sections = [];
@@ -324,6 +374,9 @@ class sectionMan {
   }
 }
 
+// classes for b3 section
+let dropdownleftopen = false;
+let dropdownrightopen = false;
 class dropdownMan {
   constructor(panel, outputarea) {
     this.panel = panel;
@@ -332,41 +385,55 @@ class dropdownMan {
       strings: [" ", ""],
       typeSpeed: 20,
       backSpeed: 20,
-      showCursor: false
-    }
+      showCursor: false,
+      onComplete: (self) => {
+        this.optionSelected = false;
+      }
+    };
     this.textOptions = {
       strings: [" ", ""],
       typeSpeed: 40,
       backSpeed: 3,
-      showCursor: false
-    }
+      showCursor: false,
+      onComplete: (self) => {
+        this.optionSelected1 = false;
+      }
+    };
+    this.titleTyped;
+    this.textTyped;
+    this.optionSelected = false;
+    this.optionSelected1 = false;
   }
 
   handleChoice(selected, section, title, output) {
     $(`${this.panel} ${section} .dropdown .dropmenu .dropsel${selected}`).click(() => {
-      let editedTitle = title.split('').join('\xa0').toUpperCase();
-      this.titleOptions.strings[1] = editedTitle;
-      this.textOptions.strings[1] = output;
-      let titleTyped = new Typed(this.outputarea[0], this.titleOptions);
-      let textTyped = new Typed(this.outputarea[1], this.textOptions);
-      if (section == '.left') {
-        setTimeout(function() {
-          $('.B3 .left .dropdown .dropmenu .dropsel').removeClass('fadeInDown');
-          $('.B3 .left .dropdown .dropmenu .dropsel').addClass('fadeOutUp');
-          $('.B3 .left .dropdown .dropmenu .dropsel').fadeOut(1500);
-          $('.B3 .left .dropdown .droplabel img').removeClass('flip180');
-          $('.B3 .left .dropdown .droplabel img').addClass('unflip180');
-        }, 500);
-        dropdownleftopen = false;
-      } else if (section == '.right') {
-        setTimeout(function() {
-          $('.B3 .right .dropdown .dropmenu .dropsel').removeClass('fadeInDown');
-          $('.B3 .right .dropdown .dropmenu .dropsel').addClass('fadeOutUp');
-          $('.B3 .right .dropdown .dropmenu .dropsel').fadeOut(1500);
-          $('.B3 .right .dropdown .droplabel img').removeClass('flip180');
-          $('.B3 .right .dropdown .droplabel img').addClass('unflip180');
-          dropdownrightopen = false;
-        }, 500);
+      if (!this.optionSelected && !this.optionSelected1) {
+        let editedTitle = title.split('').join('\xa0').toUpperCase();
+        this.titleOptions.strings[1] = editedTitle;
+        this.textOptions.strings[1] = output;
+        this.titleTyped = new Typed(this.outputarea[0], this.titleOptions);
+        this.textTyped = new Typed(this.outputarea[1], this.textOptions);
+        this.optionSelected = true;
+        this.optionSelected1 = true;
+        if (section == '.left') {
+          setTimeout(function() {
+            $('.B3 .left .dropdown .dropmenu .dropsel').removeClass('fadeInDown');
+            $('.B3 .left .dropdown .dropmenu .dropsel').addClass('fadeOutUp');
+            $('.B3 .left .dropdown .dropmenu .dropsel').fadeOut(1500);
+            $('.B3 .left .dropdown .droplabel img').removeClass('flip180');
+            $('.B3 .left .dropdown .droplabel img').addClass('unflip180');
+          }, 500);
+          dropdownleftopen = false;
+        } else if (section == '.right') {
+          setTimeout(function() {
+            $('.B3 .right .dropdown .dropmenu .dropsel').removeClass('fadeInDown');
+            $('.B3 .right .dropdown .dropmenu .dropsel').addClass('fadeOutUp');
+            $('.B3 .right .dropdown .dropmenu .dropsel').fadeOut(1500);
+            $('.B3 .right .dropdown .droplabel img').removeClass('flip180');
+            $('.B3 .right .dropdown .droplabel img').addClass('unflip180');
+            dropdownrightopen = false;
+          }, 500);
+        }
       }
     });
   }

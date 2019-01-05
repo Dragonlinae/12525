@@ -44,7 +44,7 @@ function validateForm() {
       });
     }
 
-    alert(`Please fill in your ${nonfilled}!`);
+    console.log(`Please fill in your ${nonfilled}!`);
     return false;
 
   } else {

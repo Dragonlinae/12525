@@ -150,7 +150,6 @@
   p {
     position: relative;
     padding: 5px;
-    font-family: 'Clear Sans Light';
   }
   p a {
     color: inherit;
@@ -346,15 +345,9 @@
 /* Media queries*/
 /* Large large devices (desktops, huge ones)*/
 @media (max-width: 10000px) {
-  .nav {
-    width: 100vw;
-  }
 }
 /* Large devices (desktops, 768-1024) */
 @media (max-width: 1024px) {
-  .nav {
-    width: 95vw;
-  }
   .subdiv1 .title {
     font-size: 50px;
   }
@@ -364,9 +357,6 @@
 }
 /* Medium devices (tablets, 576-768) */
 @media (max-width: 768px) {
-  .nav {
-    width: 90vw;
-  }
   .landtitle {
     font-size: 25px;
   }
@@ -385,9 +375,6 @@
 }
 /* Small devices (landscape phones, 420-576) */
 @media (max-width: 576px) {
-  .nav {
-    width: 85vw;
-  }
   .front .landing .landtitle {
     font-size: 20px;
   }
@@ -408,9 +395,6 @@
   }
 }
 @media (max-width: 420px) {
-  .nav {
-    width: 80vw;
-  }
   .menu {
     width: 30px;
     height: 30px;
