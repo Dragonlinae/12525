@@ -8,6 +8,7 @@ $(window).on("load", function() {
   $('.moreawards').hide();
   $('.awoverlay').hide();
   $('.moresponsors').hide();
+  $('.caption').hide();
   //declaring instances
   const a2Maker = new panelAndDefaults();
   const a3Maker = new panelAndDefaults();
@@ -254,6 +255,16 @@ $(window).on("load", function() {
     }, function(event) {
       $(this).children('.awoverlay').removeClass('fadeInUp');
       $(this).children('.awoverlay').addClass('fadeOutDownBigSlow');
+    });
+  });
+  $('.award').each(function() {
+    $(this).hover(function(event) {
+      $(this).children('.caption').removeClass('fadeOutDown');
+      $(this).children('.caption').addClass('fadeInUp');
+      $(this).children('.caption').show();
+    }, function(event) {
+      $(this).children('.caption').removeClass('fadeInUp');
+      $(this).children('.caption').addClass('fadeOutDown');
     });
   });
 
