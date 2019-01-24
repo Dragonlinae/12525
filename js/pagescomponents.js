@@ -23,7 +23,7 @@ $(window).on("load", function() {
 
   //all the configs
   $('.A2 .rightside .images .imgtopleft').click(function() {
-    a2Maker.newPanel("j o s h u a", "", ".A2", ".leftside");
+    a2Maker.newPanel("j o s h u a", "The Captain of the Programming Division, Joshua oversees the creation of the autonomous and tele-op programs. He also made various side programs, including one for presentations and another that can play music. Joshua enjoys programming games, playing chess, and spending time with friends and family.", ".A2", ".leftside");
   });
   $('.A2 .rightside .images .imgbottomleft').click(function() {
     a2Maker.newPanel("e r i c", "As a former Team Lawyer, Eric, who's in 8th grade, understands the rulebook front to back, in addition to being a top-notch programmer and programming the encoder-based autonomous program on the Crater Side. He enjoys programming, playing basketball, and Bitcoin.", ".A2", ".leftside");
