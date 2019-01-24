@@ -10,7 +10,7 @@
     z-index: $level + 1;
   }
 }
-@mixin title($color, $size: 80px) {
+@mixin title($color, $size: 70px) {
   text-align: center;
   font-family: 'Hansief';
   font-size: $size;

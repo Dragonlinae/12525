@@ -11,10 +11,12 @@
   visibility: hidden;
 }
 .front {
-  background: url("../images/deskbg5.jpg") 100% 70%;
+  background: url("../images/deskbg5.jpg");
+  background-position: center;
   background-repeat: no-repeat;
-  height: 100%;
-  width: 100%;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
   z-index: 12;
   cursor: context-menu;
 

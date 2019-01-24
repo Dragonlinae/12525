@@ -743,19 +743,24 @@
 }
 
 @keyframes fadeOutDownBigSlow {
-  from {
+  0% {
     opacity: 1;
   }
 
-  to {
+  50% {
     opacity: 0;
     transform: translate3d(0, 40vh, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 80vh, 0);
   }
 }
 
 .fadeOutDownBigSlow {
   animation-name: fadeOutDownBigSlow;
-  animation-duration: .4s;
+  animation-duration: .8s;
   animation-timing-function: linear;
 }
 

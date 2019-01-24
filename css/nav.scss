@@ -148,13 +148,26 @@ a {
   p {
     margin-left: 5%;
   }
+  .quote {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 4vh auto 0 auto;
+    text-align: center;
+    font-family: 'Hansief';
+    text-transform: uppercase;
+    font-size: 14px!important;
+    letter-spacing: 2px;
+    color: #363636;
+  }
   .ncleft {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 50%;
     height: 100%;
     background-color: white;
-    padding-top: 12%;
     padding-left: 15%;
     h1 {
       margin: 0 0 4% 0;
@@ -163,10 +176,10 @@ a {
   .ncright {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 50%;
     height: 100%;
     background-color: #E3F0F4;
-    padding-top: 12%;
     padding-left: 15%;
     .title-2 {
       margin-top: 0;
