@@ -12,6 +12,7 @@ $(window).on("load", function() {
   $('.moresponsors').hide();
   $('.caption').hide();
   $('.compvideo').hide();
+  $('.codesnippet').hide();
   //declaring instances
   const a2Maker = new panelAndDefaults();
   const a3Maker = new panelAndDefaults();
@@ -36,7 +37,7 @@ $(window).on("load", function() {
   });
 
   $('.A3 .leftside .images .imgbottomright').click(function() {
-    a3Maker.newPanel("K E V I N", "", ".A3", ".rightside");
+    a3Maker.newPanel("K E V I N", "	Autonomous is run by two programs and a backup, depending on our side, to score maximum points during the 30 second period. Both programs start off with setting the power of the hanging mechanism to -1 to move down for 6 inches. During unhanging, our camera turns on to detect gold with the DogeCV library. It detects gold, and sidesteps to it and pushes it forward, off the initial point. It then turns to place marker and finally parks. The backup has the ability to sample two, just in case our Alliance isn’t able to. We have calculated the proportions just right, so our scale is exactly 1:1. We also have methods to move, instead of tediously coding it every time. It is very simple, with something just like turnLeft(45). Our Autonomous programs get the job done with an elegant method. ", ".A3", ".rightside");
   });
   $('.A3 .leftside .images .imgbottomleft').click(function() {
     a3Maker.newPanel("K A W I N", "Kawin stands as the Robot Captain, overlooking the robot from start to end. He is a key builder for our robot, starting from assembling the chassis to last-minute fixes. Other than that, Kawin works on the Promote video and helps out other team members with mechanical issues. At school, Kawin is part of the marching band; at home, he watches anime.", ".A3", ".rightside");
@@ -73,7 +74,7 @@ $(window).on("load", function() {
     a4Maker.newPanel("n a t h a n", "Nathan is the Business leader for Wolf Corp and supervises all main operations in the category. He reaches out to businesses as a part of that, looking for some to support our team. Besides that, he is also a builder, scouter, and outreach documenter. Nathan likes to play PC games, swim, listen to music, and practice the piano.", ".A4", ".leftside");
   });
   $('.A4 .rightside .images .imgextra').click(function() {
-    a2Maker.newPanel("c h a n d r a r k", "", ".A4", ".leftside");
+    a2Maker.newPanel("c h a n d r a r k", "Chandrark is the Head of Scouting and Team Statistician. For Scouting, he manages all the scouting reports from competition and analyzes them to determine the best alliance. As Statistician, Chandrark records all the Driving and Autonomous testing to better display what we can work on and how to get better. For fun, Chandrark watches TV and plays video games like Overwatch, Fortnite, and Super Smash Bros.", ".A4", ".leftside");
   });
 
   $('.A5 .botside .images .imgfarleft').click(function() {
@@ -97,6 +98,7 @@ $(window).on("load", function() {
 
   $('.B1 .sections .topleft button').click(function() {
     secEditor.hideAllSecExceptAndEnlarge('.topleft', '.B1');
+    setTimeout(function(){$('.compvideo').fadeIn();}, 300);
   });
   $('.B1 .sections .topright button').click(function() {
     secEditor.hideAllSecExceptAndEnlarge('.topright', '.B1');
@@ -110,6 +112,8 @@ $(window).on("load", function() {
   $('.B1 .sections .closeSec').click(function() {
     $('.B1 .sections .closeSec').fadeOut(250);
     secEditor.showAllSec('.B1');
+    $('.compvideo')[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
+    $('.compvideo').hide();
   });
 
   $('.B2 .sections .topleft button').click(function() {
@@ -121,8 +125,14 @@ $(window).on("load", function() {
   $('.B2 .sections .botleft button').click(function() {
     secEditor.hideAllSecExceptAndEnlarge('.botleft', '.B2');
   });
+  let botRightNotClicked = true;
   $('.B2 .sections .botright button').click(function() {
     secEditor.hideAllSecExceptAndEnlarge('.botright', '.B2');
+    if (botRightNotClicked) {
+        codeSnippetRunCarousel();
+        setInterval(function() {codeSnippetRunCarousel()}, 5400);
+        botRightNotClicked = false;
+    }
   });
   $('.B2 .sections .topmid button').click(function() {
     secEditor.hideAllSecExceptAndEnlarge('.topmid', '.B2');
@@ -133,7 +143,25 @@ $(window).on("load", function() {
   $('.B2 .sections .closeSec').click(function() {
     $('.B2 .sections .closeSec').fadeOut(250);
     secEditor.showAllSec('.B2');
+    $('.codesnippet').hide();
   });
+
+  //B2 Codesnippet carousel
+  let codepictures = ['codesnippet.png', 'codesnippet1.png', 'codesnippet2.png', 'codesnippet3.png'];
+  let selected = 0;
+
+  function codeSnippetRunCarousel() { selected %= 4;
+  $('.codesnippet').attr('src',`css/images/${codepictures[selected]}`);
+  setTimeout(function() { $('.codesnippet').addClass('fadeIn');
+  $('.codesnippet').show(); }, 400); setTimeout(function() {
+  $('.codesnippet').removeClass('fadeIn');
+  $('.codesnippet').removeClass('fadeInRight');
+  $('.codesnippet').addClass('fadeOutLeft'); setTimeout(function(){
+  $('.codesnippet').attr('src',`css/images/${codepictures[selected]}`);
+  $('.codesnippet').removeClass('fadeIn');
+  $('.codesnippet').removeClass('fadeOutLeft');
+  $('.codesnippet').addClass('fadeInRight'); $('.codesnippet').show();
+  selected++; }, 1000); }, 5400); };
 
   //B3 Dropdown stuff
   $('.B3 .left .dropdown .droplabel').click(function() {
@@ -170,23 +198,23 @@ $(window).on("load", function() {
       dropdownrightopen = true;
     }
   });
-  dropdownManipulator.handleChoice(1, '.left', 'Chassis', 'a');
-  dropdownManipulator.handleChoice(2, '.left', 'Protectors', 'b');
-  dropdownManipulator.handleChoice(3, '.left', 'Sensors and Encoders', 'c');
-  dropdownManipulator.handleChoice(4, '.left', 'Channels, Gears, and More', 'd');
-  dropdownManipulator.handleChoice(1, '.right', 'Wheels', 'e');
-  dropdownManipulator.handleChoice(2, '.right', 'Intake System', 'f');
-  dropdownManipulator.handleChoice(3, '.right', 'Deposit System', 'g');
-  dropdownManipulator.handleChoice(4, '.right', 'Hanging', 'h');
+  dropdownManipulator.handleChoice(1, '.left', 'Chassis', 'The chassis of our robot is an Andymark build which helped us save a lot of time. The base is very stable and tight, so nuts and screws won’t get loose and maintenance for it is at a minimum. The parts are mainly metal, with the exception of a plexiglass bottom.  It carries the weight of everything else and so far has done a great job during the season.');
+  dropdownManipulator.handleChoice(2, '.left', 'Protectors', 'On the sides of the robot are plexiglass protectors to keep our robot intact. They help absorb shock, so an accidental hit won’t disconnect our robot. Wires and Expansion Hubs on our robot are protected by it, as well as the phone. It prevents direct contact of virtually anything to our core. With the two protectors, we can rest assured that disconnections won’t happen.');
+  dropdownManipulator.handleChoice(3, '.left', 'Sensors', 'For our Autonomous to operate properly, we have a camera and encoders added onto our robot for accurate and correct movement. The camera is just the phone’s built-in one, but the encoders are additionally added to use in pair with our AndyMark Neverest 40 motors. Both are reliable but have to be configured carefully to work properly. The camera detects gold blocks using a program, while the encoder counts the revolutions the motor takes and uses it to move correctly. With these sensors, we don’t have to rely on a timer to make the right move.');
+  dropdownManipulator.handleChoice(4, '.left', 'Channels, Gears, and More', 'For all the non-moving parts we put on ourselves, we always make sure to fasten them properly and tightly. Most metal pieces we use are Actobotics, so we can easily combine one and one. Some parts we may not have, so we either 3D print it or ask a like company CNC to graciously help us make it. Zip ties are also a big help for temporarily connecting two things, and we also have a huge variety of them. These parts may not sound that important, but together, help hugely in the long run.');
+  dropdownManipulator.handleChoice(1, '.right', 'Wheels', 'The four wheels are the essential part for movement of our whole robot. They are all mecanum wheels, with AndyMark Neverest 40 motors. They all have a diameter of 4 inches and provide the ability to move forward, back, sidestep left, sidestep right, turn either direction and even move and turn at the same time (like drifting without the brake). With the four wheels, we can move quickly from the lander to crater to score gold as well as get full points in Autonomous just in time. The wheels have encoders attached too, measuring 1120 CPR (counts per revolution) and 4480 counts for a tile. With our wheels, our robot can move very well in multiple ways regardless if Autonomous or Tele-Op.');
+  dropdownManipulator.handleChoice(2, '.right', 'Intake System', 'The intake system is the first step of a two-step process of scoring minerals. It consists of an x rail for extending a tray with two servos: one that controls a zip tie intake and the other that flips the tray into the second system. The intake system is able to reach out from outside of the crater using an x rail to grab minerals. Once inside, the zip ties take in up to two minerals and the x rail retracts. Once it retracts, the tray flips and turns the minerals into the deposit system. This method is fast and only has a short delay when taking in the minerals. ');
+  dropdownManipulator.handleChoice(3, '.right', 'Deposit System', 'As the second part of our robot’s scoring process, it takes from the intake system and drops it into the lander. The deposit system has a tray and x rail as well, with a servo on the tray connected to a sheet of plexiglass preventing the minerals from sliding and another servo connected to zip ties on the tray. When the intake system turns over the tray, it falls into the deposit systems tray. The intake system is turned back, and its linear slide raises the deposit system above the lander. The servo rotates up the closed plexiglass and the other servo uses zip ties to push off the minerals. This pairs well with the intake system and leads to effective scoring.');
+  dropdownManipulator.handleChoice(4, '.right', 'Hanging', 'Hanging for our robot is one the big points in End Game and Autonomous. We use a motor to turn a gear which in turn (get it) turns a threaded rod that moves the hanging bar up and down. The AndyMark 60 motor provides enough strength and has large enough stall torque to prevent it from burning out and continue to lift it up from the ground. It takes about 6 seconds to unhang and hang from the lander, resulting in a total of 85 points. Without hanging, winning matches would be very hard.');
 
   $('.panel').hover(function () {
     let classed = this.className;
     console.log(classed);
 
-    if (classed.search('B') > 0 || classed.search('D d') > 0 || classed.search('E e') > 0  || classed.search('A a') > 0 || classed.search('A5') > 0 || classed.search('C c') > 0) {
+    if (classed.search('B') > 0 || classed.search('D d') > 0 || classed.search('E e') > 0  || classed.search('A a') > 0 || classed.search('A5') > 0 || classed.search('C c') > 0 || classed.search('A1') > 0) {
       $('.nav .menu-open').addClass('invertedColors');
       $('.nav .back').addClass('invertedColors');
-    } else if (classed.search('A1') > 0 || classed.search('A3') > 0) {
+    } else if (classed.search('A3') > 0) {
       $('.nav .menu-open').addClass('invertedColors');
       $('.nav .back').removeClass('invertedColors');
     } else if (classed.search('A2') > 0 || classed.search('A4') > 0) {
@@ -402,7 +430,6 @@ class sectionMan {
         $(`${panel} .sections .infolabel`).hide();
         $(`${panel} .sections .infotext`).show();
         $(`${panel} .sections .boxtitle`).show();
-        setTimeout(function(){$(`${panel} .sections .compvideo`).fadeIn();}, 300);
       } else if (this.sections[i] !== not) {
         $(`${panel} .sections ${this.sections[i]}`).hide();
         $(`${panel} .sections ${this.sections[i]}`).removeClass('enlarged');
@@ -420,8 +447,6 @@ class sectionMan {
       $(`${panel} .sections .infolabel`).show();
       $(`${panel} .sections .infotext`).hide();
       $(`${panel} .sections .boxtitle`).hide();
-      $('.compvideo')[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
-      $(`${panel} .sections .compvideo`).hide();
       $(`${panel} .sections ${this.sections[i]}`).show();
     }
   }
@@ -436,8 +461,8 @@ class dropdownMan {
     this.outputarea = outputarea;
     this.titleOptions = {
       strings: [" ", ""],
-      typeSpeed: 20,
-      backSpeed: 20,
+      typeSpeed: 30,
+      backSpeed: 15,
       showCursor: false,
       onComplete: (self) => {
         this.optionSelected = false;
@@ -445,8 +470,8 @@ class dropdownMan {
     };
     this.textOptions = {
       strings: [" ", ""],
-      typeSpeed: 40,
-      backSpeed: 3,
+      typeSpeed: 5,
+      backSpeed: 0.1,
       showCursor: false,
       onComplete: (self) => {
         this.optionSelected1 = false;

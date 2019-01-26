@@ -231,3 +231,31 @@ a {
 .invertedColors {
   filter: invert(1) !important;
 }
+/* Medium devices (laptops/tablets, 768-1024) */
+@media (max-width: 1024px) {
+  .menu {
+    width: 30px!important;
+    height: 30px!important;
+  }
+}
+/* Medium devices (tablets, 576-768) */
+@media (max-width: 768px) {
+  .menu {
+    width: 25px!important;
+    height: 25px!important;
+  }
+}
+/* Small devices (landscape phones, 420-576) */
+@media (max-width: 576px) {
+  .menu {
+    width: 20px!important;
+    height: 20px!important;
+  }
+}
+/* Small devices (portrait phones, 420-576) */
+@media (max-width: 420px) {
+  .menu {
+    width: 15px!important;
+    height: 15px!important;
+  }
+}

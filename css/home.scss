@@ -345,9 +345,6 @@
   }
 }
 /* Media queries*/
-/* Large large devices (desktops, huge ones)*/
-@media (max-width: 10000px) {
-}
 /* Large devices (desktops, 768-1024) */
 @media (max-width: 1024px) {
   .subdiv1 .title {
@@ -355,6 +352,9 @@
   }
   .subdiv2 .title, .subdiv3 .title {
     font-size: 45px;
+  }
+  .viz .selecttitle {
+    font-size: 50px;
   }
 }
 /* Medium devices (tablets, 576-768) */
@@ -373,6 +373,9 @@
   }
   .subdiv2 .title, .subdiv3 .title {
     font-size: 35px;
+  }
+  .viz .selecttitle {
+    font-size: 40px;
   }
 }
 /* Small devices (landscape phones, 420-576) */
@@ -394,6 +397,9 @@
   }
   .subdiv2 .title, .subdiv3 .title {
     font-size: 25px;
+  }
+  .viz .selecttitle {
+    font-size: 30px;
   }
 }
 @media (max-width: 420px) {
@@ -417,6 +423,9 @@
     font-size: 24px;
   }
   .subdiv2 .title, .subdiv3 .title {
+    font-size: 20px;
+  }
+  .viz .selecttitle {
     font-size: 20px;
   }
 }
