@@ -16,6 +16,10 @@ body.user-is-tabbing *:focus {
   outline: 2px solid black !important; /* for non-webkit browsers */
 }
 
+.A, .A1, .A2, .A3, .A4, .A5, .B, .B1, .B2, .B3 {
+  max-height: 100vh!important;
+  overflow: hidden!important;
+}
 .A {
   display: flex;
   justify-content: left;
@@ -45,15 +49,27 @@ body.user-is-tabbing *:focus {
   @include layer(white, white, 9);
   .leftside {
     background-image: linear-gradient(to left, #085aab, #1483ab);
-    border-left: 2.7px solid white;
   }
   .rightside {
     background-image: linear-gradient(to right, #085aab, #1483ab);
-    border-right: 2.7px solid white;
+
+    .line {
+      animation-delay: 1s!important;
+    }
+    .picsection {
+      display: flex;
+      margin: 5vh 0 0 0;
+      width: 25vw;
+      justify-content: space-between;
+
+      .coaches {
+        border-radius: 50%;
+        width: 10vw;
+        height: 10vw;
+      }
+    }
   }
   .rightside, .leftside {
-    border-top: 5px solid white;
-    border-bottom: 5px solid white;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -479,6 +495,16 @@ body.user-is-tabbing *:focus {
   align-items: center;
   @include layer(#34a3ed, #34a3ed, 8);
 
+  .hover {
+    position: absolute;
+    top: 50vh;
+    left: 30vw;
+    width: 40vw;
+    height: 4vh;
+    text-align: center;
+    color: white;
+    font-family: 'Abel';
+  }
   .title {
     @include title(white);
     margin-bottom: 0;
@@ -605,6 +631,16 @@ body.user-is-tabbing *:focus {
   align-items: center;
   @include layer(#65dbf2, #65dbf2, 7);
 
+  .hover {
+    position: absolute;
+    top: 50vh;
+    left: 30vw;
+    width: 40vw;
+    height: 4vh;
+    text-align: center;
+    color: white;
+    font-family: 'Abel';
+  }
   .title {
     @include title(white);
     margin-bottom: 0;
@@ -1259,6 +1295,7 @@ body.user-is-tabbing *:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100vw;
     height: 100vh;
     background-color: #0055c9;
@@ -1294,6 +1331,7 @@ body.user-is-tabbing *:focus {
         margin: 1.5vw;
         width: 5.5vw;
         height: 5.5vw;
+        border-radius: 50%;
 
         .spoverlay {
           width: 4.3vw;
@@ -1346,6 +1384,7 @@ body.user-is-tabbing *:focus {
           position: absolute;
           top: 0;
           left: 0;
+          border-radius: 50%;
           background-color: #0055c9;
           text-align: center;
           font-family: 'Abel';
@@ -1395,6 +1434,28 @@ body.user-is-tabbing *:focus {
       100% { transform: translate3d(125px, 0, 0)!important; width: 0px!important; }
     }
   }
+  .C {
+    .awards {
+      .award {
+        .caption {
+          h1 {
+            font-size: 14px!important;
+          }
+        }
+      }
+    }
+    .moreawards {
+      .moreawardslist {
+        .exaward {
+          .awoverlay {
+            h1 {
+              font-size: 11px!important;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 /* Medium devices (tablets, 576-768) */
 @media (max-width: 768px) {
@@ -1417,6 +1478,39 @@ body.user-is-tabbing *:focus {
       0% { transform: translate3d(-100px, 0px, 0)!important; width: 0px!important;}
       50% { transform: translate3d(0px, 0, 0)!important; width: 70px!important;}
       100% { transform: translate3d(100px, 0, 0)!important; width: 0px!important; }
+    }
+  }
+  .C {
+    .awards {
+      .award {
+        .caption {
+          h1 {
+            font-size: 12px!important;
+          }
+        }
+      }
+    }
+    .moreawards {
+      .moreawardslist {
+        .exaward {
+          .awoverlay {
+            h1 {
+              font-size: 9px!important;
+            }
+          }
+        }
+      }
+    }
+  }
+  .D {
+    .socials img {
+      width: 6vw!important;
+      height: 6vw!important;
+    }
+    .contactForm {
+      input, textarea {
+        border-radius: 5px!important;
+      }
     }
   }
 }
@@ -1443,6 +1537,39 @@ body.user-is-tabbing *:focus {
       100% { transform: translate3d(75px, 0, 0)!important; width: 0px!important; }
     }
   }
+  .C {
+    .awards {
+      .award {
+        .caption {
+          h1 {
+            font-size: 10px!important;
+          }
+        }
+      }
+    }
+    .moreawards {
+      .moreawardslist {
+        .exaward {
+          .awoverlay {
+            h1 {
+              font-size: 7px!important;
+            }
+          }
+        }
+      }
+    }
+  }
+  .D {
+    .socials img {
+      width: 8vw!important;
+      height: 8vw!important;
+    }
+    .contactForm {
+      input, textarea {
+        border-radius: 4px!important;
+      }
+    }
+  }
 }
 /* Small devices (portrait phones, 420-576) */
 @media (max-width: 420px) {
@@ -1465,6 +1592,120 @@ body.user-is-tabbing *:focus {
       0% { transform: translate3d(-50px, 0px, 0)!important; width: 0px!important;}
       50% { transform: translate3d(0px, 0, 0)!important; width: 30px!important;}
       100% { transform: translate3d(55px, 0, 0)!important; width: 0px!important; }
+    }
+  }
+  .B1 {
+    .hover {
+      top: 44vh!important;
+      font-size: 14px!important;
+    }
+    .sections {
+      .topleft, .topright, .botleft, .botright {
+        .infolabel {
+          font-size: 9px!important;
+        }
+        .infotext {
+          font-size: 9px!important;
+        }
+        .boxtitle {
+          font-size: 11px!important;
+        }
+        button {
+          font-size: 11px!important;
+        }
+      }
+    }
+  }
+  .B2 {
+    .hover {
+      top: 44vh!important;
+      font-size: 14px!important;
+    }
+    .sections {
+      .topleft, .topright, .topmid, .botmid, .botleft, .botright {
+        .infolabel {
+          font-size: 9px!important;
+        }
+        .infotext {
+          font-size: 9px!important;
+        }
+        .boxtitle {
+          font-size: 11px!important;
+        }
+        button {
+          font-size: 11px!important;
+        }
+      }
+    }
+  }
+  .B3 {
+    .line {
+      animation: bounceasdfb3small 6s!important;
+    }
+    @keyframes bounceasdfb3small {
+      0% { transform: translate3d(-55px, 0px, 0); width: 0px; opacity: 1;}
+      16% { transform: translate3d(0px, 0, 0); width: 175px; opacity: 1;}
+      33% { transform: translate3d(60px, 0, 0); width: 0px; opacity: 1;}
+      34% { transform: translate3d(60px, 0, 0); width: 0px; opacity: 0;}
+      100% { transform: translate3d(60px, 0, 0); width: 0px; opacity: 0;}
+    }
+    .middle {
+      .title {
+        font-size: 14px!important;
+      }
+      .infofromsides {
+        font-size: 9px!important;
+      }
+    }
+    .left, .right {
+      .subtitle {
+        font-size: 14px!important;
+      }
+      .droplabel {
+        font-size: 12px!important;
+      }
+      .dropdown {
+        font-size: 12px!important;
+      }
+      .dropbutt {
+        width: 12px!important;
+        height: 12px!important;
+      }
+    }
+  }
+  .C {
+    .awards {
+      .award {
+        .caption {
+          h1 {
+            font-size: 8px!important;
+          }
+        }
+      }
+    }
+    .moreawards {
+      .moreawardslist {
+        .exaward {
+          .awoverlay {
+            width: 14vw;
+            height: 18vw;
+            h1 {
+              font-size: 3px!important;
+            }
+          }
+        }
+      }
+    }
+  }
+  .D {
+    .socials img {
+      width: 8vw!important;
+      height: 8vw!important;
+    }
+    .contactForm {
+      input, textarea {
+        border-radius: 3px!important;
+      }
     }
   }
 }

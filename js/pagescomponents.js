@@ -1,6 +1,10 @@
 import { hideSponsors } from './maintest.js';
 
 $(window).on("load", function() {
+  document.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+  }, false);
+
   $('.closeSec').hide();
   $('.infotext').hide();
   $('.boxtitle').hide();
@@ -37,7 +41,7 @@ $(window).on("load", function() {
   });
 
   $('.A3 .leftside .images .imgbottomright').click(function() {
-    a3Maker.newPanel("K E V I N", "	Autonomous is run by two programs and a backup, depending on our side, to score maximum points during the 30 second period. Both programs start off with setting the power of the hanging mechanism to -1 to move down for 6 inches. During unhanging, our camera turns on to detect gold with the DogeCV library. It detects gold, and sidesteps to it and pushes it forward, off the initial point. It then turns to place marker and finally parks. The backup has the ability to sample two, just in case our Alliance isn’t able to. We have calculated the proportions just right, so our scale is exactly 1:1. We also have methods to move, instead of tediously coding it every time. It is very simple, with something just like turnLeft(45). Our Autonomous programs get the job done with an elegant method. ", ".A3", ".rightside");
+    a3Maker.newPanel("K E V I N", "As Maintenance Captain for our team, Kevin is a builder during practice but also a emergency builder during competition. Kevin contributes a good majority of the robot, mainly the hanging mechanism and the scoring mechanism. Kevin is also the driver coach, guiding them during matches. He helps with Programming Documentation, making sure everything gets done on time. When Kevin’s not doing robotics, he watches anime, plays games with friends, and practices badminton. ", ".A3", ".rightside");
   });
   $('.A3 .leftside .images .imgbottomleft').click(function() {
     a3Maker.newPanel("K A W I N", "Kawin stands as the Robot Captain, overlooking the robot from start to end. He is a key builder for our robot, starting from assembling the chassis to last-minute fixes. Other than that, Kawin works on the Promote video and helps out other team members with mechanical issues. At school, Kawin is part of the marching band; at home, he watches anime.", ".A3", ".rightside");
@@ -49,7 +53,7 @@ $(window).on("load", function() {
     a3Maker.newPanel("G L O R Y", "Glory, Electrician Captain, helps with organizing the wires and wiring the robot. With the use of zip ties, she prevents the wires from turning into a spaghetti like mess and interfering with the robot’s mechanisms. She is also a scouter and keeps track of game points during practice runs and meets. She is a neat freak who enjoys reading and talking to plants.", ".A3", ".rightside");
   });
   $('.A3 .leftside .images .imgtopright').click(function() {
-    a3Maker.newPanel("I A N", "", ".A3", ".rightside");
+    a3Maker.newPanel("I A N", "Ian Ceballos is an eight grader at Suzanne Middle School, who is also part of team Wolf Corp. He plays basketball, training himself at least three days a week. He also often indulges himself in the card game, Yu-Gi-Oh!. On Wolf Corp, he is the main driving captain, who strives to perfect his technique controlling the robot and maximizing its capabilities. A somewhat Jack of all trades, he is also part of other departments such as building and Engineering Notebook management.", ".A3", ".rightside");
   });
   $('.A3 .leftside .images .imgtopmiddle').click(function() {
     a3Maker.newPanel("G O R D O N", "CAD Captain Gordon works on 3D documenting the robot and helps to build the robot. Gordon’s CAD (Computer-Aided Design) files are useful for taking a look at our robot at angles we usually can’t do physically. It also helps share our ideas with the rest of the world, so they can build and learn off it. CAD helps prototype the robot on a computer so that it wouldn’t break when we build it. When building it, he also helps out. Other than robotics, Gordon plays on the golf team and is a tech and anime enthusiast.", ".A3", ".rightside");
@@ -423,6 +427,7 @@ class sectionMan {
   }
   hideAllSecExceptAndEnlarge(not, panel) {
     this.checkSec(panel);
+    $(`${panel} .hover`).hide();
     for (let i = 0; i < this.sections.length; i++) {
       if (this.sections[i] == not) {
         $(`${panel} .sections ${this.sections[i]}`).addClass('enlarged');
@@ -441,6 +446,7 @@ class sectionMan {
   }
   showAllSec(panel) {
     this.checkSec(panel);
+    $(`${panel} .hover`).show();
     for (let i = 0; i < this.sections.length; i++) {
       $(`${panel} .sections ${this.sections[i]}`).removeClass('enlarged');
       $(`${panel} .sections button`).show();
