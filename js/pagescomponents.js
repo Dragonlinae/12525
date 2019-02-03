@@ -27,19 +27,44 @@ $(window).on("load", function() {
   a2Maker.newPanel("p r o g r a m m i n g", "Programming serves as a key part of the FTC competition, making our robot move based on the controller and also sensors. Our four programmers help develop Java code for Autonomous and TeleOp, bringing us up on top. We practice together, discussing issues and testing prototypes of our programs. In the end, we aim to build a great program to perform our best.", ".A2", ".leftside");
 
   //all the configs
+  let ericSection = false;
+  let currentBio = 0;
   $('.A2 .rightside .images .imgtopleft').click(function() {
+    ericSection = false;
+    currentBio = 0;
     a2Maker.newPanel("j o s h u a", "The Captain of the Programming Division, Joshua oversees the creation of the autonomous and tele-op programs. He also made various side programs, including one for presentations and another that can play music. Joshua enjoys programming games, playing chess, and spending time with friends and family.", ".A2", ".leftside");
   });
   $('.A2 .rightside .images .imgbottomleft').click(function() {
-    a2Maker.newPanel("e r i c", "As a former Team Lawyer, Eric, who's in 8th grade, understands the rulebook front to back, in addition to being a top-notch programmer and programming the encoder-based autonomous program on the Crater Side. He enjoys programming, playing basketball, and Bitcoin.", ".A2", ".leftside");
+    ericSection = true;
+    a2Maker.newPanel("e r i c", "As a Team Lawyer, Eric, aka h0dL - 3 - Jumpman - Ankle Bully, who's in 8th grade, understands the rulebook front to back, in addition to programming the encoder-based autonomous program on the Crater Side. He enjoys programming, playing basketball, and Bitcoin.", ".A2", ".leftside");
   });
   $('.A2 .rightside .images .imgbottomright').click(function() {
+    ericSection = false;
+    currentBio = 0;
     a2Maker.newPanel("d a n i e l", "As Captain of Multimedia, Daniel programs our website in addition to the robot. He created the current website, and also the time-based autonomous programs for the competition. He enjoys learning new programming languages, playing basketball, and HODLING.", ".A2", ".leftside");
   });
   $('.A2 .rightside .images .imgbottommiddle').click(function() {
+    ericSection = false;
+    currentBio = 0;
     a2Maker.newPanel("p r o g r a m m i n g", "Programming serves as a key part of the FTC competition, making our robot move based on the controller and also sensors. Our four programmers help develop Java code for Autonomous and TeleOp, bringing us up on top. We practice together, discussing issues and testing prototypes of our programs. In the end, we aim to build a great program to perform our best.", ".A2", ".leftside");
   });
-
+  $('.A2 .leftside .title').click(function() {
+    if (ericSection) {
+      if (currentBio == 0) {
+        currentBio++;
+        a2Maker.newPanel("e r i c", "As an Ankle Bully, Eric hands out subscriptions for Ankle Support. Cause you need ya ankle braces, Run from the Ankle Bully, Cause I'm out here ankle breakin, You know I'm the Ankle Bully. The number, its 1-800-Nobody-Is-Stopping-That-Boy. Eric has a strict diet: I'm cooking them ankles for breakfast Look how I'm making 'em scramble. Anyways, fear the Ankle Bully.", ".A2", ".leftside");
+      } else if (currentBio == 1) {
+        currentBio++;
+        a2Maker.newPanel("e r i c", "Jumpman, Jumpman, Jumpman, Jumpman, Jumpman, Jumpman. woo! Eric, is also the Jumpman. I just found my tempo like I'm DJ mustard woo! I hit the Ginobili with my left hand up like woo! Bentley Spurs and Phantoms Jordan Fadeaway! Jumpman, Jumpman, live on TNT I'm flexing (ooh!) Jumpman, Jumpman they gave me my own collection (ooh!) I'm the Jumpman!", ".A2", ".leftside");
+      } else if (currentBio == 2) {
+        currentBio++;
+        a2Maker.newPanel("e r i c", "Eric, a.k.a. h0dL - 3, is an og hodler. His newtab page displays Bitcoins current price, and he understands the concept of BTFD. (Buy The F***ing Dip).  I ain’t got time for the haters man (no) We about to grow to a million (grow) HODL GANG, HODL GANG, HODL GANG (ohhhh) Tell me, are you down with the crypto? HODL", ".A2", ".leftside");
+      } else if (currentBio == 3) {
+        currentBio = 0;
+        a2Maker.newPanel("e r i c", "As a Team Lawyer, Eric, aka h0dL - 3 - Jumpman - Ankle Bully, who's in 8th grade, understands the rulebook front to back, in addition to programming the encoder-based autonomous program on the Crater Side. He enjoys programming, playing basketball, and Bitcoin.", ".A2", ".leftside");
+      }
+    }
+  });
   $('.A3 .leftside .images .imgbottomright').click(function() {
     a3Maker.newPanel("K E V I N", "As Maintenance Captain for our team, Kevin is a builder during practice but also a emergency builder during competition. Kevin contributes a good majority of the robot, mainly the hanging mechanism and the scoring mechanism. Kevin is also the driver coach, guiding them during matches. He helps with Programming Documentation, making sure everything gets done on time. When Kevin’s not doing robotics, he watches anime, plays games with friends, and practices badminton. ", ".A3", ".rightside");
   });
@@ -522,3 +547,62 @@ class dropdownMan {
     });
   }
 }
+
+let frogRaid = false;
+var frog = {70: false, 82: false, 71: false};
+$(document).keydown(function(e) {
+  if (frogRaid) {
+    if (e.keyCode in frog) {
+      frog[e.keyCode] = true;
+      if (frog[70] && frog[82] && frog[71]) {
+        $(".A2 .imgbottomright").attr("src","../css/images/daniel.png");
+        $(".A2 .imgtopleft").attr("src","../css/images/josh.png");
+        $(".A2 .imgbottomleft").attr("src","../css/images/eric.png");
+        $(".A3 .imgbottomright").attr("src","../css/images/kevin.png");
+        $(".A3 .imgtopleft").attr("src","../css/images/glory.jpg");
+        $(".A3 .imgbottomleft").attr("src","../css/images/kawin.png");
+        $(".A3 .imgtopmiddle").attr("src","../css/images/gordo.png");
+        $(".A3 .imgtopright").attr("src","../css/images/ian.png");
+        $(".A4 .imgbottomright").attr("src","../css/images/evan.jpg");
+        $(".A4 .imgtopleft").attr("src","../css/images/jason.png");
+        $(".A4 .imgbottomleft").attr("src","../css/images/sarah.png");
+        $(".A4 .imgextra").attr("src","../css/images/chandrark.jpg");
+        $(".A4 .imgtopright").attr("src","../css/images/conor.png");
+        $(".A4 .imgtopmiddle").attr("src","../css/images/nathan.png");
+        frog[70] = false;
+        frog[82] = false;
+        frog[71] = false;
+        frogRaid = false;
+      }
+    }
+  } else {
+    if (e.keyCode in frog) {
+      frog[e.keyCode] = true;
+      if (frog[70] && frog[82] && frog[71]) {
+        $(".A2 .imgbottomright").attr("src","../css/images/Frog1.jpg");
+        $(".A2 .imgtopleft").attr("src","../css/images/Frog2.jpg");
+        $(".A2 .imgbottomleft").attr("src","../css/images/Frog3.jpg");
+        $(".A3 .imgbottomright").attr("src","../css/images/Frog4.jpg");
+        $(".A3 .imgtopleft").attr("src","../css/images/Frog5.jpg");
+        $(".A3 .imgbottomleft").attr("src","../css/images/Frog6.jpg");
+        $(".A3 .imgtopmiddle").attr("src","../css/images/Frog7.jpg");
+        $(".A3 .imgtopright").attr("src","../css/images/Frog8.jpg");
+        $(".A4 .imgbottomright").attr("src","../css/images/Frog9.jpg");
+        $(".A4 .imgtopleft").attr("src","../css/images/Frog10.jpg");
+        $(".A4 .imgbottomleft").attr("src","../css/images/Frog11.jpg");
+        $(".A4 .imgextra").attr("src","../css/images/Frog12.jpg");
+        $(".A4 .imgtopright").attr("src","../css/images/Frog13.jpg");
+        $(".A4 .imgtopmiddle").attr("src","../css/images/Frog14.jpg");
+        frog[70] = false;
+        frog[82] = false;
+        frog[71] = false;
+        frogRaid = true;
+      }
+    }
+  }
+});
+$(document).keyup(function(e) {
+    if (e.keyCode in frog) {
+        frog[e.keyCode] = false;
+    }
+});

@@ -46,13 +46,8 @@ body.user-is-tabbing *:focus {
 .A1 {
   display: flex;
   justify-content: right;
-  @include layer(white, white, 9);
-  .leftside {
-    background-image: linear-gradient(to left, #085aab, #1483ab);
-  }
+  @include layer(#004486, #004486, 9);
   .rightside {
-    background-image: linear-gradient(to right, #085aab, #1483ab);
-
     .line {
       animation-delay: 1s!important;
     }
@@ -115,7 +110,7 @@ body.user-is-tabbing *:focus {
     margin: 5vh 5vw 0 5vw;
     color: white;
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'Titillium Web';
   }
 }
@@ -1705,6 +1700,13 @@ body.user-is-tabbing *:focus {
     .contactForm {
       input, textarea {
         border-radius: 3px!important;
+      }
+    }
+  }
+  .E {
+    .big3 {
+      .third {
+        margin: 0 0 2vh 0!important;
       }
     }
   }
