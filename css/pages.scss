@@ -492,13 +492,14 @@ body.user-is-tabbing *:focus {
 
   .hover {
     position: absolute;
-    top: 50vh;
+    top: 52vh;
     left: 30vw;
     width: 40vw;
     height: 4vh;
     text-align: center;
     color: white;
     font-family: 'Abel';
+    font-size: 28px;
   }
   .title {
     @include title(white);
@@ -628,13 +629,14 @@ body.user-is-tabbing *:focus {
 
   .hover {
     position: absolute;
-    top: 50vh;
+    top: 52vh;
     left: 30vw;
     width: 40vw;
     height: 4vh;
     text-align: center;
     color: white;
     font-family: 'Abel';
+    font-size: 28px;
   }
   .title {
     @include title(white);
@@ -810,7 +812,7 @@ body.user-is-tabbing *:focus {
     }
   }
   .middle {
-    background: #959c9d;
+    background: #6a6a6a;
 
     .line {
       animation-delay: 2s;
@@ -824,11 +826,11 @@ body.user-is-tabbing *:focus {
   }
   .left {
     padding-top: 8vh;
-    background: #42bff4;
+    background: #1e7fff;
 
     .dropdown {
       margin: 5vh 0 0 0;
-      color: #38abdb;
+      color: #0055c6;
       font-family: 'Titillium Web';
       font-size: 17px;
 
@@ -1429,6 +1431,12 @@ body.user-is-tabbing *:focus {
       100% { transform: translate3d(125px, 0, 0)!important; width: 0px!important; }
     }
   }
+  .B1, .B2 {
+    .hover {
+      top: 48.5vh;
+      font-size: 20px;
+    }
+  }
   .C {
     .awards {
       .award {
@@ -1566,7 +1574,7 @@ body.user-is-tabbing *:focus {
     }
   }
 }
-/* Small devices (portrait phones, 420-576) */
+/* Small devices (portrait phones, < 420) */
 @media (max-width: 420px) {
   .title {
     font-size: 25px!important;
