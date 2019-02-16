@@ -176,7 +176,7 @@ $(window).on("load", function() {
   });
 
   //B2 Codesnippet carousel
-  let codepictures = ['codesnippet.png', 'codesnippet1.png', 'codesnippet2.png', 'codesnippet3.png'];
+  let codepictures = ['codesnippet.PNG', 'codesnippet1.PNG', 'codesnippet2.PNG', 'codesnippet3.PNG'];
   let selected = 0;
 
   function codeSnippetRunCarousel() { selected %= 4;
