@@ -155,9 +155,11 @@ $(window).on("load", function() {
     secEditor.hideAllSecExceptAndEnlarge('.botleft', '.B2');
   });
   let botRightNotClicked = true;
+  let running = false;
   $('.B2 .sections .botright button').click(function() {
     secEditor.hideAllSecExceptAndEnlarge('.botright', '.B2');
     if (botRightNotClicked) {
+        running = true;
         codeSnippetRunCarousel();
         setInterval(function() {codeSnippetRunCarousel()}, 5400);
         botRightNotClicked = false;
@@ -170,27 +172,53 @@ $(window).on("load", function() {
     secEditor.hideAllSecExceptAndEnlarge('.botmid', '.B2');
   });
   $('.B2 .sections .closeSec').click(function() {
+    running = false;
     $('.B2 .sections .closeSec').fadeOut(250);
     secEditor.showAllSec('.B2');
     $('.codesnippet').hide();
+    botRightNotClicked = true;
+    setTimeout(function() {
+      $('.codesnippet').hide();
+    }, 500);
+    setTimeout(function() {
+      $('.codesnippet').hide();
+    },  1000);
+    setTimeout(function() {
+      $('.codesnippet').hide();
+    },  4500);
+    setTimeout(function() {
+      $('.codesnippet').hide();
+    },  5200);
+    setTimeout(function() {
+      $('.codesnippet').hide();
+    },  5800);
   });
 
   //B2 Codesnippet carousel
   let codepictures = ['codesnippet.PNG', 'codesnippet1.PNG', 'codesnippet2.PNG', 'codesnippet3.PNG'];
   let selected = 0;
 
-  function codeSnippetRunCarousel() { selected %= 4;
-  $('.codesnippet').attr('src',`css/images/${codepictures[selected]}`);
-  setTimeout(function() { $('.codesnippet').addClass('fadeIn');
-  $('.codesnippet').show(); }, 400); setTimeout(function() {
-  $('.codesnippet').removeClass('fadeIn');
-  $('.codesnippet').removeClass('fadeInRight');
-  $('.codesnippet').addClass('fadeOutLeft'); setTimeout(function(){
-  $('.codesnippet').attr('src',`css/images/${codepictures[selected]}`);
-  $('.codesnippet').removeClass('fadeIn');
-  $('.codesnippet').removeClass('fadeOutLeft');
-  $('.codesnippet').addClass('fadeInRight'); $('.codesnippet').show();
-  selected++; }, 1000); }, 5400); };
+  function codeSnippetRunCarousel() {
+    if (running) {
+      selected %= 4;
+      $('.codesnippet').attr('src',`css/images/${codepictures[selected]}`);
+      setTimeout(function() {
+        $('.codesnippet').addClass('fadeIn');
+        $('.codesnippet').show(); }, 400);
+      setTimeout(function() {
+        $('.codesnippet').removeClass('fadeIn');
+        $('.codesnippet').removeClass('fadeInRight');
+        $('.codesnippet').addClass('fadeOutLeft');
+        setTimeout(function() {
+          $('.codesnippet').attr('src',`css/images/${codepictures[selected]}`);
+          $('.codesnippet').removeClass('fadeIn');
+          $('.codesnippet').removeClass('fadeOutLeft');
+          $('.codesnippet').addClass('fadeInRight'); $('.codesnippet').show();
+          selected++;
+        }, 1000);
+      }, 5400);
+    }
+  };
 
   //B3 Dropdown stuff
   $('.B3 .left .dropdown .droplabel').click(function() {
