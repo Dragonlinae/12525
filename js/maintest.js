@@ -2,27 +2,170 @@ $('.back').hide();
 $('.forward').hide();
 $('.up').hide();
 // During the page load, we use this filler
-var loading_screen = pleaseWait({
-  logo: "css/images/wolf-logo-min.png",
-  backgroundColor: 'lightgrey',
-  loadingHtml: "<div class='spinner'><div class='double-bounce1'></div><div class='double-bounce2'></div></div>"
-});
 var currslide = 0;
 var navOpen = false;
 
 $(window).on("load", function() {
 
-  // removes loading screen
-  loading_screen.finish();
-
   $('.menu-open').show();
-  $(window).click(() => {
-    console.log($('.viz').attr('class'));
+  //homejs stuff
+  var notZooming = true;
+  var loadTime = window.performance.timing.domInteractive - window.performance.timing.navigationStart;
+  console.log(loadTime);
+
+  ScrollReveal().reveal('.motto', {
+    delay: loadTime+500,
+    duration: 800,
+    interval: 150,
+    easing: 'ease-out',
+    distance: '30%',
+    origin: 'left',
   });
+
+  ScrollReveal().reveal('.front', {
+    delay: 400
+  });
+  ScrollReveal().reveal('.notimed', {
+    delay: 1000
+  });
+  ScrollReveal().reveal('.iconArea', {
+    delay: loadTime
+  });
+
+  //for landing
+  panelScrollDownManual('.front', 'slideInDown', 'slideOutUp');
+  panelScrollUpManual('.viz', '.front', 'slideOutUp', 'slideInDown');
+
+  //for OurTeam
+  panelScrollDownManual('.A', 'slideInDown', 'slideOutUp');
+  panelScrollUpManual('.A1', '.A', 'slideOutUp', 'slideInDown');
+  panelScrollDownManual('.A1', 'slideInDown', 'slideOutUp');
+  panelScrollUpManual('.A2', '.A1', 'slideOutUp', 'slideInDown');
+  panelScrollDownManual('.A2', 'slideInDown', 'slideOutUp');
+  panelScrollUpManual('.A3', '.A2', 'slideOutUp', 'slideInDown');
+  panelScrollDownManual('.A3', 'slideInDown', 'slideOutUp');
+  panelScrollUpManual('.A4', '.A3', 'slideOutUp', 'slideInDown');
+  panelScrollDownManual('.A4', 'slideInDown', 'slideOutUp');
+  panelScrollUpManual('.A5', '.A4', 'slideOutUp', 'slideInDown');
+
+  //for OurRobot
+  panelScrollDownManual('.B', 'slideInDown', 'slideOutUp');
+  panelScrollUpManual('.B1', '.B', 'slideOutUp', 'slideInDown');
+  panelScrollDownManual('.B1', 'slideInDown', 'slideOutUp');
+  panelScrollUpManual('.B2', '.B1', 'slideOutUp', 'slideInDown');
+  panelScrollDownManual('.B2', 'slideInDown', 'slideOutUp');
+  panelScrollUpManual('.B3', '.B2', 'slideOutUp', 'slideInDown');
+
+  //awards scroll up is similar to the up arrow click, so on the other file
+
+  //mobile support
+  var ts;
+  $('.front').bind('touchstart', function(e) {
+      ts = e.originalEvent.touches[0].clientY;
+  });
+
+  $('.front').bind('touchmove', function(e) {
+      var te = e.originalEvent.changedTouches[0].clientY;
+      if (ts > te) {
+          console.log('down');
+          $(this).removeClass('animated slideInDown');
+          $(this).addClass('animated slideOutUp');
+      }
+  });
+
+  var tsv;
+  $('.viz').bind('touchstart', function(e) {
+      tsv = e.originalEvent.touches[0].clientY;
+  });
+
+  $('.viz').bind('touchmove', function(e) {
+      var tev = e.originalEvent.changedTouches[0].clientY;
+      if (tsv > tev) {
+      } else {
+          console.log('up');
+          $('.front').removeClass('animated slideOutUp');
+          $('.front').addClass('animated slideInDown');
+      }
+  });
+
+  //zoom support
+  $(document).keydown(function(e) {
+    if (e.keyCode == 17) {
+      notZooming = false;
+      setTimeout(function () {
+        notZooming = true;
+      }, 4000);
+    }
+  }).keyup(function(e) {
+    if (e.keyCode == 17) {
+      notZooming = true;
+    }
+  });
+
+  function panelScrollDownManual(panel, animationForward, animationBack) {
+    $(panel).on('DOMMouseScroll mousewheel', function (e) {
+      if ((e.originalEvent.detail > 0 || e.originalEvent.wheelDelta < -119) && notZooming) {
+        console.log(e.originalEvent.wheelDelta);
+        $(this).removeClass(`animated ${animationForward}`);
+        $(this).addClass(`animated ${animationBack}`);
+        if (panel == '.A1' || panel == '.A3' || panel == '.A4' || panel == '.B1') {
+          setTimeout(function () {
+            $(panel).css({
+              'width': 0,
+            });
+          }, 1200);
+        }
+      }
+    });
+    var ts;
+    $(panel).bind('touchstart', function(e) {
+        ts = e.originalEvent.touches[0].clientY;
+    });
+    $(panel).bind('touchmove', function(e) {
+        var te = e.originalEvent.changedTouches[0].clientY;
+        if (ts > te + 100) {
+          console.log("scrolling down");
+          $(this).removeClass(`animated ${animationForward}`);
+          $(this).addClass(`animated ${animationBack}`);
+          if (panel == '.A1' || panel == '.A3' || panel == '.A4' || panel == '.B1') {
+            setTimeout(function () {
+              $(panel).css({
+                'width': 'auto',
+              });
+            }, 1200);
+          }
+        }
+    });
+  }
+  function panelScrollUpManual(panel, effectedPanel, animationForward, animationBack) {
+    $(panel).on('DOMMouseScroll mousewheel', function (e) {
+      if ((e.originalEvent.detail < 0 || e.originalEvent.wheelDelta > 119) && notZooming) {
+        $(effectedPanel).removeClass(`animated ${animationForward}`);
+        $(effectedPanel).addClass(`animated ${animationBack}`);
+        $(effectedPanel).css({
+          width: '100%',
+        });
+      }
+    });
+
+    var tsv;
+    $(panel).bind('touchstart', function(e) {
+        tsv = e.originalEvent.touches[0].clientY;
+    });
+
+    $(panel).bind('touchmove', function(e) {
+        var tev = e.originalEvent.changedTouches[0].clientY;
+        if (tsv < tev) {
+          console.log("scrolling up");
+          $(effectedPanel).removeClass(`animated ${animationForward}`);
+          $(effectedPanel).addClass(`animated ${animationBack}`);
+          $(effectedPanel).css({
+            width: '100%',
+          });
+        }
+    });
+  }
 });
-
-
-// f(x) for simplfication
 
 //defaults/justincase
 function clear() {
@@ -204,6 +347,9 @@ function showAwards() {
   $('.E').hide();
   $('.viz').removeClass('animated slideInDown');
   $('.viz').addClass('animated slideOutUp');
+  setTimeout(() => {
+    $('.C .stories .story .awoverlay').show();
+  }, 800);
   $('.up').show();
   currslide = 3;
 }
@@ -322,17 +468,17 @@ $(document).keyup(function(e) {
   }
 });
 
-//our team event handlers
+//our services event handlers
 $('.title-1').click(() => {
   showOurTeam();
   ourTeamDefault();
   panelScrollUpAuto('.A', 'slideOutUp', 'slideInDown');
-  panelScrollUpAuto('.A1', 'slideOutRight', 'slideInRight');
-  panelScrollUpAuto('.A2', 'slideOutLeft', 'slideInLeft');
-  panelScrollUpAuto('.A3', 'slideOutRight', 'slideInRight');
-  panelScrollUpAuto('.A4', 'slideOutLeft', 'slideInLeft');
+  panelScrollUpAuto('.A1', 'slideOutUp', 'slideInDown');
+  panelScrollUpAuto('.A2', 'slideOutUp', 'slideInDown');
+  panelScrollUpAuto('.A3', 'slideOutUp', 'slideInDown');
+  panelScrollUpAuto('.A4', 'slideOutUp', 'slideInDown');
 });
-$('.f1').click(() => {
+$('.subdiv1').click(() => {
   showOurTeam();
 });
 $('.back').click(() => {
@@ -341,52 +487,52 @@ $('.back').click(() => {
 $('.ncleft .sub-1').click(() => {
   ourTeamDefault();
   panelScrollDownAuto('.A', 'slideInDown', 'slideOutUp');
-  panelScrollUpAuto('.A1', 'slideOutRight', 'slideInRight');
-  panelScrollUpAuto('.A2', 'slideOutLeft', 'slideInLeft');
-  panelScrollUpAuto('.A3', 'slideOutRight', 'slideInRight');
-  panelScrollUpAuto('.A4', 'slideOutLeft', 'slideInLeft');
+  panelScrollUpAuto('.A1', 'slideOutUp', 'slideInDown');
+  panelScrollUpAuto('.A2', 'slideOutUp', 'slideInDown');
+  panelScrollUpAuto('.A3', 'slideOutUp', 'slideInDown');
+  panelScrollUpAuto('.A4', 'slideOutUp', 'slideInDown');
 });
 $('.ncleft .sub-2').click(() => {
   ourTeamDefault();
   panelScrollDownAuto('.A', 'slideInDown', 'slideOutUp');
-  panelScrollDownAuto('.A1', 'slideInRight', 'slideOutRight');
-  panelScrollUpAuto('.A2', 'slideOutLeft', 'slideInLeft');
-  panelScrollUpAuto('.A3', 'slideOutRight', 'slideInRight');
-  panelScrollUpAuto('.A4', 'slideOutLeft', 'slideInLeft');
+  panelScrollDownAuto('.A1', 'slideInDown', 'slideOutUp');
+  panelScrollUpAuto('.A2', 'slideOutUp', 'slideInDown');
+  panelScrollUpAuto('.A3', 'slideOutUp', 'slideInDown');
+  panelScrollUpAuto('.A4', 'slideOutUp', 'slideInDown');
 });
 $('.ncleft .sub-3').click(() => {
   ourTeamDefault();
   panelScrollDownAuto('.A', 'slideInDown', 'slideOutUp');
-  panelScrollDownAuto('.A1', 'slideInRight', 'slideOutRight');
-  panelScrollDownAuto('.A2', 'slideInLeft', 'slideOutLeft');
-  panelScrollUpAuto('.A3', 'slideOutRight', 'slideInRight');
-  panelScrollUpAuto('.A4', 'slideOutLeft', 'slideInLeft');
+  panelScrollDownAuto('.A1', 'slideInDown', 'slideOutUp');
+  panelScrollDownAuto('.A2', 'slideInDown', 'slideOutUp');
+  panelScrollUpAuto('.A3', 'slideOutUp', 'slideInDown');
+  panelScrollUpAuto('.A4', 'slideOutUp', 'slideInDown');
 });
 $('.ncleft .sub-4').click(() => {
   ourTeamDefault();
   panelScrollDownAuto('.A', 'slideInDown', 'slideOutUp');
-  panelScrollDownAuto('.A1', 'slideInRight', 'slideOutRight');
-  panelScrollDownAuto('.A2', 'slideInLeft', 'slideOutLeft');
-  panelScrollDownAuto('.A3', 'slideInRight', 'slideOutRight');
-  panelScrollUpAuto('.A4', 'slideOutLeft', 'slideInLeft');
+  panelScrollDownAuto('.A1', 'slideInDown', 'slideOutUp');
+  panelScrollDownAuto('.A2', 'slideInDown', 'slideOutUp');
+  panelScrollDownAuto('.A3', 'slideInDown', 'slideOutUp');
+  panelScrollUpAuto('.A4', 'slideOutUp', 'slideInDown');
 });
 $('.ncleft .sub-5').click(() => {
   ourTeamDefault();
   panelScrollDownAuto('.A', 'slideInDown', 'slideOutUp');
-  panelScrollDownAuto('.A1', 'slideInRight', 'slideOutRight');
-  panelScrollDownAuto('.A2', 'slideInLeft', 'slideOutLeft');
-  panelScrollDownAuto('.A3', 'slideInRight', 'slideOutRight');
-  panelScrollDownAuto('.A4', 'slideInLeft', 'slideOutLeft');
+  panelScrollDownAuto('.A1', 'slideInDown', 'slideOutUp');
+  panelScrollDownAuto('.A2', 'slideInDown', 'slideOutUp');
+  panelScrollDownAuto('.A3', 'slideInDown', 'slideOutUp');
+  panelScrollDownAuto('.A4', 'slideInDown', 'slideOutUp');
 });
 
-//our robot event handlers
+//our company event handlers
 $('.title-2').click(() => {
   ourRobotDefault();
   panelScrollUpAuto('.B', 'slideOutUp', 'slideInDown');
-  panelScrollUpAuto('.B1', 'zoomOutRight', 'zoomInRight');
-  panelScrollUpAuto('.B2', 'zoomOutLeft', 'zoomInLeft');
+  panelScrollUpAuto('.B1', 'slideOutUp', 'slideInDown');
+  panelScrollUpAuto('.B2', 'slideOutUp', 'slideInDown');
 });
-$('.s1').click(() => {
+$('.subdiv2').click(() => {
   showOurRobot();
 });
 $('.forward').click(() => {
@@ -395,20 +541,20 @@ $('.forward').click(() => {
 $('.ncright .sub-1').click(() => {
   ourRobotDefault();
   panelScrollDownAuto('.B', 'slideInDown', 'slideOutUp');
-  panelScrollUpAuto('.B1', 'zoomOutRight', 'zoomInRight');
-  panelScrollUpAuto('.B2', 'zoomOutLeft', 'zoomInLeft');
+  panelScrollUpAuto('.B1', 'slideOutUp', 'slideInDown');
+  panelScrollUpAuto('.B2', 'slideOutUp', 'slideInDown');
 });
 $('.ncright .sub-2').click(() => {
   ourRobotDefault();
   panelScrollDownAuto('.B', 'slideInDown', 'slideOutUp');
-  panelScrollDownAuto('.B1', 'zoomInRight', 'zoomOutRight');
-  panelScrollUpAuto('.B2', 'zoomOutLeft', 'zoomInLeft');
+  panelScrollDownAuto('.B1', 'slideInDown', 'slideOutUp');
+  panelScrollUpAuto('.B2', 'slideOutUp', 'slideInDown');
 });
 $('.ncright .sub-3').click(() => {
   ourRobotDefault();
   panelScrollDownAuto('.B', 'slideInDown', 'slideOutUp');
-  panelScrollDownAuto('.B1', 'zoomInRight', 'zoomOutRight');
-  panelScrollDownAuto('.B2', 'zoomInLeft', 'zoomOutLeft');
+  panelScrollDownAuto('.B1', 'slideInDown', 'slideOutUp');
+  panelScrollDownAuto('.B2', 'slideInDown', 'slideOutUp');
 });
 
 //our awards event handlers

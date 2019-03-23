@@ -1,23 +1,31 @@
 import { hideSponsors } from './maintest.js';
 
 $(window).on("load", function() {
-  document.addEventListener('touchmove', function(e) {
-        e.preventDefault();
-  }, false);
-
+  try {
+    let el = document.querySelector('[alt="www.000webhost.com"]').parentNode.parentNode;
+    el.parentNode.removeChild(el);
+  } catch {
+    console.log("no trademark!")
+  }
+  window.addEventListener( 'touchmove', function(e) {
+    e.preventDefault();
+  }, {passive: false});
   $('.closeSec').hide();
   $('.infotext').hide();
   $('.boxtitle').hide();
   $('.dropsel').hide();
   $('.sent').hide();
-  $('.moreawards').hide();
+  $('.morestories').hide();
   $('.awoverlay').hide();
   $('.spoverlay').hide();
-  $('.moresponsors').hide();
+  $('.faq').hide();
   $('.caption').hide();
-  $('.compvideo').hide();
   $('.codesnippet').hide();
-  //declaring instances
+  $('.A2, .A3, .A4, .A5, .B1, .B2, .B3').hide();
+  $('.moreawards').hide();
+  $('.moresponsors').hide();
+  $('.compvideo').hide();
+
   const a2Maker = new panelAndDefaults();
   const a3Maker = new panelAndDefaults();
   const a4Maker = new panelAndDefaults();
@@ -125,38 +133,97 @@ $(window).on("load", function() {
     a5Maker.newPanel("f i r s t \xa0\xa0 v o l u n t e e r i n g", "From helping other teams to holding workshops, we also encourage other teams to do their best. Our team mentored multiple FLL teams such as HEXA Challengers who are advancing to the World Festival this year. At the beginning of the season, we hosted 2 programming workshops for 12 new coaches at Suzanne Middle school. Every summer, we host a robotics workshop at the walnut library where we teach kids how to build and program robots. We also held 2 workshops for new FTC teams and volunteered at 3 FLL and 2 FTC tournaments.", ".A5", ".topside");
   });
 
+
+  //b1andb2
+  let notSelected = true;
   $('.B1 .sections .topleft button').click(function() {
+    notSelected = false;
     secEditor.hideAllSecExceptAndEnlarge('.topleft', '.B1');
-    setTimeout(function(){$('.compvideo').fadeIn();}, 300);
+  });
+  $('.B1 .sections .topleft').mouseenter(() => {
+    if (notSelected) {
+      $('.B1 .sections .topleft').addClass('halfgone');
+    }
+  }).mouseleave(() => {
+    $('.B1 .sections .topleft').removeClass('halfgone');
   });
   $('.B1 .sections .topright button').click(function() {
+    notSelected = false;
     secEditor.hideAllSecExceptAndEnlarge('.topright', '.B1');
   });
+  $('.B1 .sections .topright').mouseenter(() => {
+    if (notSelected) {
+      $('.B1 .sections .topright').addClass('halfgone');
+    }
+  }).mouseleave(() => {
+    $('.B1 .sections .topright').removeClass('halfgone');
+  });
   $('.B1 .sections .botleft button').click(function() {
+    notSelected = false;
     secEditor.hideAllSecExceptAndEnlarge('.botleft', '.B1');
   });
+  $('.B1 .sections .botleft').mouseenter(() => {
+    if (notSelected) {
+      $('.B1 .sections .botleft').addClass('halfgone');
+    }
+  }).mouseleave(() => {
+    $('.B1 .sections .botleft').removeClass('halfgone');
+  });
   $('.B1 .sections .botright button').click(function() {
+    notSelected = false;
     secEditor.hideAllSecExceptAndEnlarge('.botright', '.B1');
   });
+  $('.B1 .sections .botright').mouseenter(() => {
+    if (notSelected) {
+      $('.B1 .sections .botright').addClass('halfgone');
+    }
+  }).mouseleave(() => {
+    $('.B1 .sections .botright').removeClass('halfgone');
+  });
   $('.B1 .sections .closeSec').click(function() {
+    notSelected = true;
     $('.B1 .sections .closeSec').fadeOut(250);
     secEditor.showAllSec('.B1');
-    $('.compvideo')[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
-    $('.compvideo').hide();
   });
 
   $('.B2 .sections .topleft button').click(function() {
+    notSelected = false;
     secEditor.hideAllSecExceptAndEnlarge('.topleft', '.B2');
   });
+  $('.B2 .sections .topleft').mouseenter(() => {
+    if (notSelected) {
+      $('.B2 .sections .topleft').addClass('halfgone');
+    }
+  }).mouseleave(() => {
+    $('.B2 .sections .topleft').removeClass('halfgone');
+  });
   $('.B2 .sections .topright button').click(function() {
+    notSelected = false;
     secEditor.hideAllSecExceptAndEnlarge('.topright', '.B2');
   });
+  $('.B2 .sections .topright').mouseenter(() => {
+    if (notSelected) {
+      $('.B2 .sections .topright').addClass('halfgone');
+    }
+  }).mouseleave(() => {
+    $('.B2 .sections .topright').removeClass('halfgone');
+  });
   $('.B2 .sections .botleft button').click(function() {
+    notSelected = false;
+    $('.client').show();
     secEditor.hideAllSecExceptAndEnlarge('.botleft', '.B2');
+  });
+  $('.B2 .sections .botleft').mouseenter(() => {
+    if (notSelected) {
+      $('.B2 .sections .botleft').addClass('halfgone');
+    }
+  }).mouseleave(() => {
+    $('.B2 .sections .botleft').removeClass('halfgone');
   });
   let botRightNotClicked = true;
   let running = false;
   $('.B2 .sections .botright button').click(function() {
+    notSelected = false;
     secEditor.hideAllSecExceptAndEnlarge('.botright', '.B2');
     if (botRightNotClicked) {
         running = true;
@@ -165,14 +232,16 @@ $(window).on("load", function() {
         botRightNotClicked = false;
     }
   });
-  $('.B2 .sections .topmid button').click(function() {
-    secEditor.hideAllSecExceptAndEnlarge('.topmid', '.B2');
-  });
-  $('.B2 .sections .botmid button').click(function() {
-    secEditor.hideAllSecExceptAndEnlarge('.botmid', '.B2');
+  $('.B2 .sections .botright').mouseenter(() => {
+    if (notSelected) {
+      $('.B2 .sections .botright').addClass('halfgone');
+    }
+  }).mouseleave(() => {
+    $('.B2 .sections .botright').removeClass('halfgone');
   });
   $('.B2 .sections .closeSec').click(function() {
     running = false;
+    $('.client').hide();
     $('.B2 .sections .closeSec').fadeOut(250);
     secEditor.showAllSec('.B2');
     $('.codesnippet').hide();
@@ -268,10 +337,10 @@ $(window).on("load", function() {
     let classed = this.className;
     console.log(classed);
 
-    if (classed.search('B') > 0 || classed.search('D d') > 0 || classed.search('E e') > 0  || classed.search('A a') > 0 || classed.search('A5') > 0 || classed.search('C c') > 0 || classed.search('A1') > 0) {
+    if (classed.search('B') > 0 || classed.search('D d') > 0 || classed.search('E e') > 0  || classed.search('A a') > 0 || classed.search('A5') > 0 || classed.search('C c') > 0 || classed.search('notimed viz') > 0) {
       $('.nav .menu-open').addClass('invertedColors');
       $('.nav .back').addClass('invertedColors');
-    } else if (classed.search('A3') > 0) {
+    } else if (classed.search('A3') > 0 || classed.search('A1') > 0) {
       $('.nav .menu-open').addClass('invertedColors');
       $('.nav .back').removeClass('invertedColors');
     } else if (classed.search('A2') > 0 || classed.search('A4') > 0) {
@@ -316,48 +385,238 @@ $(window).on("load", function() {
 
   window.addEventListener('keydown', handleFirstTab);
 
-  // awards page
+  // stories page
   $('.seemore').click(function() {
-    $('.moreawards').removeClass('fadeOutDown');
+    $('.morestories').removeClass('fadeOutDown');
     $('.seemore').removeClass('fadeIn');
-    $('.moreawards').addClass('fadeInUpBig');
+    $('.morestories').addClass('fadeInUpBig');
     $('.seemore').addClass('fadeOut');
-    $('.moreawards').show();
+    $('.morestories').show();
     $('.up').hide();
+    setTimeout(() => {
+      $('.C .morestories .morestorieslist .story .awoverlay').show();
+    }, 800);
   });
 
   $('.doneseeing').click(function() {
-    $('.moreawards').removeClass('fadeInUpBig');
+    $('.morestories').removeClass('fadeInUpBig');
     $('.seemore').removeClass('fadeOut');
-    $('.moreawards').addClass('fadeOutDown');
+    $('.morestories').addClass('fadeOutDown');
     $('.seemore').addClass('fadeIn');
     $('.seemore').show();
     $('.up').show();
   });
 
-  $('.moreawardslist').children('.exaward').each(function () {
-    $(this).hover(function(event) {
-      $(this).children('.awoverlay').removeClass('fadeOutDownBigSlow');
-      $(this).children('.awoverlay').addClass('fadeInUp');
-      $(this).children('.awoverlay').show();
-    }, function(event) {
-      $(this).children('.awoverlay').removeClass('fadeInUp');
-      $(this).children('.awoverlay').addClass('fadeOutDownBigSlow');
-    });
-  });
-
-  $('.award').each(function() {
-    $(this).hover(function(event) {
-      $(this).children('.caption').removeClass('fadeOutDown');
-      $(this).children('.caption').addClass('fadeInUp');
-      $(this).children('.caption').show();
-    }, function(event) {
-      $(this).children('.caption').removeClass('fadeInUp');
-      $(this).children('.caption').addClass('fadeOutDown');
-    });
-  });
-
   // sponsors page
+  let moreSponOpen = false;
+
+  $('.seemores').click(function() {
+    $('.faq').removeClass('fadeOutDown');
+    $('.seemores').removeClass('fadeIn');
+    $('.faq').addClass('fadeInUpBig');
+    $('.seemores').addClass('fadeOut');
+    $('.faq').show();
+    moreSponOpen = true;
+  });
+
+  $('.closeaptfaq').click(() => {
+    if (moreSponOpen) {
+      $('.faq').removeClass('fadeInUpBig');
+      $('.seemores').removeClass('fadeOut');
+      $('.faq').addClass('fadeOutDown');
+      $('.seemores').addClass('fadeIn');
+      $('.seemores').show();
+      moreSponOpen = false;
+    } else {
+      $('.viz').show();
+      hideSponsors();
+    }
+  });
+
+  $('.nextqs').click(() => {
+    if ($('.nextqs').attr('src') == 'css/images/backwardw.png') {
+      $('.qanda').removeClass('fadeInRightBig');
+      $('.anotherqanda').removeClass('fadeOutLeftBig');
+      $('.qanda').addClass('fadeOutRightBig');
+      $('.anotherqanda').addClass('fadeInLeftBig');
+      $('.anotherqanda').show();
+      $('.nextqs').attr('src', 'css/images/forward.png');
+    } else {
+      $('.qanda').removeClass('fadeOutRightBig');
+      $('.anotherqanda').removeClass('fadeInLeftBig');
+      $('.qanda').addClass('fadeInRightBig');
+      $('.anotherqanda').addClass('fadeOutLeftBig');
+      $('.nextqs').attr('src', 'css/images/backwardw.png');
+    }
+  });
+});
+
+//classes for a
+class panelAndDefaults {
+  constructor() {
+    this.textString = '';
+    this.titleString = '';
+    this.textOptions = {
+      strings: [" ", this.textString],
+      typeSpeed: -100,
+      backSpeed: -100,
+      showCursor: false,
+      onComplete: (self) => {
+        this.picChose1 = false;
+      }
+    };
+    this.titleOptions = {
+      strings: [" ", this.titleString],
+      typeSpeed: -3,
+      backSpeed: -3,
+      showCursor: false,
+      onComplete: (self) => {
+        this.picChose = false;
+      }
+    };
+    this.titleTyped;
+    this.textTyped;
+    this.picChose = false;
+    this.picChose1 = false;
+  }
+
+  newPanel(titleString, textString, panel, side) {
+    if (!this.picChose && !this.picChose1) {
+      titleString = titleString.toUpperCase();
+      this.titleOptions.strings[1] = titleString;
+      this.textOptions.strings[1] = textString;
+      $('.line').hide();
+      setTimeout(() => {$('.line').show()}, 1000);
+      this.titleTyped = new Typed(`${panel} ${side} .title`, this.titleOptions);
+      this.textTyped = new Typed(`${panel} ${side} .maintext`, this.textOptions);
+      this.textTyped.start();
+      this.picChose = true;
+      this.picChose1 = true;
+    }
+  }
+}
+
+// class for b1 b2 sections
+class sectionMan {
+  constructor() {
+    this.sections = [];
+  }
+
+  checkSec(panel) {
+    if (panel == '.B1') {
+      this.sections = ['.topleft', '.topright', '.botleft', '.botright'];
+    } else if (panel == '.B2') {
+      this.sections = ['.topleft', '.topright', '.botleft', '.botright'];
+    } else {
+      console.log("Invalid panel");
+    }
+  }
+  hideAllSecExceptAndEnlarge(not, panel) {
+    this.checkSec(panel);
+    $(`${panel} .hover`).hide();
+    for (let i = 0; i < this.sections.length; i++) {
+      if (this.sections[i] == not) {
+        $(`${panel} .sections ${this.sections[i]}`).addClass('enlarged');
+        $(`${panel} .sections ${this.sections[i]}`).addClass('imggone');
+        $(`${panel} .sections button`).hide();
+        $(`${panel} .sections .infolabel`).hide();
+        $(`${panel} .sections .infotext`).show();
+        $(`${panel} .sections .boxtitle`).show();
+      } else if (this.sections[i] !== not) {
+        $(`${panel} .sections ${this.sections[i]}`).hide();
+        $(`${panel} .sections ${this.sections[i]}`).removeClass('enlarged');
+      }
+    }
+    setTimeout(function() {
+      $(`${panel} .sections .closeSec`).fadeIn(500);
+    }, 1000);
+  }
+  showAllSec(panel) {
+    this.checkSec(panel);
+    $(`${panel} .hover`).show();
+    for (let i = 0; i < this.sections.length; i++) {
+      $(`${panel} .sections ${this.sections[i]}`).removeClass('imggone');
+      $(`${panel} .sections ${this.sections[i]}`).removeClass('enlarged');
+      $(`${panel} .sections button`).show();
+      $(`${panel} .sections .infolabel`).show();
+      $(`${panel} .sections .infotext`).hide();
+      $(`${panel} .sections .boxtitle`).hide();
+      $(`${panel} .sections ${this.sections[i]}`).show();
+    }
+  }
+}
+
+// classes for b3 section
+let dropdownleftopen = false;
+let dropdownrightopen = false;
+class dropdownMan {
+  constructor(panel, outputarea) {
+    this.panel = panel;
+    this.outputarea = outputarea;
+    this.titleOptions = {
+      strings: [" ", this.titleString],
+      typeSpeed: -100,
+      backSpeed: -100,
+      showCursor: false,
+      onComplete: (self) => {
+        this.optionSelected = false;
+      }
+    };
+    this.textOptions = {
+      strings: [" ", this.textString],
+      typeSpeed: -3,
+      backSpeed: -3,
+      showCursor: false,
+      onComplete: (self) => {
+        this.optionSelected1 = false;
+      }
+    };
+    this.titleTyped;
+    this.textTyped;
+    this.optionSelected = false;
+    this.optionSelected1 = false;
+    this.clickedBefore = false;
+  }
+
+  handleChoice(selected, section, title, output) {
+    $(`${this.panel} ${section} .dropdown .dropmenu .dropsel${selected}`).click(() => {
+      let editedTitle = title.split('').join('\xa0').toUpperCase();
+      this.titleOptions.strings[1] = editedTitle;
+      this.textOptions.strings[1] = output;
+      if (!this.clickedBefore) {
+        this.clickedBefore = true;
+      } else {
+        this.titleTyped.destroy();
+        this.textTyped.destroy();
+      }
+      this.titleTyped = new Typed(this.outputarea[0], this.titleOptions);
+      this.textTyped = new Typed(this.outputarea[1], this.textOptions);
+      this.optionSelected = true;
+      this.optionSelected1 = true;
+      if (section == '.left') {
+        setTimeout(function() {
+          $('.B3 .left .dropdown .dropmenu .dropsel').removeClass('fadeInDown');
+          $('.B3 .left .dropdown .dropmenu .dropsel').addClass('fadeOutUp');
+          $('.B3 .left .dropdown .dropmenu .dropsel').fadeOut(1500);
+          $('.B3 .left .dropdown .droplabel img').removeClass('flip180');
+          $('.B3 .left .dropdown .droplabel img').addClass('unflip180');
+        }, 500);
+        dropdownleftopen = false;
+      } else if (section == '.right') {
+        setTimeout(function() {
+          $('.B3 .right .dropdown .dropmenu .dropsel').removeClass('fadeInDown');
+          $('.B3 .right .dropdown .dropmenu .dropsel').addClass('fadeOutUp');
+          $('.B3 .right .dropdown .dropmenu .dropsel').fadeOut(1500);
+          $('.B3 .right .dropdown .droplabel img').removeClass('flip180');
+          $('.B3 .right .dropdown .droplabel img').addClass('unflip180');
+          dropdownrightopen = false;
+        }, 500);
+      }
+    });
+  }
+}
+
+// sponsors page
   let moreSponOpen = false;
   let arconic = false;
 
@@ -416,165 +675,6 @@ $(window).on("load", function() {
       $(this).children('.spoverlay').addClass('fadeOutDownBigSlow');
     });
   });
-});
-
-//classes for a
-class panelAndDefaults {
-  constructor() {
-    this.textString = '';
-    this.titleString = '';
-    this.textOptions = {
-      strings: [" ", this.textString],
-      typeSpeed: 5,
-      backSpeed: 0.1,
-      showCursor: false,
-      onComplete: (self) => {
-        this.picChose1 = false;
-      }
-    };
-    this.titleOptions = {
-      strings: [" ", this.titleString],
-      typeSpeed: 30,
-      backSpeed: 15,
-      showCursor: false,
-      onComplete: (self) => {
-        this.picChose = false;
-      }
-    };
-    this.titleTyped;
-    this.textTyped;
-    this.picChose = false;
-    this.picChose1 = false;
-  }
-
-  newPanel(titleString, textString, panel, side) {
-    if (!this.picChose && !this.picChose1) {
-      titleString = titleString.toUpperCase();
-      this.titleOptions.strings[1] = titleString;
-      this.textOptions.strings[1] = textString;
-      $('.line').hide();
-      setTimeout(() => {$('.line').show()}, 1000);
-      this.titleTyped = new Typed(`${panel} ${side} .title`, this.titleOptions);
-      this.textTyped = new Typed(`${panel} ${side} .maintext`, this.textOptions);
-      this.textTyped.start();
-      this.picChose = true;
-      this.picChose1 = true;
-    }
-  }
-}
-
-// class for b1 b2 sections
-class sectionMan {
-  constructor() {
-    this.sections = [];
-  }
-
-  checkSec(panel) {
-    if (panel == '.B1') {
-      this.sections = ['.topleft', '.topright', '.botleft', '.botright'];
-    } else if (panel == '.B2') {
-      this.sections = ['.topleft', '.topright', '.botleft', '.botright', '.botmid', '.topmid'];
-    } else {
-      console.log("Invalid panel");
-    }
-  }
-  hideAllSecExceptAndEnlarge(not, panel) {
-    this.checkSec(panel);
-    $(`${panel} .hover`).hide();
-    for (let i = 0; i < this.sections.length; i++) {
-      if (this.sections[i] == not) {
-        $(`${panel} .sections ${this.sections[i]}`).addClass('enlarged');
-        $(`${panel} .sections button`).hide();
-        $(`${panel} .sections .infolabel`).hide();
-        $(`${panel} .sections .infotext`).show();
-        $(`${panel} .sections .boxtitle`).show();
-      } else if (this.sections[i] !== not) {
-        $(`${panel} .sections ${this.sections[i]}`).hide();
-        $(`${panel} .sections ${this.sections[i]}`).removeClass('enlarged');
-      }
-    }
-    setTimeout(function() {
-      $(`${panel} .sections .closeSec`).fadeIn(500);
-    }, 1000);
-  }
-  showAllSec(panel) {
-    this.checkSec(panel);
-    $(`${panel} .hover`).show();
-    for (let i = 0; i < this.sections.length; i++) {
-      $(`${panel} .sections ${this.sections[i]}`).removeClass('enlarged');
-      $(`${panel} .sections button`).show();
-      $(`${panel} .sections .infolabel`).show();
-      $(`${panel} .sections .infotext`).hide();
-      $(`${panel} .sections .boxtitle`).hide();
-      $(`${panel} .sections ${this.sections[i]}`).show();
-    }
-  }
-}
-
-// classes for b3 section
-let dropdownleftopen = false;
-let dropdownrightopen = false;
-class dropdownMan {
-  constructor(panel, outputarea) {
-    this.panel = panel;
-    this.outputarea = outputarea;
-    this.titleOptions = {
-      strings: [" ", ""],
-      typeSpeed: 30,
-      backSpeed: 15,
-      showCursor: false,
-      onComplete: (self) => {
-        this.optionSelected = false;
-      }
-    };
-    this.textOptions = {
-      strings: [" ", ""],
-      typeSpeed: 5,
-      backSpeed: 0.1,
-      showCursor: false,
-      onComplete: (self) => {
-        this.optionSelected1 = false;
-      }
-    };
-    this.titleTyped;
-    this.textTyped;
-    this.optionSelected = false;
-    this.optionSelected1 = false;
-  }
-
-  handleChoice(selected, section, title, output) {
-    $(`${this.panel} ${section} .dropdown .dropmenu .dropsel${selected}`).click(() => {
-      if (!this.optionSelected && !this.optionSelected1) {
-        let editedTitle = title.split('').join('\xa0').toUpperCase();
-        this.titleOptions.strings[1] = editedTitle;
-        this.textOptions.strings[1] = output;
-        this.titleTyped = new Typed(this.outputarea[0], this.titleOptions);
-        this.textTyped = new Typed(this.outputarea[1], this.textOptions);
-        this.optionSelected = true;
-        this.optionSelected1 = true;
-        if (section == '.left') {
-          setTimeout(function() {
-            $('.B3 .left .dropdown .dropmenu .dropsel').removeClass('fadeInDown');
-            $('.B3 .left .dropdown .dropmenu .dropsel').addClass('fadeOutUp');
-            $('.B3 .left .dropdown .dropmenu .dropsel').fadeOut(1500);
-            $('.B3 .left .dropdown .droplabel img').removeClass('flip180');
-            $('.B3 .left .dropdown .droplabel img').addClass('unflip180');
-          }, 500);
-          dropdownleftopen = false;
-        } else if (section == '.right') {
-          setTimeout(function() {
-            $('.B3 .right .dropdown .dropmenu .dropsel').removeClass('fadeInDown');
-            $('.B3 .right .dropdown .dropmenu .dropsel').addClass('fadeOutUp');
-            $('.B3 .right .dropdown .dropmenu .dropsel').fadeOut(1500);
-            $('.B3 .right .dropdown .droplabel img').removeClass('flip180');
-            $('.B3 .right .dropdown .droplabel img').addClass('unflip180');
-            dropdownrightopen = false;
-          }, 500);
-        }
-      }
-    });
-  }
-}
 
 let frogRaid = false;
 var frog = {70: false, 82: false, 71: false};

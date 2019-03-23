@@ -2,29 +2,25 @@
 <html lang="en">
 <head>
   <script src="js/please-wait.min.js"></script>
-  <!-- Latest compiled and minified CSS -->
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
-  <link href="https://fonts.googleapis.com/css?family=Abel|Titillium+Web|Source+Sans+Pro:700" rel="stylesheet">
-  <link rel="icon" href="css/images/icon2t.png" type="image/png">
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script defer src="js/home.js"></script>
+  <link async defer href="https://fonts.googleapis.com/css?family=Abel|Titillium+Web|Source+Sans+Pro:700" rel="stylesheet">
+  <link rel="icon" href="css/images/icon2t.png">
   <link rel="stylesheet" href="css/actualcss/nav.min.css" type="text/css">
   <link rel="stylesheet" href="css/actualcss/home.min.css" type="text/css">
   <link rel="stylesheet" href="css/actualcss/pages.min.css" type="text/css">
   <link rel="stylesheet" href="css/animate.min.css" type="text/css">
   <link rel="stylesheet" href="css/please-wait.css" type="text/css">
-  <link rel="stylesheet" href="js/hint.min.css"></link>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Wolf Corp. Robotics #12525 is a team in Walnut, California competing in the Los Angeles Area for FTC.">
-  <title>Wolf Corp. Robotics</title>
+  <meta name="description" content="As Accuracy Accounting, our mission is to handle important financial tasks for small businesses and individuals. We provide our clients with services such as auditing, taxes, and financial services.">
+  <title>Wolf Corp Robotics</title>
 </head>
 
 <body style="margin: 0;" ng-app="myApp">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="js/validateForm.js"></script>
+  <script defer src="js/validateForm.js"></script>
 
   <div ng-controller="landingAndTwoNavs">
     <div class="animated navcover">
-      <h1 class="quote">“Life's most persistent and urgent question is, 'What are you doing for others?'” - Martin Luther King Jr.</h1>
       <div class="ncleft">
         <h1 class="title-1"><a href="#" aria-label="Our Team">O U R &nbsp;&nbsp;T E A M</a></h1>
         <p class="sub-1"><a href="#" aria-label="Where We're Headed">Where We're Headed</a></p>
@@ -77,13 +73,11 @@
     <div class="subdiv1">
       <p class="selecttitle f1"><a href="#" aria-label="Our Team">O U R &nbsp;&nbsp;T E A M</a></p><!--<br>-->
     </div>
-    <div class="small">
-      <div class="subdiv2">
-        <p class="selecttitle s1"><a href="#" aria-label="The Robot">T H E &nbsp;&nbsp;R O B O T</a></li>
-      </div>
-      <div class="subdiv3">
-        <p class="selecttitle t1"><a href="#" aria-label="Awards">A W A R D S</a></p>
-      </div>
+    <div class="subdiv2">
+      <p class="selecttitle s1"><a href="#" aria-label="The Robot">T H E &nbsp;&nbsp;R O B O T</a></li>
+    </div>
+    <div class="subdiv3">
+      <p class="selecttitle t1"><a href="#" aria-label="Awards">A W A R D S</a></p>
     </div>
   </div>
 
@@ -93,32 +87,37 @@
   <div class="panel notimed A a">
     <div class="left">
       <h1 class="title">1 2 5 2 5 &nbsp;- <br>W O L F &nbsp;&nbsp;C O R P</h1>
+      <div class="indicatorArea">
+        <div class="indicator"></div>
+      </div>
     </div>
   </div>
-    <div class="panel notimed A1">
-      <!--<div class="ticker"></div>-->
-      <div class="rightside">
-        <h1 class="title">T H A N K&nbsp;&nbsp; Y O U<br> C O A C H E S !</h1>
-        <div class="line"></div>
-        <div class="picsection">
-          <img class="coaches" src="css/images/coachlek.png"></img>
-          <img class="coaches" src="css/images/coachscott.png"></img>
-        </div>
-        <p class="maintext">Over these past few years in robotics, we’ve learned a lot about STEM and robotics under the guidance of our coaches, Lek and Scott. They began a robotics club ever since our elementary school years, teaching young children and developing their interest in science and technology. We have learned many aspects of FIRST such as core values. Coach Lek and Scott expanded our knowledge of robotics by dedicating hours of their time to host practices and outreaches to spread the goal of FIRST. Transitioning into FTC was also a great leap forward. We learned about the different tools, pieces, and programming languages needed to power a more advanced robot. This was helpful because we adjusted to a level of FIRST that was more related to the real world of robotics and machines. Throughout these years, thank you, coaches, for teaching us about FIRST!</p>
+  <div class="panel notimed A1">
+    <!--<div class="ticker"></div>-->
+    <div class="rightside">
+      <h1 class="title">T H A N K&nbsp;&nbsp; Y O U<br> C O A C H E S !</h1>
+      <div class="line"></div>
+      <div class="picsection">
+        <img class="coaches" src="css/images/coachlek.png"></img>
+        <img class="coaches" src="css/images/coachscott.png"></img>
       </div>
-      <div class="leftside">
-        <h1 class="title">O U R&nbsp;&nbsp; M I S S I O N</h1>
-        <div class="line"></div>
-        <p class="maintext">We are a pack of wolves who love to have fun and work together to become a good role model. We aim to inspire other children to work as a team and get involved in Robotics and STEM Education. This year is our 5th year together as Wolf Corp. We participated in FLL for 4 years, and this our second year in FTC. Our team gained many life skills by learning FIRST Core Values. All of our members are 9th graders attending Walnut High School in Walnut, California.</p>
-      </div>
+      <p class="maintext">Over these past few years in robotics, we’ve learned a lot about STEM and robotics under the guidance of our coaches, Lek and Scott. They began a robotics club ever since our elementary school years, teaching young children and developing their interest in science and technology. We have learned many aspects of FIRST such as core values. Coach Lek and Scott expanded our knowledge of robotics by dedicating hours of their time to host practices and outreaches to spread the goal of FIRST. Transitioning into FTC was also a great leap forward. We learned about the different tools, pieces, and programming languages needed to power a more advanced robot. This was helpful because we adjusted to a level of FIRST that was more related to the real world of robotics and machines. Throughout these years, thank you, coaches, for teaching us about FIRST!</p>
     </div>
+    <div class="leftside">
+      <h1 class="title">O U R&nbsp;&nbsp; M I S S I O N</h1>
+      <div class="line"></div>
+      <p class="maintext">We are a pack of wolves who love to have fun and work together to become a good role model. We aim to inspire other children to work as a team and get involved in Robotics and STEM Education. This year is our 5th year together as Wolf Corp. We participated in FLL for 4 years, and this our second year in FTC. Our team gained many life skills by learning FIRST Core Values. All of our members are 9th graders attending Walnut High School in Walnut, California.</p>
+    </div>
+    <div class="indicatorArea">
+      <div class="indicator"></div>
+    </div>
+  </div>
     <div class="panel notimed A2">
       <div class="leftside">
         <h1 class="title">P R O G R A M M I N G</h1>
         <div class="line"></div>
         <p class="maintext">Programming serves as a key part of the FTC competition, making our robot move based on the controller and also sensors. Our four programmers help develop Java code for Autonomous and TeleOp, bringing us up on top. We practice together, discussing issues and testing prototypes of our programs. In the end, we aim to build a great program to perform our best.</p>
       </div>
-      <!--<div class="ticker"></div>-->
       <div class="rightside">
         <div class="images">
           <img class="imgtopleft" src="css/images/josh.png" alt="Joshua"></img>
@@ -126,6 +125,9 @@
           <img class="imgbottomright" src="css/images/daniel.png" alt="Daniel"></img>
           <img class="imgbottommiddle" src="css/images/FrogProgramming.jpg" alt="Programming"></img>
         </div>
+      </div>
+      <div class="indicatorArea">
+        <div class="indicator"></div>
       </div>
     </div>
     <div class="panel notimed A3">
@@ -145,6 +147,9 @@
         <div class="line"></div>
         <p class="maintext">Without a robot, we would never win a competition. Where other category members can’t fill in, we have Building members swoop in to build the robot. Through all the work and dedication, the 5 main builders have constructed the base, scoring mechanism, intake system, protection safeties, and wiring setups. Just to name a few, they use power tools, brackets, channels, zip ties, a variety of nuts and bolts, hammers, and plexiglass to construct the robot. </p>
       </div>
+      <div class="indicatorArea">
+        <div class="indicator"></div>
+      </div>
     </div>
     <div class="panel notimed A4">
       <div class="leftside">
@@ -163,6 +168,9 @@
           <img class="imgextra" src="css/images/chandrark.jpg" alt="Chandrark"></img>
           <img class="imgbottommiddle" alt="Icon by Mohit Gandhi" src="css/images/FrogBusiness.jpg" alt="Frog Business"></img>
         </div>
+      </div>
+      <div class="indicatorArea">
+        <div class="indicator"></div>
       </div>
     </div>
     <div class="panel notimed A5">
@@ -185,10 +193,13 @@
     </div>
 
   <div class="panel notimed B">
-    <h1 class="title">T H E&nbsp;&nbsp; G A M E ,&nbsp;&nbsp; S O F T W A R E , <br> H A R D W A R E</h1>
+    <h1 class="title">O U R &nbsp;&nbsp;T E A M&nbsp;&nbsp; &&nbsp;&nbsp; C O M P A N Y</h1>
+    <p class="sources"><a href="https://docs.google.com/document/d/1m1xEyfwkgoQY6TJ416hWrjM98QcImTBOmAcAstnw82Y/edit?usp=sharing" rel="noreferrer" target="_blank">References</a></p>
+    <div class="indicatorArea">
+      <div class="indicator"></div>
+    </div>
   </div>
     <div class="panel notimed B1">
-      <h1 class="hover">Hover over the secret boxes to learn about our team!</h1>
       <h1 class="title">T H E&nbsp;&nbsp; G A M E</h1>
       <div class="line"></div>
       <div class="sections">
@@ -198,7 +209,7 @@
           <button type="button">Learn More</button>
           <h1 class="boxtitle animated fadeIn">Competition</h1>
           <p class="infotext animated fadeIn">In our league, FTC, Robot Ruckus is this year’s event. Take a look at this video to explain it:</p>
-          <iframe class="compvideo" src="https://www.youtube.com/embed/rR4gR4l2XA8?&enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe title="Map of Walnut High School" class="compvideo" src="https://www.youtube.com/embed/rR4gR4l2XA8?&enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="topright animated fadeIn">
           <h1 class="infolabel">Our Autonomous</h1>
@@ -221,7 +232,6 @@
       </div>
     </div>
     <div class="panel notimed B2">
-      <h1 class="hover">Hover over the secret boxes to learn about our team!</h1>
       <h1 class="title">I T S&nbsp;&nbsp; B R A I N S</h1>
       <div class="line"></div>
       <div class="sections">
@@ -231,12 +241,6 @@
           <button type="button">Learn More</button>
           <h1 class="boxtitle animated fadeIn">Android Studio</h1>
           <p class="infotext animated fadeIn">The programmers use the Android Studio IDE to edit, run, and debug code for our robot. It’s IDE has text completion and great indicators, creating a convenient workplace. With a press of a button, Studio transfers the code to the phone application, keeping everything simple. Android Studio is oriented for applications, so our code can be easily configured by the built-in settings. The debugger is also a great help because we can navigate to the line of failure with a simple link. Android Studio's tools help us program the robot with ease.</p>
-        </div>
-        <div class="topmid animated fadeIn">
-          <h1 class="infolabel">Java</h1>
-          <button type="button">Learn More</button>
-          <h1 class="boxtitle animated fadeIn">Java</h1>
-          <p class="infotext animated fadeIn">We code in Java to program the robot, because of its already pre-built integrations with the Expansion Hubs and FTC applications. FTC has their robot’s core running Java, so switching to another language would mean another compiler to transfer the language into Java. Another solution would be coding the robot from bottom up, starting all the way at the simplest jobs like creating a compiler to make the robot understand our code. However, this would take forever to program, and the much easier route would be to use their already programmed robot parts and methods. Java offers the freedom of doing whatever we want with our robot’s pieces, while also getting us up and started quickly.</p>
         </div>
         <div class="topright animated fadeIn">
           <h1 class="infolabel">DogeCV</h1>
@@ -250,18 +254,15 @@
           <h1 class="boxtitle animated fadeIn">Autonomous Programming</h1>
           <p class="infotext animated fadeIn">Autonomous is run by two programs and a backup, depending on our side, to score maximum points during the 30 second period. Both programs start off with setting the power of the hanging mechanism to -1 to move down for 6 inches. During unhanging, our camera turns on to detect gold with the DogeCV library. It detects gold, and sidesteps to it and pushes it forward, off the initial point. It then turns to place marker and finally parks. The backup has the ability to sample two, just in case our Alliance isn’t able to. We have calculated the proportions just right, so our scale is exactly 1:1. We also have methods to move, instead of tediously coding it every time. It is very simple, with something just like turnLeft(45). Our Autonomous programs get the job done with an elegant method. </p>
         </div>
-        <div class="botmid animated fadeIn">
-          <h1 class="infolabel">TeleOp Programming</h1>
-          <button type="button">Learn More</button>
-          <h1 class="boxtitle animated fadeIn">TeleOp Programming</h1>
-          <p class="infotext animated fadeIn">Our Tele-Op Program is designed for the full use of the robot, and controls for every robot part. We use two controllers to move the robot, one for moving the robot and the other for our intake, output, and hanging systems. The first controller can go forward, back, turn, sidestep left, and sidestep right at two different speed levels. The second controller can extend our intake system, collect balls with zip ties, lift up our intake system, move up and down the output system, and release minerals from the output system. Our program also alerts the position and power of all the motors and servos. We use all types of methods to program robot movement, from incrementer loops to on/off if-else statements. Our Tele-Op and drivers can do so well due to the good program we have for it. </p>
-        </div>
         <div class="botright animated fadeIn">
           <h1 class="infolabel">Code Snippets</h1>
           <button type="button">Learn More</button>
           <h1 class="boxtitle animated fadeIn">Code Snippets</h1>
           <img class="animated codesnippet" src="css/images/codesnippet.PNG"></img>
         </div>
+      </div>
+      <div class="indicatorArea">
+        <div class="indicator"></div>
       </div>
     </div>
     <div class="panel notimed B3">
@@ -281,9 +282,7 @@
       <div class="middle">
         <h1 class="title">O U R&nbsp;&nbsp; R O B O T<br>S T R U C T U R E</h1>
         <div class="line"></div>
-        <p class="infofromsides">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        <p class="infofromsides"></p>
       </div>
       <div class="right">
         <h1 class="subtitle">M O V I N G&nbsp;&nbsp; P A R T S</h1>
@@ -302,81 +301,49 @@
 
   <div class="panel notimed C c" id="particles-js">
     <h1 class="title">A W A R D S</h1>
-    <div class="awards">
-      <div class="award">
-        <img src="css/images/trophy.png"></img>
-        <div class="animated caption">
-          <h1>1st place Meet 1, 2, 3</h1>
+    <div class="stories">
+      <div class="story">
+        <div class="awoverlay animated fadeInUpBig">
+          <h1>First Place Meet 1, 2, 3</h1>
         </div>
       </div>
-      <div class="award">
-        <img src="css/images/trophy.png"></img>
-        <div class="animated caption">
-          <h1>1st place in Interleague Qualification Matches</h1>
+      <div class="story">
+        <div class="awoverlay animated fadeInUpBig">
+          <h1>Winning Alliance Captain Interleague</h1>
         </div>
       </div>
-      <div class="award">
-        <img src="css/images/trophy.png"></img>
-        <div class="animated caption">
-          <h1>2018-2019 Interleague Think Award</h1>
+      <div class="story">
+        <div class="awoverlay animated fadeInUpBig">
+          <h1>Interleague Think Award</h1>
         </div>
       </div>
-      <div class="award">
-        <img src="css/images/trophy.png"></img>
-        <div class="animated caption">
-          <h1>2018-2019 Interleague Alliance Award</h1>
+      <div class="story">
+        <div class="awoverlay animated fadeInUpBig">
+          <h1>Southern California Regionals - Motivate Award</h1>
         </div>
       </div>
     </div>
     <h1 class="animated seemore">M o r e&nbsp;&nbsp; A w a r d s !</h1>
-    <div class="animated moreawards">
-      <div class="moreawardslist">
-        <div class="exaward">
-          <img src="css/images/trophy.png"></img>
-          <div class="awoverlay animated">
-            <h1>2016-2017 1st Place Overall Core Values Award at Razorback International Invitational </h1>
+    <div class="animated morestories">
+      <div class="morestorieslist">
+        <div class="story">
+          <div class="awoverlay animated fadeInUpBig">
+            <h1>Regionals Runner Up Control Award</h1>
           </div>
         </div>
-        <div class="exaward">
-          <img src="css/images/trophy.png"></img>
-          <div class="awoverlay animated">
-            <h1>2016-2017 1st Place Inspiration Award at La Canada Tournament</h1>
+        <div class="story">
+          <div class="awoverlay animated fadeInUpBig">
+            <h1>1st Place In Interleague Qualification Matches</h1>
           </div>
         </div>
-        <div class="exaward">
-          <img src="css/images/trophy.png"></img>
-          <div class="awoverlay animated">
-            <h1>2016-2017 Tournament Champion at Mesa Union School Tournament</h1>
+        <div class="story">
+          <div class="awoverlay animated fadeInUpBig">
+            <h1>2nd Place In Regional Qualification Matches</h1>
           </div>
         </div>
-        <div class="exaward">
-          <img src="css/images/trophy.png"></img>
-          <div class="awoverlay animated">
-            <h1>2016-2017 1st Place Project Research Award at Los Angeles Regional Championship Tournament</h1>
-          </div>
-        </div>
-        <div class="exaward">
-          <img src="css/images/trophy.png"></img>
-          <div class="awoverlay animated">
-            <h1>2016-2017 Tournament Champion at La Reina High School Qualifier Tournament</h1>
-          </div>
-        </div>
-        <div class="exaward">
-          <img src="css/images/trophy.png"></img>
-          <div class="awoverlay animated">
-            <h1>2016-2017 1st Place Robot Performance at Southern California FLL Cup at Legoland</h1>
-          </div>
-        </div>
-        <div class="exaward">
-          <img src="css/images/trophy.png"></img>
-          <div class="awoverlay animated">
-            <h1>2015-2016 Champion Award at California FLL Cup at Legoland</h1>
-          </div>
-        </div>
-        <div class="exaward">
-          <img src="css/images/trophy.png"></img>
-          <div class="awoverlay animated">
-            <h1>2015-2016 Moonbots Phase I Winner-Google Lunar XPrize for Children</h1>
+        <div class="story">
+          <div class="awoverlay animated fadeInUpBig">
+            <h1>1st Runner Up Inspire Award In Interleague</h1>
           </div>
         </div>
       </div>
@@ -384,303 +351,311 @@
     </div>
   </div>
 
-  <div class="panel notimed D d" id="particles-js2">
+  <div class="panel notimed D d">
     <h1 class="title">C O N T A C T&nbsp;&nbsp; U S !</h1>
     <div class="socials">
       <a href="https://www.facebook.com/TeamWolfCorp/" target="_blank" rel="noreferrer" aria-label="Facebook"><img src="css/images/facebook.svg"></img></a>
       <a href="https://www.instagram.com/wolfcorprobotics/" target="_blank" rel="noreferrer" aria-label="Instagram"><img src="css/images/instagram.svg"></img></a>
     </div>
-    <h1 class="contactinfo">(626)-667-4559<br>wolfcorprobotics12525@gmail.com</h1>
-    <form method="post" action="php/contact.php" onsubmit="return validateForm()" name="contactForm" class="contactForm" target="decoy">
+    <h1 class="contactinfo">(626)-667-4559<br>wolfcorprobotics12525@gmail.com<br><span>Illustration credit: <a href="https://icons8.com" rel="noreferrer">Icons8</a></span></h1>
+    <form method="post" action="php/contact.php" onsubmit="return validateEmail()" name="contactForm" class="contactForm" target="decoy">
       <input class="nameinput" type="text" name="name" placeholder="Name">
       <input class="phoneinput" type="number" name="phone" placeholder="Phone Number">
       <input class="emailinput" type="email" name="email" placeholder="Email">
       <input class="subjectinput" type="text" name="subject" placeholder="Subject">
       <textarea class="messageinput" rows="1000" name="message" placeholder="Message"></textarea><br>
       <div class="confirmArea">
-        <input class="sendinputs" type="submit" name="submit" value="Send">
+        <input style="border-radius: 1px!important" class="sendinputs" type="submit" name="submit" value="Send">
         <img class="animated fadeIn sent" src="css/images/checkkmark.png"></img>
       </div>
     </form>
+    <div class="map">
+      <iframe width="100%" height="100%" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDeqmGdMF3QWlvlmnhrOesYqLYlqQkyGGw&q=Walnut+High+School" allowfullscreen></iframe>
+    </div>
     <img class="animated fadeInRight talk" src="css/images/closebold.png"></img>
   </div>
 
   <div class="panel notimed E e" id="particles-js3">
-    <h1 class="title">O U R&nbsp;&nbsp; S P O N S O R S</h1>
-    <div class="big3">
-      <img class="second" src="css/images/sgv.png"></img>
-      <img class="first" src="css/images/whs.png"></img>
-      <img class="third" src="css/images/rockwellcollins.png"></img>
-    </div>
-    <h1 class="animated seemores">M o r e &nbsp;&nbsp; s p o n s o r s !</h1>
-    <img class="animated sponsor" src="css/images/closebold.png"></img>
-    <div class="animated moresponsors">
-      <div class="sponsorlist">
-        <div class="asponsor">
-          <img src="css/images/drtony.PNG"></img>
-          <div class="spoverlay animated">
-            <h1>Dr. Tony Torng</h1>
+      <h1 class="title">O U R&nbsp;&nbsp; S P O N S O R S</h1>
+      <div class="big3">
+        <img class="second" src="css/images/sgv.png"></img>
+        <img class="first" src="css/images/whs.png"></img>
+        <img class="third" src="css/images/rockwellcollins.png"></img>
+      </div>
+      <h1 class="animated seemores">M o r e &nbsp;&nbsp; s p o n s o r s !</h1>
+      <img class="animated sponsor" src="css/images/closebold.png"></img>
+      <div class="animated moresponsors">
+        <div class="sponsorlist">
+          <div class="asponsor">
+            <img src="css/images/drtony.PNG"></img>
+            <div class="spoverlay animated">
+              <h1>Dr. Tony Torng</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/WaterDistrict.png"></img>
-          <div class="spoverlay animated">
-            <h1>Water District</h1>
+          <div class="asponsor">
+            <img src="css/images/WaterDistrict.png"></img>
+            <div class="spoverlay animated">
+              <h1>Water District</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/Farmers.png"></img>
-          <div class="spoverlay animated">
-            <h1>Farmers Insurance</h1>
+          <div class="asponsor">
+            <img src="css/images/Farmers.png"></img>
+            <div class="spoverlay animated">
+              <h1>Farmers Insurance</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/Stanford.png"></img>
-          <div class="spoverlay animated">
-            <h1>Stanford Academy</h1>
+          <div class="asponsor">
+            <img src="css/images/Stanford.png"></img>
+            <div class="spoverlay animated">
+              <h1>Stanford Academy</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/Premier.png"></img>
-          <div class="spoverlay animated">
-            <h1>Premier Academy</h1>
+          <div class="asponsor">
+            <img src="css/images/Premier.png"></img>
+            <div class="spoverlay animated">
+              <h1>Premier Academy</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/FCR.png"></img>
-          <div class="spoverlay animated">
-            <h1>First Choice Reality</h1>
+          <div class="asponsor">
+            <img src="css/images/FCR.png"></img>
+            <div class="spoverlay animated">
+              <h1>First Choice Reality</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/HongSen.png"></img>
-          <div class="spoverlay animated">
-            <h1>Hong Sen USA Corp.</h1>
+          <div class="asponsor">
+            <img src="css/images/HongSen.png"></img>
+            <div class="spoverlay animated">
+              <h1>Hong Sen USA Corp.</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/atech.png"></img>
-          <div class="spoverlay animated">
-            <h1>A-TECH Systems</h1>
+          <div class="asponsor">
+            <img src="css/images/atech.png"></img>
+            <div class="spoverlay animated">
+              <h1>A-TECH Systems</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/CM3Art.png"></img>
-          <div class="spoverlay animated">
-            <h1>CM Cubed Art</h1>
+          <div class="asponsor">
+            <img src="css/images/CM3Art.png"></img>
+            <div class="spoverlay animated">
+              <h1>CM Cubed Art</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/krispy.png"></img>
-          <div class="spoverlay animated">
-            <h1>Krispy Kreme</h1>
+          <div class="asponsor">
+            <img src="css/images/krispy.png"></img>
+            <div class="spoverlay animated">
+              <h1>Krispy Kreme</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/TD.png"></img>
-          <div class="spoverlay animated">
-            <h1>TD General Company</h1>
+          <div class="asponsor">
+            <img src="css/images/TD.png"></img>
+            <div class="spoverlay animated">
+              <h1>TD General Company</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/Concept.png"></img>
-          <div class="spoverlay animated">
-            <h1>Concept Pixels Entertainment</h1>
+          <div class="asponsor">
+            <img src="css/images/Concept.png"></img>
+            <div class="spoverlay animated">
+              <h1>Concept Pixels Entertainment</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/Syntec.png"></img>
-          <div class="spoverlay animated">
-            <h1>Syntec Technology Inc.</h1>
+          <div class="asponsor">
+            <img src="css/images/Syntec.png"></img>
+            <div class="spoverlay animated">
+              <h1>Syntec Technology Inc.</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/waynes.png"></img>
-          <div class="spoverlay animated">
-            <h1>Wayne's Auto Repair</h1>
+          <div class="asponsor">
+            <img src="css/images/waynes.png"></img>
+            <div class="spoverlay animated">
+              <h1>Wayne's Auto Repair</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/NuHealth.png"></img>
-          <div class="spoverlay animated">
-            <h1>Nu-Health Products</h1>
+          <div class="asponsor">
+            <img src="css/images/NuHealth.png"></img>
+            <div class="spoverlay animated">
+              <h1>Nu-Health Products</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/Bethel.png"></img>
-          <div class="spoverlay animated">
-            <h1>Bethel Education</h1>
+          <div class="asponsor">
+            <img src="css/images/Bethel.png"></img>
+            <div class="spoverlay animated">
+              <h1>Bethel Education</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/Learnix.png"></img>
-          <div class="spoverlay animated">
-            <h1>LearnIX Solution Group</h1>
+          <div class="asponsor">
+            <img src="css/images/Learnix.png"></img>
+            <div class="spoverlay animated">
+              <h1>LearnIX Solution Group</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/trophy.png"></img>
-          <div class="spoverlay animated">
-            <h1>Scott Watkins</h1>
+          <div class="asponsor">
+            <img src="css/images/trophy.png"></img>
+            <div class="spoverlay animated">
+              <h1>Scott Watkins</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/Crossfit.png"></img>
-          <div class="spoverlay animated">
-            <h1>Crossfit Insurgent</h1>
+          <div class="asponsor">
+            <img src="css/images/Crossfit.png"></img>
+            <div class="spoverlay animated">
+              <h1>Crossfit Insurgent</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/trophy.png"></img>
-          <div class="spoverlay animated">
-            <h1>Ink Pool</h1>
+          <div class="asponsor">
+            <img src="css/images/trophy.png"></img>
+            <div class="spoverlay animated">
+              <h1>Ink Pool</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/trophy.png"></img>
-          <div class="spoverlay animated">
-            <h1>Chengdu Noodle House</h1>
+          <div class="asponsor">
+            <img src="css/images/trophy.png"></img>
+            <div class="spoverlay animated">
+              <h1>Chengdu Noodle House</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/heartland.PNG"></img>
-          <div class="spoverlay animated">
-            <h1>Heartland</h1>
+          <div class="asponsor">
+            <img src="css/images/heartland.PNG"></img>
+            <div class="spoverlay animated">
+              <h1>Heartland</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/StateFarm.png"></img>
-          <div class="spoverlay animated">
-            <h1>State Farm "Ida Vo"</h1>
+          <div class="asponsor">
+            <img src="css/images/StateFarm.png"></img>
+            <div class="spoverlay animated">
+              <h1>State Farm "Ida Vo"</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/Aannex.png"></img>
-          <div class="spoverlay animated">
-            <h1>Aannex (U.S.A.) Corp.</h1>
+          <div class="asponsor">
+            <img src="css/images/Aannex.png"></img>
+            <div class="spoverlay animated">
+              <h1>Aannex (U.S.A.) Corp.</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/mli.png"></img>
-          <div class="spoverlay animated">
-              <h1>Motivational Learning Institute</h1>
+          <div class="asponsor">
+            <img src="css/images/mli.png"></img>
+            <div class="spoverlay animated">
+                <h1>Motivational Learning Institute</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/sponsor.png"></img>
-          <div class="spoverlay animated">
-            <h1>Hong Chuan Yu</h1>
+          <div class="asponsor">
+            <img src="css/images/sponsor.png"></img>
+            <div class="spoverlay animated">
+              <h1>Hong Chuan Yu</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/sponsor.png"></img>
-          <div class="spoverlay animated">
-            <h1>Yu Tea Chow</h1>
+          <div class="asponsor">
+            <img src="css/images/sponsor.png"></img>
+            <div class="spoverlay animated">
+              <h1>Yu Tea Chow</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/sponsor.png"></img>
-          <div class="spoverlay animated">
-            <h1>Yogurtland</h1>
+          <div class="asponsor">
+            <img src="css/images/sponsor.png"></img>
+            <div class="spoverlay animated">
+              <h1>Yogurtland</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/sponsor.png"></img>
-          <div class="spoverlay animated">
-            <h1>A Good Gift LLC</h1>
+          <div class="asponsor">
+            <img src="css/images/sponsor.png"></img>
+            <div class="spoverlay animated">
+              <h1>A Good Gift LLC</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/Filtrous.png"></img>
-          <div class="spoverlay animated">
-            <h1>Filtrous</h1>
+          <div class="asponsor">
+            <img src="css/images/Filtrous.png"></img>
+            <div class="spoverlay animated">
+              <h1>Filtrous</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/sponsor.png"></img>
-          <div class="spoverlay animated">
-            <h1>Windsor School of Nursing</h1>
+          <div class="asponsor">
+            <img src="css/images/sponsor.png"></img>
+            <div class="spoverlay animated">
+              <h1>Windsor School of Nursing</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/sponsor.png"></img>
-          <div class="spoverlay animated">
-            <h1>ADU Engineering</h1>
+          <div class="asponsor">
+            <img src="css/images/sponsor.png"></img>
+            <div class="spoverlay animated">
+              <h1>ADU Engineering</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/sponsor.png"></img>
-          <div class="spoverlay animated">
-            <h1>Wealthy Company</h1>
+          <div class="asponsor">
+            <img src="css/images/sponsor.png"></img>
+            <div class="spoverlay animated">
+              <h1>Wealthy Company</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/sponsor.png"></img>
-          <div class="spoverlay animated">
-            <h1>Prestige Enterprises</h1>
+          <div class="asponsor">
+            <img src="css/images/sponsor.png"></img>
+            <div class="spoverlay animated">
+              <h1>Prestige Enterprises</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/CraigFurniture.png"></img>
-          <div class="spoverlay animated">
-            <h1>Craig Furniture Repair</h1>
+          <div class="asponsor">
+            <img src="css/images/CraigFurniture.png"></img>
+            <div class="spoverlay animated">
+              <h1>Craig Furniture Repair</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/Transindo.png"></img>
-          <div class="spoverlay animated">
-            <h1>Transindo USA Inc.</h1>
+          <div class="asponsor">
+            <img src="css/images/Transindo.png"></img>
+            <div class="spoverlay animated">
+              <h1>Transindo USA Inc.</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/LS.png"></img>
-          <div class="spoverlay animated">
-            <h1>LS Trading Corp.</h1>
+          <div class="asponsor">
+            <img src="css/images/LS.png"></img>
+            <div class="spoverlay animated">
+              <h1>LS Trading Corp.</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/sponsor.png"></img>
-          <div class="spoverlay animated">
-            <h1>Mark's Barber Shop</h1>
+          <div class="asponsor">
+            <img src="css/images/sponsor.png"></img>
+            <div class="spoverlay animated">
+              <h1>Mark's Barber Shop</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/sponsor.png"></img>
-          <div class="spoverlay animated">
-            <h1>Sylvia M Sutantio</h1>
+          <div class="asponsor">
+            <img src="css/images/sponsor.png"></img>
+            <div class="spoverlay animated">
+              <h1>Sylvia M Sutantio</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/sponsor.png"></img>
-          <div class="spoverlay animated">
-            <h1>Redford Trading Co.</h1>
+          <div class="asponsor">
+            <img src="css/images/sponsor.png"></img>
+            <div class="spoverlay animated">
+              <h1>Redford Trading Co.</h1>
+            </div>
           </div>
-        </div>
-        <div class="asponsor">
-          <img src="css/images/sponsor.png"></img>
-          <div class="spoverlay animated">
-            <h1>Bao Deal Ink</h1>
+          <div class="asponsor">
+            <img src="css/images/sponsor.png"></img>
+            <div class="spoverlay animated">
+              <h1>Bao Deal Ink</h1>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <iframe name="decoy" style="display: none;"></iframe>
 
-<!--
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js"></script>
--->
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
+<script async defer src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
 <script src="js/scrollreveal.min.js"></script>
-<script type="module" src="js/maintest.js"></script>
-<script src="js/home.js"></script>
-<script type="module" src="js/pagescomponents.js"></script>
-<script src="js/particles.min.js"></script>
-<script src="js/particleconfig.js"></script>
-<!-- Latest compiled and minified JavaScript -->
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+<script defer type="module" src="js/maintest.js"></script>
+<script defer type="module" src="js/pagescomponents.js"></script>
+<script defer src="js/particles.min.js"></script>
+<script defer src="js/particleconfig.js"></script>
+<script async defer type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Organization",
+  "name": "Accuracy Accounting Firm",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1 Hacker Way",
+    "addressLocality": "Menlo Park",
+    "addressRegion": "CA",
+    "postalCode": "94025"
+  },
+  "telephone": "6266674559"
+}
+</script>
 </body>
 </html>

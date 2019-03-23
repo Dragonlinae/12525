@@ -3,6 +3,10 @@
 @mixin orientation($side, $amount) {
   right: $amount;
 }
+input[type="submit"],input[type="time"],input[type="date"] {
+     -webkit-appearance: none!important;
+     border-radius: 0!important;
+}
 .mainimg {
   background-color: white;
   position: relative;
@@ -15,10 +19,78 @@
 body.user-is-tabbing *:focus {
   outline: 2px solid black !important; /* for non-webkit browsers */
 }
-
-.A, .A1, .A2, .A3, .A4, .A5, .B, .B1, .B2, .B3 {
+.A, .A1, .A2, .A3, .A4, .A5, .B, .B1, .B2, .B3, .C, .D, .E {
   max-height: 100vh!important;
   overflow: hidden!important;
+}
+.A, .A1, .A2, .A3, .A4, .B, .B1, .B2 {
+  .indicatorArea {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    width: 50vw;
+    justify-content: center;
+
+    .indicator {
+      position: absolute;
+      bottom: 9vh;
+      width: 25px;
+      height: 38px;
+      border: 3px solid white;
+      border-radius: 75px;
+      animation: boggle 1s linear infinite alternate;
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        margin: auto;
+        border-radius: 100%;
+        background-color: white;
+        width: 5px;
+        height: 5px;
+        animation: scrollDown 1s linear infinite alternate;
+
+        @keyframes scrollDown {
+          0% {
+            transform: translateY(-10px);
+          }
+          50% {
+            transform: translateY(0px);
+            background-color: #888;
+          }
+          100% {
+            transform: translateY(5px);
+            background-color: #555;
+          }
+        }
+      }
+
+      @keyframes boggle {
+        0% {
+          transform: translateY(2.5px);
+        }
+        50% {
+          transform: translateY(5px);
+          border-color: #888;
+        }
+        100% {
+          transform: translateY(7.5px);
+          border-color: #555;
+        }
+      }
+    }
+  }
+}
+.A1, .A3 {
+  .indicatorArea {
+    right: 0;
+  }
+}
+.B1, .B2 {
+  .indicator {
+    bottom: 4vh!important;
+  }
 }
 .A {
   display: flex;
@@ -26,7 +98,7 @@ body.user-is-tabbing *:focus {
   align-items: center;
   @include layer(black, black, 10);
   .left {
-    background-image: url("../images/calendar.jpg");
+    background-image: url("../images/desk.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -35,11 +107,24 @@ body.user-is-tabbing *:focus {
     justify-content: center;
     height: 100%;
     width: 100%;
-    padding-bottom: 20vh;
+    padding-bottom: 40vh;
 
     .title {
       width: 60%;
       @include title(#ffffff);
+    }
+  }
+}
+.A, .B, .B3 {
+  .sources {
+    position: absolute;
+    bottom: 2.5vh;
+    font-size: 18px;
+    color: white;
+    font-family: 'Abel';
+
+    a {
+      text-decoration: underline!important;
     }
   }
 }
@@ -135,21 +220,6 @@ body.user-is-tabbing *:focus {
         animation-delay: 1.2s;
       }
     }
-    .line {
-      width: 175px;
-      height: 5px;
-      background-color: white;
-      border: none;
-      animation: bounceasdf1 2s;
-      animation-timing-function: linear;
-      animation-direction: alternate;
-      animation-iteration-count: infinite;
-    }
-    @keyframes bounceasdf1 {
-      0% { transform: translate3d(-220px, 0px, 0); width: 0px;}
-      50% { transform: translate3d(0px, 0, 0); width: 175px;}
-      100% { transform: translate3d(225px, 0, 0); width: 0px; }
-    }
   }
   .rightside {
       display: flex;
@@ -170,32 +240,23 @@ body.user-is-tabbing *:focus {
           width: 12vw;
           border-radius: 50%;
           cursor: pointer;
+          @include flashborder;
+          animation: flashborder 2s linear infinite;
           transform: rotate(180deg);
           transition: .5s;
 
           &:hover {
-            box-shadow: 0 0 10px 2px rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+            animation-play-state: paused;
+            box-shadow: 0 0 10px 2px rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19) !important;
           }
         }
+        .imgbottommiddle {
+          animation-delay: 0.5s;
+        }
+        .imgbottomleft {
+          animation-delay: 0.75s;
+        }
       }
-  }
-  .ticker {
-    width: 7vw;
-    height: 100vh;
-    box-sizing: content-box;
-    position: relative;
-    background-color: white;
-    &:after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 0;
-      border-left: 3vw solid #2f5ca8;
-      border-top: 50vh solid transparent;
-      border-bottom: 50vh solid transparent;
-    }
   }
   .maintext {
     margin: 5vh 5vw 0 5vw;
@@ -207,13 +268,13 @@ body.user-is-tabbing *:focus {
 .A3 {
   display: flex;
   justify-content: right;
-  @include layer(white, white, 7);
+  @include layer(#006789, #006789, 7);
   .rightside {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 50vw;
-    background-image: linear-gradient(to right, #004cce, #004cce);
+    background-image: linear-gradient(to right, #006789, #006789);
     .title {
       margin: 0 0 0 0;
       padding-top: 12vh;
@@ -224,21 +285,6 @@ body.user-is-tabbing *:focus {
       .delay {
         animation-delay: 1.2s;
       }
-    }
-    .line {
-      width: 175px;
-      height: 5px;
-      background-color: white;
-      border: none;
-      animation: bounceasdf1 2s;
-      animation-timing-function: linear;
-      animation-direction: alternate;
-      animation-iteration-count: infinite;
-    }
-    @keyframes bounceasdf1 {
-      0% { transform: translate3d(-220px, 0px, 0); width: 0px;}
-      50% { transform: translate3d(0px, 0, 0); width: 175px;}
-      100% { transform: translate3d(225px, 0, 0); width: 0px; }
     }
   }
   .leftside {
@@ -260,32 +306,17 @@ body.user-is-tabbing *:focus {
           width: 12vw;
           border-radius: 50%;
           cursor: pointer;
+          @include flashborder;
+          animation: flashborder 2s linear infinite;
           transform: rotate(180deg);
           transition: .5s;
 
           &:hover {
-            box-shadow: 0 0 10px 2px rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+            animation-play-state: paused;
+            box-shadow: 0 0 10px 2px rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19) !important;
           }
         }
       }
-  }
-  .ticker {
-    width: 7vw;
-    height: 100vh;
-    box-sizing: content-box;
-    position: relative;
-    background-color: white;
-    &:after {
-      content: "";
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      width: 0;
-      height: 0;
-      border-right: 2vw solid #0353de;
-      border-top: 50vh solid transparent;
-      border-bottom: 50vh solid transparent;
-    }
   }
   .maintext {
     margin: 5vh 5vw 0 5vw;
@@ -315,21 +346,6 @@ body.user-is-tabbing *:focus {
         animation-delay: 1.2s;
       }
     }
-    .line {
-      width: 175px;
-      height: 5px;
-      background-color: white;
-      border: none;
-      animation: bounceasdf1 2s;
-      animation-timing-function: linear;
-      animation-direction: alternate;
-      animation-iteration-count: infinite;
-    }
-    @keyframes bounceasdf1 {
-      0% { transform: translate3d(-220px, 0px, 0); width: 0px;}
-      50% { transform: translate3d(0px, 0, 0); width: 175px;}
-      100% { transform: translate3d(225px, 0, 0); width: 0px; }
-    }
   }
   .rightside {
       display: flex;
@@ -343,7 +359,6 @@ body.user-is-tabbing *:focus {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        transform: rotate(180deg);
         padding: 5vh 0 5vh 0;
         img {
           margin: 0.75vw 2.5vh 0.75vw 2.5vh;
@@ -351,22 +366,16 @@ body.user-is-tabbing *:focus {
           width: 11vw;
           border-radius: 50%;
           cursor: pointer;
-          transform: rotate(180deg);
+          @include flashborder;
+          animation: flashborder 2s linear infinite;
           transition: .5s;
 
           &:hover {
-            box-shadow: 0 0 10px 2px rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+            animation-play-state: paused;
+            box-shadow: 0 0 10px 2px rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19) !important;
           }
         }
       }
-  }
-  .ticker {
-    position: relative;
-    top: 0;
-    border-left: 7vw solid #5c01fe;
-    border-bottom: 7vw solid transparent;
-    border-top: 7vw solid transparent;
-    width: 0;
   }
   .maintext {
     margin: 5vh 5vw 0 5vw;
@@ -376,7 +385,7 @@ body.user-is-tabbing *:focus {
   }
 }
 .A5 {
-  @include layer(#29bec8, #11a1c1, 5);
+  @include layer(#538ad9, #3468b3, 5);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -396,21 +405,6 @@ body.user-is-tabbing *:focus {
       .delay {
         animation-delay: 1.2s;
       }
-    }
-    .line {
-      width: 175px;
-      height: 5px;
-      background-color: white;
-      border: none;
-      animation: bounceasdf1 2s;
-      animation-timing-function: linear;
-      animation-direction: alternate;
-      animation-iteration-count: infinite;
-    }
-    @keyframes bounceasdf1 {
-      0% { transform: translate3d(-220px, 0px, 0); width: 0px;}
-      50% { transform: translate3d(0px, 0, 0); width: 175px;}
-      100% { transform: translate3d(225px, 0, 0); width: 0px; }
     }
   }
   .botside {
@@ -432,22 +426,26 @@ body.user-is-tabbing *:focus {
           width: 11vw;
           border-radius: 50%;
           cursor: pointer;
+          @include flashborder;
+          animation: flashborder 2s linear infinite;
           transform: rotate(180deg);
           transition: .5s;
 
           &:hover {
-            box-shadow: 0 0 10px 2px rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+            animation-play-state: paused;
+            box-shadow: 0 0 10px 2px rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19) !important;
           }
         }
+        .imgkindaright {
+          animation-delay: 0.25;
+        }
+        .imgfarleft {
+          animation-delay: 0.5s;
+        }
+        .imgkindaleft {
+          animation-delay: 0.75s;
+        }
       }
-  }
-  .ticker {
-    position: relative;
-    top: 0;
-    border-bottom: 7vh solid white;
-    border-left: 7vh solid transparent;
-    border-right: 7vh solid transparent;
-    width: 93vw;
   }
   .maintext {
     margin: 5vh 5vw 0 5vw;
@@ -457,7 +455,8 @@ body.user-is-tabbing *:focus {
   }
 }
 .panel {
-  overflow-y: hidden;
+  max-height: 100vh !important;
+  overflow-y: hidden !important;
 }
 .B {
   display: flex;
@@ -482,6 +481,17 @@ body.user-is-tabbing *:focus {
   margin: 5vh 10vw 5vh 10vw !important;
   width: 80vw !important;
   height: 70vh !important;
+}
+.imggone {
+  &::after {
+    transition: 0.5s 0s!important;
+    opacity: 0!important;
+  }
+}
+.halfgone {
+  &::after {
+    opacity: 0.6;
+  }
 }
 //                          //
 .B1 {
@@ -530,6 +540,7 @@ body.user-is-tabbing *:focus {
     box-sizing: border-box;
     height: 80vh;
     width: 100vw;
+    transition: 1s;
 
     .topleft, .topright, .botleft, .botright {
       display: flex;
@@ -541,6 +552,8 @@ body.user-is-tabbing *:focus {
       width: 24vw;
       height: 30vh;
       transition: 1s;
+      @include flashborder;
+      animation: flashborder 2s linear infinite;
       animation-delay: 1s;
 
       button {
@@ -579,14 +592,9 @@ body.user-is-tabbing *:focus {
         font-size: 30px;
         opacity: 0;
       }
-      .compvideo {
-        margin: 5vh 0 0 0;
-        border: 5px solid white;
-        width: 40vw;
-        height: 35vh;
-      }
 
       &:hover {
+        animation-play-state: paused;
         box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 
         .infolabel {
@@ -596,17 +604,60 @@ body.user-is-tabbing *:focus {
           opacity: 1;
         }
       }
+      &::after {
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        z-index: -1;
+        transition: 0.5s 1s;
+      }
     }
     .topleft {
+      &::after {
+        content: "";
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+      }
+
       @include fourSectionPos(topleft, $sameVertMargin, $sameHorizMargin);
     }
     .topright {
+      &::after {
+        content: "";
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+      }
+
       @include fourSectionPos(topright, $sameVertMargin, $sameHorizMargin);
     }
     .botleft {
+      &::after {
+        content: "";
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+      }
+
       @include fourSectionPos(botleft, $sameVertMargin, $sameHorizMargin);
     }
     .botright {
+      &::after {
+        content: "";
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+      }
+
       @include fourSectionPos(botright, $sameVertMargin, $sameHorizMargin);
     }
     .closeSec {
@@ -658,7 +709,7 @@ body.user-is-tabbing *:focus {
     100% { transform: translate3d(290px, 0, 0); width: 125px; }
   }
   .sections {
-    $sameHorizMargin: 10vw;
+    $sameHorizMargin: 23vw;
     $sameVertMargin: 5vh;
     position: relative;
     display: flex;
@@ -668,7 +719,7 @@ body.user-is-tabbing *:focus {
     height: 80vh;
     width: 100vw;
 
-    .topleft, .topright, .botleft, .botright, .botmid, .topmid {
+    .topleft, .topright, .botleft, .botright {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -677,7 +728,9 @@ body.user-is-tabbing *:focus {
       border: 5px solid white;
       width: 24vw;
       height: 30vh;
+      @include flashborder;
       transition: 1s;
+      animation: flashborder 2s linear infinite;
       animation-delay: 1s;
 
       button {
@@ -693,7 +746,7 @@ body.user-is-tabbing *:focus {
 
         &:hover {
           box-shadow: 0 5px 8px 0 rgba(0,0,0,0.24), 0 10px 25px 0 rgba(0,0,0,0.19);
-          color: #65dbf2;
+          color: #34a3ed;
         }
       }
       .infolabel {
@@ -710,14 +763,33 @@ body.user-is-tabbing *:focus {
         text-align: justify;
       }
       .boxtitle {
+        text-align: center;
         margin-bottom: 5vh;
         color: white;
         font-family: 'Titillium Web';
         font-size: 30px;
         opacity: 0;
+        width: 60vw;
+        line-height: 3vh;
+
+        span {
+          font-size: 15px;
+          color: white !important;
+
+          a {
+            text-decoration: underline!important;
+          }
+        }
+      }
+      .compvideo {
+        margin: 5vh 0 0 0;
+        border: 5px solid white;
+        width: 40vw;
+        height: 35vh;
       }
 
       &:hover {
+        animation-play-state: paused;
         box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 
         .infolabel {
@@ -727,30 +799,73 @@ body.user-is-tabbing *:focus {
           opacity: 1;
         }
       }
+      &::after {
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        z-index: -1;
+        transition: 0.5s 1s;
+      }
     }
     .topleft {
       @include fourSectionPos(topleft, $sameVertMargin, $sameHorizMargin);
+
+      &::after {
+        content: "";
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+      }
     }
     .topright {
+      &::after {
+        content: "";
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+      }
+
       @include fourSectionPos(topright, $sameVertMargin, $sameHorizMargin);
     }
     .botleft {
+      .clientslogo {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+
+        .client {
+          width: 25vh;
+          height: 25vh;
+        }
+      }
+
+      &::after {
+        content: "";
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+      }
+
       @include fourSectionPos(botleft, $sameVertMargin, $sameHorizMargin);
     }
     .botright {
-      @include fourSectionPos(botright, $sameVertMargin, $sameHorizMargin);
-
-      .codesnippet {
-        border: 5px solid white;
-        width: 65%;
-        transition-duration: 1s;
+      &::after {
+        content: "";
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
       }
-    }
-    .topmid {
-      @include fourSectionPos(topmid, $sameVertMargin, 24vw);
-    }
-    .botmid {
-      @include fourSectionPos(botmid, $sameVertMargin, 24vw);
+
+      @include fourSectionPos(botright, $sameVertMargin, $sameHorizMargin);
     }
     .closeSec {
       position: absolute;
@@ -759,7 +874,7 @@ body.user-is-tabbing *:focus {
       width: 3.5vh;
       height: 3.5vh;
       filter: invert(1);
-      z-index: 8;
+      z-index: 9;
       cursor: pointer;
     }
   }
@@ -781,6 +896,7 @@ body.user-is-tabbing *:focus {
     margin-bottom: 2vh;
   }
   .subtitle {
+    height: 8vh;
     margin-bottom: 2vh;
     font-size: 35px;
     font-family: 'Hansief';
@@ -791,7 +907,7 @@ body.user-is-tabbing *:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 33.33vw;
+    width: 30vw;
     height: 100vh;
 
     .line {
@@ -812,13 +928,14 @@ body.user-is-tabbing *:focus {
     }
   }
   .middle {
-    background: #6a6a6a;
+    background: #b4b4b4;
+    width: 40vw;
 
     .line {
       animation-delay: 2s;
     }
     .infofromsides {
-      margin: 10vh 5vw 0 5vw;
+      margin: 5vh 5vw 0 5vw;
       color: white;
       font-size: 18px;
       font-family: 'Titillium Web';
@@ -844,6 +961,8 @@ body.user-is-tabbing *:focus {
         padding: 1vh 1vw;
         font-size: 18px;
         cursor: pointer;
+        @include flashborder;
+        animation: flashborder 2s linear infinite;
         transition: 1s;
 
         .dropbutt {
@@ -852,6 +971,7 @@ body.user-is-tabbing *:focus {
           height: 20px;
         }
         &:hover {
+          animation-play-state: paused;
           box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
         }
       }
@@ -902,6 +1022,8 @@ body.user-is-tabbing *:focus {
         padding: 1vh 1vw;
         font-size: 18px;
         cursor: pointer;
+        @include flashborder;
+        animation: flashborder 2s linear infinite;
         transition: 1s;
 
         .dropbutt {
@@ -910,6 +1032,7 @@ body.user-is-tabbing *:focus {
           height: 20px;
         }
         &:hover {
+          animation-play-state: paused;
           box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
         }
       }
@@ -936,14 +1059,17 @@ body.user-is-tabbing *:focus {
         @include intervalAnimationDelay(4);
       }
     }
-
+  }
+  .sources {
+    max-width: 20vw;
+    left: 6vw;
   }
 }
 .C {
   display: flex;
   flex-direction: column;
   align-items: center;
-  @include layer(#3eadff, #005a9b, 5, to bottom right);
+  @include layer(#1d92e7, #1d92e7, 5, to bottom right);
 
   canvas {
     position: absolute;
@@ -954,47 +1080,51 @@ body.user-is-tabbing *:focus {
     margin: 15vh 0 0 0;
     @include title(white);
   }
-  .awards {
+  .stories {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
     width: 90vw;
     height: 52.5vh;
 
-    .award {
+    .story {
       position: relative;
-      display: flex;
-      align-items: center;
-      width: 18vw;
-      height: 18vw;
+      margin: 2vw;
+      width: 15vw;
+      height: 40vh;
+      border: 5px solid white;
+      cursor: pointer;
+      transition-delay: .25s !important;
       transition: .5s;
       z-index: 6;
+      @include flashborder;
+      animation: flashborder 2s infinite;
 
       img {
-        max-width: 18vw;
+        width: 15vw;
+        height: 26vw;
       }
-      .caption {
+      .awoverlay {
         position: absolute;
-        bottom: -10vh;
+        top: 0;
         left: 0;
-        width: 18vw;
-        height: 10vh;
-        background-color: white;
-        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        width: 11vw;
+        height: 36vh;
+        padding: 2vh 2vw 2vh 2vw;
+        background-color: #1d92e7;
+        text-align: center;
+        font-size: 9px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-family: 'Hansief';
+        cursor: pointer;
 
         h1 {
-          width: 18vw;
-          color: #0077cc;
-          font-size: 22px;
-          text-align: center;
-          font-family: 'Hansief';
-          font-weight: 400;
-          text-transform: uppercase;
-          letter-spacing: 1.5px;
+          color: white;
         }
-      }
 
+      }
       &:hover {
         box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
       }
@@ -1004,7 +1134,7 @@ body.user-is-tabbing *:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 5vh;
+    margin-top: 9vh;
     height: 5vh;
     padding: 0 1vw 0 1vw;
     background-color: white;
@@ -1021,7 +1151,7 @@ body.user-is-tabbing *:focus {
       color: #005a9b;
     }
   }
-  .moreawards {
+  .morestories {
     position: absolute;
     top: 0;
     left: 0;
@@ -1033,37 +1163,41 @@ body.user-is-tabbing *:focus {
     background-color: #35a1f0;
     z-index: 6;
 
-    .moreawardslist {
+    .morestorieslist {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       justify-content: space-around;
       margin-top: 10vh;
       width: 90vw;
       height: 80vh;
 
-      .exaward {
+      .story {
         position: relative;
         margin: 2vw;
         width: 15vw;
-        height: 15vw;
+        height: 30vw;
+        border: 5px solid white;
         cursor: pointer;
         transition-delay: .25s !important;
         transition: .5s;
+        @include flashborder;
+        animation: flashborder 2s linear infinite;
 
         img {
           width: 15vw;
-          height: 15vw;
+          height: 26vw;
         }
         .awoverlay {
           position: absolute;
           top: 0;
           left: 0;
           width: 11vw;
-          height: 11vw;
+          height: 26vw;
           padding: 2vw;
           background-color: #1d92e7;
           text-align: center;
-          font-size: 11px;
+          font-size: 9px;
           letter-spacing: 3px;
           text-transform: uppercase;
           font-family: 'Hansief';
@@ -1080,6 +1214,8 @@ body.user-is-tabbing *:focus {
       }
     }
     .doneseeing {
+      position: absolute;
+      bottom: 0;
       margin: 5vh 0 5vh 0;
       width: 30px;
       height: 30px;
@@ -1095,6 +1231,10 @@ body.user-is-tabbing *:focus {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-image: url('../images/calendar.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   canvas {
     position: absolute;
@@ -1113,6 +1253,14 @@ body.user-is-tabbing *:focus {
     font-size: 18px;
     text-align: center;
     line-height: 3vh;
+
+    span {
+      font-size: 14px;
+
+      a {
+        text-decoration: underline!important;
+      }
+    }
   }
   .socials {
     display: flex;
@@ -1138,7 +1286,7 @@ body.user-is-tabbing *:focus {
     justify-content: center;
     flex-wrap: wrap;
     margin: 0;
-    z-index: 1000;
+    z-index: 4;
 
     input, textarea {
       margin: 0 25vw 2vh 25vw;
@@ -1170,7 +1318,7 @@ body.user-is-tabbing *:focus {
 
     .nameinput, .phoneinput {
       width: 24vw !important;
-      margin: 0 1vw 2vh 1vw !important;
+      margin: 0 1vw 2vh 1vw;
     }
     .messageinput {
       height: 30vh;
@@ -1185,8 +1333,8 @@ body.user-is-tabbing *:focus {
       height: 5vh;
 
       .sendinputs {
-        margin: 0 0.5vw 0 0 !important;
-        width: 8.5vw !important;
+        margin: 0 0.5vw 0 0;
+        width: 8.5vw;
         height: 5vh;
         background-color: white;
         transition: .5s;
@@ -1209,11 +1357,22 @@ body.user-is-tabbing *:focus {
       }
     }
   }
+  .map {
+    position: absolute;
+    bottom: 5vh;
+    right: 4vw;
+    width: 17vw;
+    height: 75vh;
+    z-index: 4;
+  }
   .title {
     @include title(white);
     margin-bottom: 0;
   }
   .talk {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 5vh;
     filter: invert(1);
     cursor: pointer;
     z-index: 1000;
@@ -1225,6 +1384,11 @@ body.user-is-tabbing *:focus {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-image: url('../images/contact.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
 
   canvas {
     position: absolute;
@@ -1326,8 +1490,8 @@ body.user-is-tabbing *:focus {
         }
 
         margin: 1.5vw;
-        width: 5.5vw;
-        height: 5.5vw;
+        width: 5.55vw;
+        height: 5.6vw;
         border-radius: 50%;
 
         .spoverlay {
@@ -1347,8 +1511,8 @@ body.user-is-tabbing *:focus {
           height: 4.4vw!important;
 
           .spoverlay {
-            width: 3.6vw!important;
-            height: 3.9vw!important;
+            width: 3.8vw!important;
+            height: 4.2vw!important;
             font-size: 7px!important;
             padding: 0 .3vw .3vw .3vw!important;
           }
@@ -1408,14 +1572,82 @@ body.user-is-tabbing *:focus {
     }
   }
 }
+@media (max-width: 1440px) {
+  .viz {
+    .selecttitle {
+      font-size: 45px;
+    }
+  }
+  .B3 {
+    .middle {
+      .title {
+        font-size: 40px;
+      }
+      .infofromsides {
+        font-size: 12px!important;
+      }
+    }
+  }
+}
+@media (max-width: 1200px) {
+  .D {
+    .contactForm {
+      justify-content: flex-start;
+
+      .nameinput, .phoneinput {
+        width: 24vw !important;
+      }
+      .phoneinput {
+        margin: 0 0 2vh 2vw!important;
+      }
+      .sendinputs {
+        margin: 0 0.5vw 0 5vw!important;
+      }
+      input, textarea {
+        margin: 0 0 2vh 5vw!important;
+      }
+    }
+    .map {
+      bottom: 13.75vh;
+      width: 37vw;
+      height: 48.25vh;
+    }
+  }
+}
 /* Largeish devices (tablets/small laptops, 768-1024) */
 @media (max-width: 1024px) {
+  .viz {
+    .selecttitle {
+      font-size: 32px;
+    }
+  }
   .title {
     font-size: 50px!important;
   }
   .A1, .A2, .A3, .A4, .A5 {
     .title {
       font-size: 40px!important;
+    }
+  }
+  .B3 {
+    .droplabel {
+      font-size: 14px!important;
+    }
+    .dropdown {
+      margin: 0!important;
+      font-size: 12px!important;
+    }
+    .subtitle {
+      font-size: 25px!important;
+    }
+    .title {
+      font-size: 28px!important;
+    }
+    .middle {
+      .infofromsides {
+        margin: 3vh 5vw 0 5vw!important;
+        font-size: 13px!important;
+      }
     }
   }
   .maintext {
@@ -1425,11 +1657,6 @@ body.user-is-tabbing *:focus {
   .line {
     width: 100px!important;
     height: 4px!important;
-    @keyframes bounceasdf1 {
-      0% { transform: translate3d(-125px, 0px, 0)!important; width: 0px!important;}
-      50% { transform: translate3d(0px, 0, 0)!important; width: 100px!important;}
-      100% { transform: translate3d(125px, 0, 0)!important; width: 0px!important; }
-    }
   }
   .B1, .B2 {
     .hover {
@@ -1438,18 +1665,24 @@ body.user-is-tabbing *:focus {
     }
   }
   .C {
-    .awards {
-      .award {
-        .caption {
+    .stories {
+      .story {
+        align-items: center!important;
+        width: 15vw!important;
+        height: 50vh!important;
+
+        .awoverlay {
+          width: 11vw!important;
+          height: 46vh!important;
           h1 {
             font-size: 14px!important;
           }
         }
       }
     }
-    .moreawards {
-      .moreawardslist {
-        .exaward {
+    .morestories {
+      .morestorieslist {
+        .story {
           .awoverlay {
             h1 {
               font-size: 11px!important;
@@ -1459,9 +1692,23 @@ body.user-is-tabbing *:focus {
       }
     }
   }
+  .E {
+    .faq {
+      .anotherqanda, .qanda {
+        .question, .answer {
+          font-size: 14px;
+        }
+      }
+    }
+  }
 }
 /* Medium devices (tablets, 576-768) */
-@media (max-width: 768px) {
+@media (max-width: 769px) {
+  .viz {
+    .selecttitle {
+      font-size: 24px;
+    }
+  }
   .title {
     font-size: 45px!important;
   }
@@ -1477,28 +1724,58 @@ body.user-is-tabbing *:focus {
   .line {
     width: 70px!important;
     height: 3px!important;
-    @keyframes bounceasdf1 {
-      0% { transform: translate3d(-100px, 0px, 0)!important; width: 0px!important;}
-      50% { transform: translate3d(0px, 0, 0)!important; width: 70px!important;}
-      100% { transform: translate3d(100px, 0, 0)!important; width: 0px!important; }
+  }
+  .B3 {
+    .droplabel {
+      font-size: 14px!important;
+    }
+    .dropdown {
+      margin: 0!important;
+      font-size: 12px!important;
+    }
+    .subtitle {
+      font-size: 25px!important;
+    }
+    .title {
+      font-size: 28px!important;
+    }
+    .middle {
+      .infofromsides {
+        margin: 3vh 5vw 0 5vw!important;
+        font-size: 11px!important;
+      }
+    }
+    .sources {
+      font-size: 14px!important;
+      left: 5vw!important;
     }
   }
   .C {
-    .awards {
-      .award {
-        .caption {
+    .stories {
+      width: 100vw!important;
+      .story {
+        width: 18vw!important;
+        height: 40vh!important;
+        .awoverlay {
+          width: 14vw!important;
+          height: 36vh!important;
           h1 {
             font-size: 12px!important;
           }
         }
       }
     }
-    .moreawards {
-      .moreawardslist {
-        .exaward {
+    .morestories {
+      .morestorieslist {
+        width: 100vw!important;
+        .story {
+          width: 18vw!important;
+          height: 37vw!important;
           .awoverlay {
+            width: 14vw!important;
+            height: 33vw!important;
             h1 {
-              font-size: 9px!important;
+              font-size: 12px!important;
             }
           }
         }
@@ -1512,13 +1789,40 @@ body.user-is-tabbing *:focus {
     }
     .contactForm {
       input, textarea {
-        border-radius: 5px!important;
+        border-radius: 3px!important;
+      }
+    }
+  }
+  .E {
+    .faq {
+      .anotherqanda, .qanda {
+        .question, .answer {
+          font-size: 12px;
+        }
       }
     }
   }
 }
 /* Small devices (landscape phones, 420-576) */
 @media (max-width: 576px) {
+  .front {
+    .iconArea {
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+  .subdiv3 {
+    p {
+      margin-bottom: 13.5vh;
+      padding: 15vh 15vw 1.5vh 15vw;
+    }
+  }
+  .viz {
+    .selecttitle {
+      font-size: 20px;
+    }
+  }
   .title {
     font-size: 35px!important;
   }
@@ -1534,25 +1838,20 @@ body.user-is-tabbing *:focus {
   .line {
     width: 45px!important;
     height: 3px!important;
-    @keyframes bounceasdf1 {
-      0% { transform: translate3d(-70px, 0px, 0)!important; width: 0px!important;}
-      50% { transform: translate3d(0px, 0, 0)!important; width: 45px!important;}
-      100% { transform: translate3d(75px, 0, 0)!important; width: 0px!important; }
-    }
   }
   .C {
-    .awards {
-      .award {
-        .caption {
+    .stories {
+      .story {
+        .awoverlay {
           h1 {
             font-size: 10px!important;
           }
         }
       }
     }
-    .moreawards {
-      .moreawardslist {
-        .exaward {
+    .morestories {
+      .morestorieslist {
+        .story {
           .awoverlay {
             h1 {
               font-size: 7px!important;
@@ -1575,13 +1874,31 @@ body.user-is-tabbing *:focus {
   }
 }
 /* Small devices (portrait phones, < 420) */
-@media (max-width: 420px) {
+@media (max-width: 430px) {
+  .navcover {
+    h1 {
+      font-size: 13px;
+    }
+    p {
+      font-size: 10px;
+    }
+  }
+  .viz {
+    .selecttitle {
+      font-size: 15px;
+    }
+  }
   .title {
-    font-size: 25px!important;
+    font-size: 22px!important;
   }
   .A1, .A2, .A3, .A4, .A5 {
     .title {
       font-size: 17px!important;
+    }
+  }
+  .A, .B, .B3 {
+    .sources {
+      font-size: 14px;
     }
   }
   .maintext {
@@ -1591,11 +1908,6 @@ body.user-is-tabbing *:focus {
   .line {
     width: 30px!important;
     height: 3px!important;
-    @keyframes bounceasdf1 {
-      0% { transform: translate3d(-50px, 0px, 0)!important; width: 0px!important;}
-      50% { transform: translate3d(0px, 0, 0)!important; width: 30px!important;}
-      100% { transform: translate3d(55px, 0, 0)!important; width: 0px!important; }
-    }
   }
   .B1 {
     .hover {
@@ -1604,6 +1916,8 @@ body.user-is-tabbing *:focus {
     }
     .sections {
       .topleft, .topright, .botleft, .botright {
+        width: 35vw;
+
         .infolabel {
           font-size: 9px!important;
         }
@@ -1616,6 +1930,12 @@ body.user-is-tabbing *:focus {
         button {
           font-size: 11px!important;
         }
+      }
+      .topleft, .botleft {
+        margin-left: 12vw;
+      }
+      .topright, .botright {
+        margin-right: 12vw;
       }
     }
   }
@@ -1625,7 +1945,9 @@ body.user-is-tabbing *:focus {
       font-size: 14px!important;
     }
     .sections {
-      .topleft, .topright, .topmid, .botmid, .botleft, .botright {
+      .topleft, .topright, .botleft, .botright {
+        width: 35vw;
+
         .infolabel {
           font-size: 9px!important;
         }
@@ -1634,66 +1956,82 @@ body.user-is-tabbing *:focus {
         }
         .boxtitle {
           font-size: 11px!important;
+
+          span {
+            font-size: 8px!important;
+          }
         }
         button {
           font-size: 11px!important;
         }
       }
+      .botleft {
+        .client {
+          width: 26vw !important;
+          height: 26vw !important;
+        }
+      }
+      .topleft, .botleft {
+        margin-left: 12vw;
+      }
+      .topright, .botright {
+        margin-right: 12vw;
+      }
     }
   }
   .B3 {
-    .line {
-      animation: bounceasdfb3small 6s!important;
-    }
-    @keyframes bounceasdfb3small {
-      0% { transform: translate3d(-55px, 0px, 0); width: 0px; opacity: 1;}
-      16% { transform: translate3d(0px, 0, 0); width: 175px; opacity: 1;}
-      33% { transform: translate3d(60px, 0, 0); width: 0px; opacity: 1;}
-      34% { transform: translate3d(60px, 0, 0); width: 0px; opacity: 0;}
-      100% { transform: translate3d(60px, 0, 0); width: 0px; opacity: 0;}
-    }
     .middle {
       .title {
         font-size: 14px!important;
       }
       .infofromsides {
-        font-size: 9px!important;
+        font-size: 7px!important;
       }
     }
     .left, .right {
       .subtitle {
-        font-size: 14px!important;
+        font-size: 12px!important;
       }
       .droplabel {
-        font-size: 12px!important;
+        font-size: 10px!important;
       }
       .dropdown {
-        font-size: 12px!important;
+        font-size: 10px!important;
       }
       .dropbutt {
         width: 12px!important;
         height: 12px!important;
       }
     }
+    .sources {
+      font-size: 11px!important;
+      left: 5vw!important;
+    }
   }
   .C {
-    .awards {
-      .award {
-        .caption {
+    .stories {
+      .story {
+        width: 30vw!important;
+        height: 22vh!important;
+        .awoverlay {
+          width: 26vw!important;
+          height: 18vh!important;
           h1 {
-            font-size: 8px!important;
+            font-size: 7.5px!important;
           }
         }
       }
     }
-    .moreawards {
-      .moreawardslist {
-        .exaward {
+    .morestories {
+      .morestorieslist {
+        .story {
+          width: 30vw!important;
+          height: 42vw!important;
           .awoverlay {
-            width: 14vw;
-            height: 18vw;
+            width: 26vw!important;
+            height: 38vw!important;
             h1 {
-              font-size: 3px!important;
+              font-size: 7.5px!important;
             }
           }
         }
@@ -1707,15 +2045,62 @@ body.user-is-tabbing *:focus {
     }
     .contactForm {
       input, textarea {
-        border-radius: 3px!important;
+        border-radius: 1px!important;
       }
+      .sendinputs  {
+        width: 24vw !important;
+      }
+    }
+    .contactinfo {
+      font-size: 14px;
+
+      span {
+        font-size: 11px;
+      }
+    }
+    .map {
+      bottom: 16.35vh;
+      height: 48.25vh;
+      top: 30vh;
+    }
+    .talk {
+      margin-bottom: 1vh;
     }
   }
   .E {
-    .big3 {
-      .third {
-        margin: 0 0 2vh 0!important;
+    .contactForm {
+      input, textarea {
+        border-radius: 1px!important;
       }
+      .sendinputs {
+        width: 50vw !important;
+        height: 4vh !important;
+        font-size: 12px;
+      }
+    }
+    .faq {
+      .qanda, .anotherqanda {
+        top: 15vh !important;
+        h1 {
+            font-size: 9.25px!important;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  .navcover {
+    h1 {
+      font-size: 11px;
+    }
+    p {
+      font-size: 8px;
+    }
+  }
+  .viz {
+    .selecttitle {
+      font-size: 11px;
     }
   }
 }
