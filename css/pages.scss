@@ -856,6 +856,12 @@ body.user-is-tabbing *:focus {
       @include fourSectionPos(botleft, $sameVertMargin, $sameHorizMargin);
     }
     .botright {
+      .codesnippet {
+        border: 5px solid white;
+        width: 65%;
+        transition-duration: 1s;
+      }
+      
       &::after {
         content: "";
         top: 0;
@@ -1495,8 +1501,8 @@ body.user-is-tabbing *:focus {
         border-radius: 50%;
 
         .spoverlay {
-          width: 4.3vw;
-          height: 4.3vw;
+          width: 4.6vw;
+          height: 4.6vw;
           font-size: 7px;
           padding: .6vw;
         }
@@ -1511,8 +1517,8 @@ body.user-is-tabbing *:focus {
           height: 4.4vw!important;
 
           .spoverlay {
-            width: 3.8vw!important;
-            height: 4.2vw!important;
+            width: 4.2vw!important;
+            height: 4.4vw!important;
             font-size: 7px!important;
             padding: 0 .3vw .3vw .3vw!important;
           }
@@ -1543,8 +1549,8 @@ body.user-is-tabbing *:focus {
 
         .spoverlay {
           position: absolute;
-          top: 0;
-          left: 0;
+          top: -2px;
+          left: -2px;
           border-radius: 50%;
           background-color: #0055c9;
           text-align: center;
