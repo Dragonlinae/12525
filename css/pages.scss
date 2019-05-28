@@ -1,5 +1,75 @@
-@import "neatstuff";
+@font-face {
+  font-family: 'Hansief';
+  src: url('../fonts/Hansief.otf');
+}
+@mixin layer($gradient1, $gradient2, $level, $direction: to right) {
+  background-image: linear-gradient($direction, $gradient1, $gradient2);
+  z-index: $level;
 
+  .maintext {
+    z-index: $level + 1;
+  }
+}
+@mixin title($color, $size: 70px) {
+  text-align: center;
+  font-family: 'Hansief';
+  font-size: $size;
+  color: $color;
+}
+@mixin fourSectionPos($position, $verticalMargin, $horizMargin) {
+  position: absolute;
+
+  @if $position == topleft {
+    top: 0;
+    left: 0;
+    margin-top: $verticalMargin;
+    margin-left: $horizMargin;
+  } @else if $position == topright {
+    top: 0;
+    right: 0;
+    margin-top: $verticalMargin;
+    margin-right: $horizMargin;
+  } @else if $position == botleft {
+    bottom: 0;
+    left: 0;
+    margin-bottom: $verticalMargin;
+    margin-left: $horizMargin;
+  } @else if $position == botright {
+    bottom: 0;
+    right: 0;
+    margin-bottom: $verticalMargin;
+    margin-right: $horizMargin;
+  }
+  // for topmid and botmid, horizMargin becomes width in order to horizontally
+  @else if $position == topmid {
+    top: 0;
+    margin-top: $verticalMargin;
+    margin-left: (100vw - $horizMargin) / 2;
+    margin-right: (100vw - $horizMargin) / 2;
+  }
+  @else if $position == botmid {
+    bottom: 0;
+    margin-bottom: $verticalMargin;
+    margin-left: (100vw - $horizMargin) / 2;
+    margin-right: (100vw - $horizMargin) / 2;
+  }
+}
+@mixin intervalAnimationDelay($nth-child, $interval: .25s) {
+  :nth-child(#{$nth-child}) {
+    animation-delay: $nth-child * $interval - .25s;
+    animation-duration: .75s;
+  }
+}
+@mixin flashborder($shadow1: 0 0 10px 2px rgba(0,0,0,0.24), $shadow2: 0 17px 50px 0 rgba(0,0,0,0.19)) {
+  @keyframes flashborder {
+    0% {
+      box-shadow: none;
+    }
+    50% {
+      box-shadow: $shadow1, $shadow2;
+    }
+  }
+}
 @mixin orientation($side, $amount) {
   right: $amount;
 }
@@ -57,11 +127,9 @@ body.user-is-tabbing *:focus {
           }
           50% {
             transform: translateY(0px);
-            background-color: #888;
           }
           100% {
             transform: translateY(5px);
-            background-color: #555;
           }
         }
       }
@@ -72,11 +140,9 @@ body.user-is-tabbing *:focus {
         }
         50% {
           transform: translateY(5px);
-          border-color: #888;
         }
         100% {
           transform: translateY(7.5px);
-          border-color: #555;
         }
       }
     }
@@ -131,7 +197,7 @@ body.user-is-tabbing *:focus {
 .A1 {
   display: flex;
   justify-content: right;
-  @include layer(#004486, #004486, 9);
+  @include layer(#1c40ab, #1c40ab, 9);
   .rightside {
     .line {
       animation-delay: 1s!important;
@@ -208,7 +274,7 @@ body.user-is-tabbing *:focus {
     flex-direction: column;
     align-items: center;
     width: 50vw;
-    background-image: linear-gradient(to right, #2f5da8, #2f5da8);
+    background-image: linear-gradient(to right, #2b70d3, #2b70d3);
     .title {
       margin: 0 0 0 0;
       padding-top: 12vh;
@@ -268,13 +334,13 @@ body.user-is-tabbing *:focus {
 .A3 {
   display: flex;
   justify-content: right;
-  @include layer(#006789, #006789, 7);
+  @include layer(#1c40ab, #1c40ab, 7);
   .rightside {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 50vw;
-    background-image: linear-gradient(to right, #006789, #006789);
+    background-image: linear-gradient(to right, #1c40ab, #1c40ab);
     .title {
       margin: 0 0 0 0;
       padding-top: 12vh;
@@ -330,7 +396,7 @@ body.user-is-tabbing *:focus {
   justify-content: right;
   @include layer(white, white, 6);
   .leftside {
-    background-image: linear-gradient(to right, #009bcf, #009bcf);
+    background-image: linear-gradient(to right, #2b70d3, #2b70d3);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -385,7 +451,7 @@ body.user-is-tabbing *:focus {
   }
 }
 .A5 {
-  @include layer(#538ad9, #3468b3, 5);
+  @include layer(#1c40ab, #1c40ab, 5);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -490,7 +556,7 @@ body.user-is-tabbing *:focus {
 }
 .halfgone {
   &::after {
-    opacity: 0.6;
+    opacity: 0.2;
   }
 }
 //                          //
@@ -498,7 +564,7 @@ body.user-is-tabbing *:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  @include layer(#34a3ed, #34a3ed, 8);
+  @include layer(#2b70d3, #2b70d3, 8);
 
   .hover {
     position: absolute;
@@ -560,7 +626,7 @@ body.user-is-tabbing *:focus {
         padding: .5vh .5vw;
         border: none;
         background-color: white;
-        color: #43c2db;
+        color: #2b70d3;
         font-size: 20px;
         font-family: 'Titillium Web';
         transition: 1s;
@@ -569,7 +635,7 @@ body.user-is-tabbing *:focus {
 
         &:hover {
           box-shadow: 0 5px 8px 0 rgba(0,0,0,0.24), 0 10px 25px 0 rgba(0,0,0,0.19);
-          color: #34a3ed;
+          color: #134ea3;
         }
       }
       .infolabel {
@@ -620,6 +686,11 @@ body.user-is-tabbing *:focus {
         bottom: 0;
         right: 0;
         position: absolute;
+      }
+      .compvideo {
+        margin-top: 5vh;
+        width: 60vw;
+        height: 30vh;
       }
 
       @include fourSectionPos(topleft, $sameVertMargin, $sameHorizMargin);
@@ -676,7 +747,7 @@ body.user-is-tabbing *:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  @include layer(#65dbf2, #65dbf2, 7);
+  @include layer(#1c40ab, #1c40ab, 7);
 
   .hover {
     position: absolute;
@@ -737,7 +808,7 @@ body.user-is-tabbing *:focus {
         padding: .5vh .5vw;
         border: none;
         background-color: white;
-        color: #43c2db;
+        color: #134ea3;
         font-size: 20px;
         font-family: 'Titillium Web';
         transition: 1s;
@@ -746,7 +817,7 @@ body.user-is-tabbing *:focus {
 
         &:hover {
           box-shadow: 0 5px 8px 0 rgba(0,0,0,0.24), 0 10px 25px 0 rgba(0,0,0,0.19);
-          color: #34a3ed;
+          color: #113191;
         }
       }
       .infolabel {
@@ -861,7 +932,7 @@ body.user-is-tabbing *:focus {
         width: 65%;
         transition-duration: 1s;
       }
-      
+
       &::after {
         content: "";
         top: 0;
@@ -934,7 +1005,7 @@ body.user-is-tabbing *:focus {
     }
   }
   .middle {
-    background: #b4b4b4;
+    background: #cdcdcd;
     width: 40vw;
 
     .line {
@@ -949,7 +1020,7 @@ body.user-is-tabbing *:focus {
   }
   .left {
     padding-top: 8vh;
-    background: #1e7fff;
+    background: #2b70d3;
 
     .dropdown {
       margin: 5vh 0 0 0;
@@ -1007,7 +1078,7 @@ body.user-is-tabbing *:focus {
   }
   .right {
     padding-top: 8vh;
-    background: #1e7fff;
+    background: #2b70d3;
 
     .line {
       animation-delay: 4s;
@@ -1072,10 +1143,10 @@ body.user-is-tabbing *:focus {
   }
 }
 .C {
+  @include layer(#0e39b8, #0e39b8, 5, to bottom right);
   display: flex;
   flex-direction: column;
   align-items: center;
-  @include layer(#1d92e7, #1d92e7, 5, to bottom right);
 
   canvas {
     position: absolute;
@@ -1099,7 +1170,8 @@ body.user-is-tabbing *:focus {
       margin: 2vw;
       width: 15vw;
       height: 40vh;
-      border: 5px solid white;
+      border: 5px solid #0029a2;
+      background-color: #0029a2 !important;
       cursor: pointer;
       transition-delay: .25s !important;
       transition: .5s;
@@ -1115,10 +1187,10 @@ body.user-is-tabbing *:focus {
         position: absolute;
         top: 0;
         left: 0;
-        width: 11vw;
+        width: 11.1vw;
         height: 36vh;
         padding: 2vh 2vw 2vh 2vw;
-        background-color: #1d92e7;
+        background-color: #0029a2;
         text-align: center;
         font-size: 9px;
         letter-spacing: 3px;
@@ -1131,9 +1203,6 @@ body.user-is-tabbing *:focus {
         }
 
       }
-      &:hover {
-        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-      }
     }
   }
   .seemore {
@@ -1144,7 +1213,7 @@ body.user-is-tabbing *:focus {
     height: 5vh;
     padding: 0 1vw 0 1vw;
     background-color: white;
-    color: #0077cc;
+    color: #0e39b8;
     font-family: 'Hansief';
     font-size: 25px;
     text-transform: uppercase;
@@ -1154,7 +1223,7 @@ body.user-is-tabbing *:focus {
 
     &:hover {
       box-shadow: 0 5px 8px 0 rgba(0,0,0,0.24), 0 10px 25px 0 rgba(0,0,0,0.19);
-      color: #005a9b;
+      color: #052a99;
     }
   }
   .morestories {
@@ -1166,7 +1235,7 @@ body.user-is-tabbing *:focus {
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: #35a1f0;
+    background-color: #0e39b8;
     z-index: 6;
 
     .morestorieslist {
@@ -1183,12 +1252,14 @@ body.user-is-tabbing *:focus {
         margin: 2vw;
         width: 15vw;
         height: 30vw;
-        border: 5px solid white;
+        border: 5px solid #0029a2;
+        background-color: #0029a2 !important;
         cursor: pointer;
         transition-delay: .25s !important;
         transition: .5s;
         @include flashborder;
         animation: flashborder 2s linear infinite;
+        z-index: 10000;
 
         img {
           width: 15vw;
@@ -1201,7 +1272,7 @@ body.user-is-tabbing *:focus {
           width: 11vw;
           height: 26vw;
           padding: 2vw;
-          background-color: #1d92e7;
+          background-color: #0029a2;
           text-align: center;
           font-size: 9px;
           letter-spacing: 3px;
@@ -1214,15 +1285,11 @@ body.user-is-tabbing *:focus {
           }
 
         }
-        &:hover {
-          box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-        }
       }
     }
     .doneseeing {
       position: absolute;
-      bottom: 0;
-      margin: 5vh 0 5vh 0;
+      margin: 85vh 0 0 0;
       width: 30px;
       height: 30px;
       cursor: pointer;
@@ -1232,12 +1299,12 @@ body.user-is-tabbing *:focus {
   }
 }
 .D {
-  @include layer(#28A4FF, #006aff, 4, to bottom right);
+  @include layer(black, black, 4, to bottom right);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url('../images/calendar.jpg');
+  background-image: url('../images/contact.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1385,7 +1452,7 @@ body.user-is-tabbing *:focus {
   }
 }
 .E {
-  @include layer(#006cff, #0045a3, 3, to bottom right);
+  @include layer(#2b70d3, #2b70d3, 3);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1448,7 +1515,7 @@ body.user-is-tabbing *:focus {
     text-transform: uppercase;
     cursor: pointer;
     transition: .5s;
-    z-index: 6;
+    z-index: 4;
 
     &:hover {
       box-shadow: 0 5px 8px 0 rgba(0,0,0,0.24), 0 10px 25px 0 rgba(0,0,0,0.19);
@@ -1465,7 +1532,7 @@ body.user-is-tabbing *:focus {
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    background-color: #0055c9;
+    background-color: #1c40ab;
     z-index: 4;
 
     .sponsorlist {
@@ -1474,6 +1541,7 @@ body.user-is-tabbing *:focus {
       align-items: baseline;
       justify-content: center;
       width: 90vw;
+      z-index: 5;
 
       .asponsor {
         position: relative;
@@ -1547,25 +1615,6 @@ body.user-is-tabbing *:focus {
           }
         }
 
-        .spoverlay {
-          position: absolute;
-          top: -2px;
-          left: -2px;
-          border-radius: 50%;
-          background-color: #0055c9;
-          text-align: center;
-          font-family: 'Abel';
-          cursor: pointer;
-
-          h1 {
-            color: white;
-            margin: 0;
-          }
-
-        }
-        &:hover {
-          box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-        }
       }
     }
     .doneseeings {
@@ -1580,8 +1629,11 @@ body.user-is-tabbing *:focus {
 }
 @media (max-width: 1440px) {
   .viz {
-    .selecttitle {
+    .f1, .s1 {
       font-size: 45px;
+    }
+    .t1 {
+      font-size: 35px;
     }
   }
   .B3 {
@@ -1620,11 +1672,14 @@ body.user-is-tabbing *:focus {
     }
   }
 }
-/* Largeish devices (tablets/small laptops, 768-1024) */
-@media (max-width: 1024px) {
+/* Largeish devices (tablets/small laptops, 768-1080) */
+@media (max-width: 1080px) {
   .viz {
     .selecttitle {
       font-size: 32px;
+    }
+    .t1 {
+      font-size: 26px;
     }
   }
   .title {
@@ -1710,9 +1765,20 @@ body.user-is-tabbing *:focus {
 }
 /* Medium devices (tablets, 576-768) */
 @media (max-width: 769px) {
+  .navcover {
+    h1 {
+      font-size: 18px;
+    }
+    p {
+      font-size: 15px;
+    }
+  }
   .viz {
     .selecttitle {
       font-size: 24px;
+    }
+    .t1 {
+      font-size: 18px;
     }
   }
   .title {
@@ -1801,7 +1867,7 @@ body.user-is-tabbing *:focus {
   }
   .E {
     .faq {
-      .anotherqanda, .qanda {
+      .anotherqanda, .qanda, .videoqanda {
         .question, .answer {
           font-size: 12px;
         }
@@ -1809,8 +1875,31 @@ body.user-is-tabbing *:focus {
     }
   }
 }
+@media (max-width: 700px) {
+  .C {
+    .morestories {
+      .morestorieslist {
+        .story {
+          .awoverlay {
+            h1 {
+              font-size: 10px!important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 /* Small devices (landscape phones, 420-576) */
 @media (max-width: 576px) {
+  .navcover {
+    h1 {
+      font-size: 14px;
+    }
+    p {
+      font-size: 12px;
+    }
+  }
   .front {
     .iconArea {
       p {
@@ -1827,6 +1916,9 @@ body.user-is-tabbing *:focus {
   .viz {
     .selecttitle {
       font-size: 20px;
+    }
+    .t1 {
+      font-size: 16px;
     }
   }
   .title {
@@ -1865,6 +1957,10 @@ body.user-is-tabbing *:focus {
           }
         }
       }
+      .doneseeing {
+        width: 17px;
+        height: 17px;
+      }
     }
   }
   .D {
@@ -1876,6 +1972,16 @@ body.user-is-tabbing *:focus {
       input, textarea {
         border-radius: 4px!important;
       }
+    }
+    .talk {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .E {
+    .closeaptfaq {
+      width: 17px;
+      height: 17px;
     }
   }
 }
@@ -1892,6 +1998,9 @@ body.user-is-tabbing *:focus {
   .viz {
     .selecttitle {
       font-size: 15px;
+    }
+    .t1 {
+      font-size: 13px;
     }
   }
   .title {
@@ -2088,7 +2197,7 @@ body.user-is-tabbing *:focus {
       .qanda, .anotherqanda {
         top: 15vh !important;
         h1 {
-            font-size: 9.25px!important;
+            font-size: 8px!important;
         }
       }
     }
@@ -2107,6 +2216,14 @@ body.user-is-tabbing *:focus {
   .viz {
     .selecttitle {
       font-size: 11px;
+    }
+  }
+}
+
+@media (max-width: 350px) {
+  .viz {
+    .t1 {
+      font-size: 9.5px;
     }
   }
 }

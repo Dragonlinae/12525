@@ -5,10 +5,11 @@
     $name = $_POST['name'];
     $phone = $_POST['phone'];
     $emailFrom = $_POST['email'];
-    $subject = $_POST['subject'];
-    $message = $_POST['message'];
+    $business = $_POST['business'];
+    $date = $_POST['date'];
+    $time = $_POST['time'];
     $headers = "From: ".$emailFrom;
-    $txt = "An email has come in from ".$name." (".$emailFrom.", ".$phone.").\n\n".$message;
+    $txt = "An email has come in from ".$name." (".$emailFrom.", ".$phone.").\n\n".$business." requests an appointment on ".$date." at ".$time.".";
 
     mail($mailTo, $subject, $txt, $headers);
   }

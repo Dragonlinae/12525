@@ -133,12 +133,14 @@ $(window).on("load", function() {
     a5Maker.newPanel("f i r s t \xa0\xa0 v o l u n t e e r i n g", "From helping other teams to holding workshops, we also encourage other teams to do their best. Our team mentored multiple FLL teams such as HEXA Challengers who are advancing to the World Festival this year. At the beginning of the season, we hosted 2 programming workshops for 12 new coaches at Suzanne Middle school. Every summer, we host a robotics workshop at the walnut library where we teach kids how to build and program robots. We also held 2 workshops for new FTC teams and volunteered at 3 FLL and 2 FTC tournaments.", ".A5", ".topside");
   });
 
-
   //b1andb2
   let notSelected = true;
   $('.B1 .sections .topleft button').click(function() {
     notSelected = false;
     secEditor.hideAllSecExceptAndEnlarge('.topleft', '.B1');
+    setTimeout(function() {
+      $('.compvideo').fadeIn(500);
+    }, 1000);
   });
   $('.B1 .sections .topleft').mouseenter(() => {
     if (notSelected) {
@@ -182,6 +184,7 @@ $(window).on("load", function() {
   });
   $('.B1 .sections .closeSec').click(function() {
     notSelected = true;
+    $('.compvideo').fadeOut(250);
     $('.B1 .sections .closeSec').fadeOut(250);
     secEditor.showAllSec('.B1');
   });
@@ -350,20 +353,15 @@ $(window).on("load", function() {
       $('.nav .menu-open').removeClass('invertedColors');
       $('.nav .back').removeClass('invertedColors');
     }
-
+/*
     if (classed.search('C c') > 0) {
-      $('.C').attr('id', 'particles-js');
-      $('.D').removeAttr('particles-js');
-      $('.E').removeAttr('particles-js');
-    } else if (classed.search('D d') > 0) {
-      $('.D').attr('id', 'particles-js');
-      $('.C').removeAttr('particles-js');
-      $('.E').removeAttr('particles-js');
+      $('.morestories').attr('id', 'particles-js');
+      $('.faq').removeAttr('particles-js');
     } else if (classed.search('E e') > 0) {
-      $('.E').attr('id', 'particles-js');
-      $('.D').removeAttr('particles-js');
-      $('.C').removeAttr('particles-js');
+      $('.morestories').removeAttr('particles-js');
+      $('.faq').attr('id', 'particles-js');
     }
+    */
   });
 
   //Contact page validation/tabbing
@@ -394,6 +392,7 @@ $(window).on("load", function() {
     $('.morestories').show();
     $('.up').hide();
     setTimeout(() => {
+      $('.C .morestories .morestorieslist .story').css('background-color', 'white');
       $('.C .morestories .morestorieslist .story .awoverlay').show();
     }, 800);
   });
@@ -403,27 +402,51 @@ $(window).on("load", function() {
     $('.seemore').removeClass('fadeOut');
     $('.morestories').addClass('fadeOutDown');
     $('.seemore').addClass('fadeIn');
+    $('.C .morestories .morestorieslist .story').css('background-color', 'none');
     $('.seemore').show();
     $('.up').show();
   });
 
   // sponsors page
   let moreSponOpen = false;
+  let arconic = false;
+
+  setTimeout(function() {
+    setInterval(function() {
+      if (arconic) {
+        arconic = false;
+        $(".big3 .third").css('opacity', '0');
+        $('.big3 .third').css('margin', '10vh 0 10vh 0');
+        setTimeout(function() {
+          $(".big3 .third").attr("src","css/images/rockwellcollins.png");
+          $(".big3 .third").css('opacity', '1');
+        }, 1000);
+      } else {
+        arconic = true;
+        $(".big3 .third").css('opacity', '0');
+        $('.big3 .third').css('margin', '0');
+        setTimeout(function() {
+          $(".big3 .third").attr("src","css/images/arconic.png");
+          $(".big3 .third").css('opacity', '1');
+        }, 1000);
+      }
+    }, 6000);
+  }, 4000);
 
   $('.seemores').click(function() {
-    $('.faq').removeClass('fadeOutDown');
+    $('.moresponsors').removeClass('fadeOutDown');
     $('.seemores').removeClass('fadeIn');
-    $('.faq').addClass('fadeInUpBig');
+    $('.moresponsors').addClass('fadeInUpBig');
     $('.seemores').addClass('fadeOut');
-    $('.faq').show();
+    $('.moresponsors').show();
     moreSponOpen = true;
   });
 
-  $('.closeaptfaq').click(() => {
+  $('.sponsor').click(() => {
     if (moreSponOpen) {
-      $('.faq').removeClass('fadeInUpBig');
+      $('.moresponsors').removeClass('fadeInUpBig');
       $('.seemores').removeClass('fadeOut');
-      $('.faq').addClass('fadeOutDown');
+      $('.moresponsors').addClass('fadeOutDown');
       $('.seemores').addClass('fadeIn');
       $('.seemores').show();
       moreSponOpen = false;
@@ -432,24 +455,74 @@ $(window).on("load", function() {
       hideSponsors();
     }
   });
+});
 
-  $('.nextqs').click(() => {
-    if ($('.nextqs').attr('src') == 'css/images/backwardw.png') {
-      $('.qanda').removeClass('fadeInRightBig');
-      $('.anotherqanda').removeClass('fadeOutLeftBig');
-      $('.qanda').addClass('fadeOutRightBig');
-      $('.anotherqanda').addClass('fadeInLeftBig');
-      $('.anotherqanda').show();
-      $('.nextqs').attr('src', 'css/images/forward.png');
-    } else {
-      $('.qanda').removeClass('fadeOutRightBig');
-      $('.anotherqanda').removeClass('fadeInLeftBig');
-      $('.qanda').addClass('fadeInRightBig');
-      $('.anotherqanda').addClass('fadeOutLeftBig');
-      $('.nextqs').attr('src', 'css/images/backwardw.png');
+//validation function for lets talk
+function validateEmail() {
+  let info = [document.forms["contactForm"]["name"].value, document.forms["contactForm"]["phone"].value, document.forms["contactForm"]["email"].value, document.forms["contactForm"]["subject"].value, document.forms["contactForm"]["message"].value];
+  let filled = true;
+  let nonfilled = [];
+
+  info.forEach(function(value, index) {
+    if (value == "" || value == null) {
+      filled = false;
+
+      switch (index) {
+        case 0:
+          nonfilled.push('name');
+          break;
+        case 1:
+          nonfilled.push('phone');
+          break;
+        case 2:
+          nonfilled.push('email');
+          break;
+        case 3:
+          nonfilled.push('subject');
+          break;
+        case 4:
+          nonfilled.push('message');
+      }
     }
   });
-});
+
+  if (!filled) {
+
+    if (nonfilled.length == 2) {
+      nonfilled[0] = (`${nonfilled[0]} and ${nonfilled[1]}`);
+      nonfilled.pop();
+    } else {
+      nonfilled.forEach(function(value, index) {
+        if (index != 0 && index != (nonfilled.length - 1)) {
+          nonfilled[index] = (` ${nonfilled[index]}`);
+        }
+
+        if (index == (nonfilled.length - 1) && nonfilled.length != 1) {
+          nonfilled[index] = (` and ${nonfilled[index]}`);
+        }
+      });
+    }
+
+    alert(`Please fill in your ${nonfilled}!`);
+    return false;
+
+  } else {
+    $('.sent').removeClass('fadeOut');
+    $('.sent').addClass('fadeIn');
+    $('.sent').show();
+    setTimeout(function() {
+      document.forms["contactForm"]["name"].value = "";
+      document.forms["contactForm"]["phone"].value = "";
+      document.forms["contactForm"]["email"].value = "";
+      document.forms["contactForm"]["subject"].value = "";
+      document.forms["contactForm"]["message"].value = "";
+    }, 1000);
+    setTimeout(function() {
+      $('.sent').removeClass('fadeIn');
+      $('.sent').addClass('fadeOut');
+    }, 2000);
+  };
+};
 
 //classes for a
 class panelAndDefaults {
@@ -458,41 +531,38 @@ class panelAndDefaults {
     this.titleString = '';
     this.textOptions = {
       strings: [" ", this.textString],
-      typeSpeed: -100,
-      backSpeed: -100,
+      typeSpeed: -1000000,
+      backSpeed: -1000000,
       showCursor: false,
       onComplete: (self) => {
-        this.picChose1 = false;
+        this.picChose = false;
       }
     };
     this.titleOptions = {
       strings: [" ", this.titleString],
       typeSpeed: -3,
       backSpeed: -3,
-      showCursor: false,
-      onComplete: (self) => {
-        this.picChose = false;
-      }
+      showCursor: true,
     };
     this.titleTyped;
     this.textTyped;
     this.picChose = false;
-    this.picChose1 = false;
   }
 
   newPanel(titleString, textString, panel, side) {
-    if (!this.picChose && !this.picChose1) {
-      titleString = titleString.toUpperCase();
-      this.titleOptions.strings[1] = titleString;
-      this.textOptions.strings[1] = textString;
-      $('.line').hide();
-      setTimeout(() => {$('.line').show()}, 1000);
-      this.titleTyped = new Typed(`${panel} ${side} .title`, this.titleOptions);
-      this.textTyped = new Typed(`${panel} ${side} .maintext`, this.textOptions);
-      this.textTyped.start();
-      this.picChose = true;
-      this.picChose1 = true;
+    if (this.picChose) {
+      this.titleTyped.destroy();
+      this.textTyped.destroy();
     }
+    this.picChose = true;
+    titleString = titleString.toUpperCase();
+    this.titleOptions.strings[1] = titleString;
+    this.textOptions.strings[1] = textString;
+    $('.line').hide();
+    setTimeout(() => {$('.line').show()}, 1000);
+    this.titleTyped = new Typed(`${panel} ${side} .title`, this.titleOptions);
+    this.textTyped = new Typed(`${panel} ${side} .maintext`, this.textOptions);
+    this.textTyped.start();
   }
 }
 
@@ -615,122 +685,3 @@ class dropdownMan {
     });
   }
 }
-
-// sponsors page
-  let moreSponOpen = false;
-  let arconic = false;
-
-  setTimeout(function() {
-    setInterval(function() {
-      if (arconic) {
-        arconic = false;
-        $(".big3 .third").css('opacity', '0');
-        $('.big3 .third').css('margin', '10vh 0 10vh 0');
-        setTimeout(function() {
-          $(".big3 .third").attr("src","css/images/rockwellcollins.png");
-          $(".big3 .third").css('opacity', '1');
-        }, 1000);
-      } else {
-        arconic = true;
-        $(".big3 .third").css('opacity', '0');
-        $('.big3 .third').css('margin', '0');
-        setTimeout(function() {
-          $(".big3 .third").attr("src","css/images/arconic.png");
-          $(".big3 .third").css('opacity', '1');
-        }, 1000);
-      }
-    }, 6000);
-  }, 4000);
-
-  $('.seemores').click(function() {
-    $('.moresponsors').removeClass('fadeOutDown');
-    $('.seemores').removeClass('fadeIn');
-    $('.moresponsors').addClass('fadeInUpBig');
-    $('.seemores').addClass('fadeOut');
-    $('.moresponsors').show();
-    moreSponOpen = true;
-  });
-
-  $('.sponsor').click(() => {
-    if (moreSponOpen) {
-      $('.moresponsors').removeClass('fadeInUpBig');
-      $('.seemores').removeClass('fadeOut');
-      $('.moresponsors').addClass('fadeOutDown');
-      $('.seemores').addClass('fadeIn');
-      $('.seemores').show();
-      moreSponOpen = false;
-    } else {
-      $('.viz').show();
-      hideSponsors();
-    }
-  });
-
-  $('.sponsorlist').children('.asponsor').each(function () {
-    $(this).hover(function(event) {
-      $(this).children('.spoverlay').removeClass('fadeOutDownBigSlow');
-      $(this).children('.spoverlay').addClass('fadeInUp');
-      $(this).children('.spoverlay').show();
-    }, function(event) {
-      $(this).children('.spoverlay').removeClass('fadeInUp');
-      $(this).children('.spoverlay').addClass('fadeOutDownBigSlow');
-    });
-  });
-
-let frogRaid = false;
-var frog = {70: false, 82: false, 71: false};
-$(document).keydown(function(e) {
-  if (frogRaid) {
-    if (e.keyCode in frog) {
-      frog[e.keyCode] = true;
-      if (frog[70] && frog[82] && frog[71]) {
-        $(".A2 .imgbottomright").attr("src","css/images/daniel.png");
-        $(".A2 .imgtopleft").attr("src","css/images/josh.png");
-        $(".A2 .imgbottomleft").attr("src","css/images/eric.png");
-        $(".A3 .imgbottomright").attr("src","css/images/kevin.png");
-        $(".A3 .imgtopleft").attr("src","css/images/glory.jpg");
-        $(".A3 .imgbottomleft").attr("src","css/images/kawin.png");
-        $(".A3 .imgtopmiddle").attr("src","css/images/gordo.png");
-        $(".A3 .imgtopright").attr("src","css/images/ian.png");
-        $(".A4 .imgbottomright").attr("src","css/images/evan.jpg");
-        $(".A4 .imgtopleft").attr("src","css/images/jason.png");
-        $(".A4 .imgbottomleft").attr("src","css/images/sarah.png");
-        $(".A4 .imgextra").attr("src","css/images/chandrark.jpg");
-        $(".A4 .imgtopright").attr("src","css/images/conor.png");
-        $(".A4 .imgtopmiddle").attr("src","css/images/nathan.png");
-        frog[70] = false;
-        frog[82] = false;
-        frog[71] = false;
-        frogRaid = false;
-      }
-    }
-  } else {
-    if (e.keyCode in frog) {
-      frog[e.keyCode] = true;
-      if (frog[70] && frog[82] && frog[71]) {
-        $(".A2 .imgbottomright").attr("src","css/images/Frog1.jpg");
-        $(".A2 .imgtopleft").attr("src","css/images/Frog2.jpg");
-        $(".A2 .imgbottomleft").attr("src","css/images/Frog3.jpg");
-        $(".A3 .imgbottomright").attr("src","css/images/Frog4.jpg");
-        $(".A3 .imgtopleft").attr("src","css/images/Frog5.jpg");
-        $(".A3 .imgbottomleft").attr("src","css/images/Frog6.jpg");
-        $(".A3 .imgtopmiddle").attr("src","css/images/Frog7.jpg");
-        $(".A3 .imgtopright").attr("src","css/images/Frog8.jpg");
-        $(".A4 .imgbottomright").attr("src","css/images/Frog9.jpg");
-        $(".A4 .imgtopleft").attr("src","css/images/Frog10.jpg");
-        $(".A4 .imgbottomleft").attr("src","css/images/Frog11.jpg");
-        $(".A4 .imgextra").attr("src","css/images/Frog12.jpg");
-        $(".A4 .imgtopright").attr("src","css/images/Frog13.jpg");
-        $(".A4 .imgtopmiddle").attr("src","css/images/Frog14.jpg");
-        frog[70] = false;
-        frog[82] = false;
-        frog[71] = false;
-        frogRaid = true;
-      }
-    }
-  }
-});
-$(document).keyup(function(e) {
-    if (e.keyCode in frog) {
-        frog[e.keyCode] = false;
-    }
-});
